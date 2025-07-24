@@ -1,0 +1,670 @@
+{
+    "appName": "STACK",
+    "appDescription": "A Web3-native financial platform for Gen Z that makes investing simple, engaging, and automated through gamification, social features, and real-world utility.",
+    "global": {
+        "palette": {
+            "primary": {
+                "royalBlue": "#5852FF",
+                "description": "The main color for primary calls-to-action, interactive elements, and highlights, as defined in the UI spec."
+            },
+            "accent": {
+                "limeGreen": "#B9FF4B",
+                "description": "Used for high-emphasis, engaging actions like 'Power Up' or 'Withdraw', and for positive financial indicators."
+            },
+            "background": {
+                "main": "#FFFFFF",
+                "dark": "#121212",
+                "description": "Primary background colors for light and dark modes."
+            },
+            "surface": {
+                "card": "#F7F7F7",
+                "light": "#EAE2FF",
+                "description": "Used for cards and other elevated surfaces to create depth."
+            },
+            "text": {
+                "primary": "#000000",
+                "secondary": "#545454",
+                "tertiary": "#A0A0A0",
+                "onPrimary": "#FFFFFF",
+                "onAccent": "#000000"
+            },
+            "semantic": {
+                "success": "#28A745",
+                "danger": "#DC3545",
+                "warning": "#FFC107"
+            }
+        },
+        "typography": {
+            "primaryFont": {
+                "name": "MD Nichrome",
+                "description": "A modern, bold typeface used for headings and prominent text to convey strength and clarity."
+            },
+            "secondaryFont": {
+                "name": "Gilroy",
+                "description": "A clean and legible sans-serif font used for body text, labels, and other UI elements for consistency and readability."
+            },
+            "styles": {
+                "h1": {
+                    "font": "MD Nichrome",
+                    "size": "36px",
+                    "weight": "bold"
+                },
+                "h2": {
+                    "font": "MD Nichrome",
+                    "size": "24px",
+                    "weight": "bold"
+                },
+                "body": {
+                    "font": "Gilroy",
+                    "size": "16px",
+                    "weight": "regular"
+                },
+                "label": {
+                    "font": "Gilroy",
+                    "size": "14px",
+                    "weight": "medium"
+                },
+                "caption": {
+                    "font": "Gilroy",
+                    "size": "12px",
+                    "weight": "regular"
+                }
+            }
+        },
+        "layout": {
+            "containerPadding": "24px",
+            "elementSpacing": "16px",
+            "cornerRadius": "20px"
+        }
+    },
+    "components": {
+        "buttons": {
+            "primary": {
+                "backgroundColor": "palette.primary.royalBlue",
+                "textColor": "palette.text.onPrimary",
+                "cornerRadius": "12px",
+                "padding": "16px 24px",
+                "shadow": "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                "font": "typography.styles.label"
+            },
+            "accent": {
+                "backgroundColor": "palette.accent.limeGreen",
+                "textColor": "palette.text.onAccent",
+                "cornerRadius": "12px",
+                "padding": "16px 24px",
+                "shadow": "0px 4px 10px rgba(185, 255, 75, 0.2)",
+                "font": "typography.styles.label",
+                "description": "For the main 'Power Up' investment action."
+            },
+            "tertiary": {
+                "backgroundColor": "transparent",
+                "textColor": "palette.text.primary",
+                "border": "1px solid palette.text.tertiary",
+                "cornerRadius": "12px",
+                "padding": "16px 24px",
+                "font": "typography.styles.label"
+            },
+            "floatingActionButton": {
+                "backgroundColor": "palette.primary.royalBlue",
+                "iconColor": "palette.text.onPrimary",
+                "size": "56px",
+                "cornerRadius": "28px",
+                "shadow": "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                "description": "For the AI Expert feature."
+            }
+        },
+        "cards": {
+            "default": {
+                "backgroundColor": "palette.surface.card",
+                "cornerRadius": "20px",
+                "padding": "20px",
+                "shadow": "0px 8px 20px rgba(0, 0, 0, 0.05)"
+            },
+            "questCard": {
+                "backgroundColor": "palette.surface.light",
+                "cornerRadius": "16px",
+                "padding": "16px",
+                "description": "A card variant for displaying gamified quests and rewards."
+            }
+        },
+        "inputs": {
+            "inputField": {
+                "backgroundColor": "palette.surface.card",
+                "textColor": "palette.text.primary",
+                "placeholderColor": "palette.text.tertiary",
+                "borderColor": "palette.surface.light",
+                "cornerRadius": "12px",
+                "padding": "16px",
+                "font": "typography.styles.body"
+            },
+            "toggleSwitch": {
+                "thumbColor": "palette.background.main",
+                "trackColorOn": "palette.accent.limeGreen",
+                "trackColorOff": "palette.text.tertiary"
+            }
+        },
+        "feedback": {
+            "progressBar": {
+                "backgroundColor": "palette.surface.light",
+                "progressColor": "palette.accent.limeGreen",
+                "height": "8px",
+                "cornerRadius": "4px"
+            }
+        },
+        "overlays": {
+            "modal": {
+                "backgroundColor": "palette.background.main",
+                "cornerRadius": "24px",
+                "shadow": "0px 16px 40px rgba(0, 0, 0, 0.15)",
+                "description": "For displaying content over the current screen, like the 'Power Up' amount entry."
+            }
+        },
+        "icons": {
+            "style": "line",
+            "strokeWidth": "1.5px",
+            "color": "palette.text.secondary"
+        },
+        "navigation": {
+            "bottomBar": {
+                "backgroundColor": "palette.background.main",
+                "activeColor": "palette.primary.royalBlue",
+                "inactiveColor": "palette.text.tertiary",
+                "iconSize": "24px",
+                "labelFont": "typography.styles.caption",
+                "tabs": [
+                    {
+                        "id": "dashboard",
+                        "label": "Dashboard",
+                        "icon": "home"
+                    },
+                    {
+                        "id": "portfolio",
+                        "label": "Portfolio",
+                        "icon": "pie-chart"
+                    },
+                    {
+                        "id": "card",
+                        "label": "Card",
+                        "icon": "credit-card"
+                    },
+                    {
+                        "id": "quests",
+                        "label": "Quests",
+                        "icon": "award"
+                    },
+                    {
+                        "id": "profile",
+                        "label": "Profile",
+                        "icon": "user"
+                    }
+                ]
+            }
+        }
+    },
+    "screens": {
+        "signup": {
+            "description": "User registration screen. Emphasizes simplicity and automatic wallet creation.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Create Account"
+                    }
+                },
+                {
+                    "component": "InputField",
+                    "properties": {
+                        "label": "Email",
+                        "placeholder": "Enter your email"
+                    }
+                },
+                {
+                    "component": "InputField",
+                    "properties": {
+                        "label": "Password",
+                        "type": "password"
+                    }
+                },
+                {
+                    "component": "Button",
+                    "properties": {
+                        "label": "Sign Up",
+                        "style": "primary",
+                        "fullWidth": true
+                    }
+                },
+                {
+                    "component": "TextLink",
+                    "properties": {
+                        "text": "Already have an account? Log In",
+                        "target": "login"
+                    }
+                }
+            ]
+        },
+        "login": {
+            "description": "User login screen.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Welcome Back"
+                    }
+                },
+                {
+                    "component": "InputField",
+                    "properties": {
+                        "label": "Email",
+                        "placeholder": "Enter your email"
+                    }
+                },
+                {
+                    "component": "InputField",
+                    "properties": {
+                        "label": "Password",
+                        "type": "password"
+                    }
+                },
+                {
+                    "component": "Button",
+                    "properties": {
+                        "label": "Log In",
+                        "style": "primary",
+                        "fullWidth": true
+                    }
+                },
+                {
+                    "component": "TextLink",
+                    "properties": {
+                        "text": "Forgot Password?",
+                        "target": "forgotPassword"
+                    }
+                },
+            ]
+        },
+        "onboarding": {
+            "description": "A multi-step onboarding flow for new users after signup.",
+            "steps": [
+                {
+                    "title": "Welcome to STACK",
+                    "layout": [
+                        {
+                            "component": "Illustration",
+                            "properties": {
+                                "type": "welcome"
+                            }
+                        },
+                        {
+                            "component": "Text",
+                            "properties": {
+                                "content": "The future of investing is here. Simple, social, and smart."
+                            }
+                        },
+                        {
+                            "component": "Button",
+                            "properties": {
+                                "label": "Get Started",
+                                "style": "primary"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Free Starter Slice",
+                    "layout": [
+                        {
+                            "component": "Illustration",
+                            "properties": {
+                                "type": "gift"
+                            }
+                        },
+                        {
+                            "component": "Text",
+                            "properties": {
+                                "content": "To get you started, we've given you a free 'starter slice' of an investment!"
+                            }
+                        },
+                        {
+                            "component": "Button",
+                            "properties": {
+                                "label": "Awesome!",
+                                "style": "accent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "How It Works",
+                    "layout": [
+                        {
+                            "component": "FeatureCard",
+                            "properties": {
+                                "icon": "package",
+                                "title": "Baskets",
+                                "description": "Invest in themes you believe in, not confusing tickers."
+                            }
+                        },
+                        {
+                            "component": "FeatureCard",
+                            "properties": {
+                                "icon": "zap",
+                                "title": "Power Up",
+                                "description": "Invest any amount, anytime, with a single tap."
+                            }
+                        },
+                        {
+                            "component": "FeatureCard",
+                            "properties": {
+                                "icon": "award",
+                                "title": "Quests",
+                                "description": "Earn rewards for building good financial habits."
+                            }
+                        },
+                        {
+                            "component": "Button",
+                            "properties": {
+                                "label": "Enter STACK",
+                                "style": "primary"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dashboard": {
+            "description": "The 'For You' Feed. The main screen for discovery and a simple overview of the user's portfolio.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Dashboard",
+                        "showAvatar": true
+                    }
+                },
+                {
+                    "component": "BalanceCard",
+                    "properties": {
+                        "title": "Total Value",
+                        "value": "$860,692",
+                        "performanceChange": "+2.72%"
+                    }
+                },
+                {
+                    "component": "Button",
+                    "properties": {
+                        "label": "Top Up",
+                        "style": "primary",
+                        "fullWidth": true
+                    }
+                },
+                {
+                    "component": "FeedList",
+                    "properties": {
+                        "title": "Your Investments",
+                        "description": "Scrollable, personalized feed of Baskets, Quests, and Curator content."
+                    }
+                },
+                {
+                    "component": "FloatingActionButton",
+                    "properties": {
+                        "icon": "sparkles",
+                        "action": "openAiExpert"
+                    }
+                },
+                {
+                    "component": "BottomNavigation"
+                }
+            ]
+        },
+        "basketDetail": {
+            "description": "An exploratory screen to see the contents and philosophy behind a curated 'Basket'.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Basket Details",
+                        "backButton": true
+                    }
+                },
+                {
+                    "component": "BasketInfo",
+                    "properties": {
+                        "name": "Gamer Basket",
+                        "icon": "gamepad-2",
+                        "description": "...",
+                        "riskLevel": "Medium"
+                    }
+                },
+                {
+                    "component": "PerformanceChart"
+                },
+                {
+                    "component": "AssetAllocationList"
+                },
+                {
+                    "component": "PowerUpButton",
+                    "properties": {
+                        "label": "Power Up",
+                        "style": "accent"
+                    }
+                }
+            ]
+        },
+        "portfolio": {
+            "description": "A detailed view of the user's investment portfolio and holdings.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Portfolio"
+                    }
+                },
+                {
+                    "component": "PortfolioHoldingsList"
+                },
+                {
+                    "component": "PerformanceChart"
+                },
+                {
+                    "component": "TransactionHistory"
+                },
+                {
+                    "component": "BottomNavigation"
+                }
+            ]
+        },
+        "cardHub": {
+            "description": "A screen to manage the virtual debit card, view transactions, and configure the 'Round-up' feature.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Card Hub"
+                    }
+                },
+                {
+                    "component": "VirtualCardDisplay"
+                },
+                {
+                    "component": "SpendableBalance"
+                },
+                {
+                    "component": "RoundUpToggle",
+                    "properties": {
+                        "component": "ToggleSwitch"
+                    }
+                },
+                {
+                    "component": "RecentTransactionsList"
+                },
+                {
+                    "component": "MicroLoanCTA"
+                },
+                {
+                    "component": "BottomNavigation"
+                }
+            ]
+        },
+        "microLoanHub": {
+            "description": "A simple interface to manage portfolio collateral and loan status.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Micro-Loans",
+                        "backButton": true
+                    }
+                },
+                {
+                    "component": "CollateralValueCard",
+                    "properties": {
+                        "value": "$860,692"
+                    }
+                },
+                {
+                    "component": "LoanAvailabilityDisplay",
+                    "properties": {
+                        "maxLoanAmount": "$344,276",
+                        "interestRate": "5%"
+                    }
+                },
+                {
+                    "component": "RequestLoanForm",
+                    "properties": {
+                        "buttonLabel": "Request Loan"
+                    }
+                },
+                {
+                    "component": "ActiveLoansList"
+                }
+            ]
+        },
+        "quests": {
+            "description": "The 'Battle Pass' screen to track gamified progress, streaks, and claim rewards.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Quests & Rewards"
+                    }
+                },
+                {
+                    "component": "BattlePassProgress",
+                    "properties": {
+                        "level": 5,
+                        "xp": 750,
+                        "component": "ProgressBar"
+                    }
+                },
+                {
+                    "component": "ActiveQuestsList"
+                },
+                {
+                    "component": "CompletedQuestsList"
+                },
+                {
+                    "component": "BottomNavigation"
+                }
+            ]
+        },
+        "profile": {
+            "description": "Screen for users to manage their profile and application settings.",
+            "layout": [
+                {
+                    "component": "Header",
+                    "properties": {
+                        "title": "Profile"
+                    }
+                },
+                {
+                    "component": "UserProfileInfo"
+                },
+                {
+                    "component": "SettingsList",
+                    "properties": {
+                        "sections": [
+                            {
+                                "title": "Preferences",
+                                "items": [
+                                    {
+                                        "label": "Theme",
+                                        "type": "toggle",
+                                        "options": [
+                                            "Light",
+                                            "Dark",
+                                            "System"
+                                        ]
+                                    },
+                                    {
+                                        "label": "Language",
+                                        "type": "select",
+                                        "options": [
+                                            "English",
+                                            "Spanish",
+                                            "French"
+                                        ]
+                                    },
+                                    {
+                                        "label": "Currency",
+                                        "type": "select",
+                                        "options": [
+                                            "USD",
+                                            "EUR",
+                                            "GBP"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Security",
+                                "items": [
+                                    {
+                                        "label": "Two-Factor Authentication",
+                                        "type": "toggle",
+                                        "description": "Enable additional security"
+                                    },
+                                    {
+                                        "label": "Face ID / Touch ID",
+                                        "type": "toggle",
+                                        "description": "Use biometric authentication"
+                                    },
+                                    {
+                                        "label": "Change Password",
+                                        "type": "action",
+                                        "description": "Update your account password"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Notifications",
+                                "items": [
+                                    {
+                                        "label": "Push Notifications",
+                                        "type": "toggle",
+                                        "description": "Enable push notifications"
+                                    },
+                                    {
+                                        "label": "Email Updates",
+                                        "type": "toggle",
+                                        "description": "Receive email notifications"
+                                    },
+                                    {
+                                        "label": "Investment Alerts",
+                                        "type": "toggle",
+                                        "description": "Get notified about portfolio changes"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": "LogoutButton"
+                },
+                {
+                    "component": "BottomNavigation"
+                }
+            ]
+        }
+    }
+}

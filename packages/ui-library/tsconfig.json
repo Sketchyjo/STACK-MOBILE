@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "jsx": "react-jsx",
+    "noEmit": false,
+    "types": ["jest", "node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },"include": [
+    "src/**/*",
+    "__tests__/**/*",
+    "nativewind-env.d.ts"
+  ],
+  "types": ["jest", "node"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "watch": [
+    "src/**/*",
+    "../../packages/shared-types/src/**/*",
+    "../../packages/shared-types/dist/**/*"
+  ],
+  "ext": "ts,js,json",
+  "ignore": [
+    "node_modules/**/*",
+    "dist/**/*",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/__tests__/**/*",
+    "coverage/**/*",
+    "*.log"
+  ],
+  "exec": "tsx src/index.ts",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "delay": 1000,
+  "verbose": true,
+  "legacyWatch": false,
+  "signal": "SIGTERM",
+  "restartable": "rs"
+}
