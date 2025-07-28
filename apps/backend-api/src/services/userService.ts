@@ -34,6 +34,8 @@ const UpdateUserSchema = z.object({
   emailVerificationToken: z.string().nullable().optional(),
   emailVerificationExpires: z.date().nullable().optional(),
   phoneVerified: z.boolean().optional(),
+  hasStarterInvestment: z.boolean().optional(),
+  starterInvestmentClaimedAt: z.date().nullable().optional(),
 });
 
 export interface CreateUserData {
@@ -65,6 +67,8 @@ export interface UpdateUserData {
   emailVerificationToken?: string | null;
   emailVerificationExpires?: Date | null;
   phoneVerified?: boolean;
+  hasStarterInvestment?: boolean;
+  starterInvestmentClaimedAt?: Date | null;
 }
 
 /**
@@ -91,7 +95,7 @@ export async function createUser(userData: CreateUserData) {
         avatarUrl: validatedData.avatarUrl,
         phoneNumber: validatedData.phoneNumber,
         nationality: validatedData.nationality,
-        referralCode: validatedData.referralCode,
+        referralCode: validatedData.referralCode && validatedData.referralCode.trim() !== '' ? validatedData.referralCode : null,
         passwordHash: validatedData.passwordHash,
         emailVerified: validatedData.emailVerified || false,
         emailVerificationToken: validatedData.emailVerificationToken,

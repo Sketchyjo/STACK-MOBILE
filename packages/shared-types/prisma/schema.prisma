@@ -40,6 +40,10 @@ model User {
   referralCode    String?   @unique
   referredBy      String?
   
+  // Onboarding and starter investment
+  hasStarterInvestment Boolean @default(false)
+  starterInvestmentClaimedAt DateTime?
+  
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

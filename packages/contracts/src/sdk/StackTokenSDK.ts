@@ -1,14 +1,13 @@
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { Etherlink } from "@thirdweb-dev/chains";
 
 /**
  * Configuration for Etherlink testnet
  */
 const ETHERLINK_TESTNET_CONFIG = {
-  chainId: 128123,
-  rpc: ["https://128123.rpc.thirdweb.com"],
-  name: "Etherlink Testnet",
-  chain: "etherlink-testnet",
+  chainId: 5115,
+  rpc: ["https://rpc.testnet.citrea.xyz"],
+  name: "Citrea Testnet",
+  chain: "citrea-testnet",
   nativeCurrency: {
     name: "Tezos",
     symbol: "XTZ",
@@ -16,9 +15,8 @@ const ETHERLINK_TESTNET_CONFIG = {
   },
   explorers: [
     {
-      name: "Etherlink Testnet Explorer",
-      url: "https://testnet.explorer.etherlink.com",
-      standard: "EIP3091",
+      name: "Citrea Testnet Explorer",
+      url: "https://explorer.testnet.citrea.xyz",
     },
   ],
   testnet: true,

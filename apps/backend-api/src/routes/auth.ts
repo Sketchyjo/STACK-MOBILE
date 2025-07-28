@@ -302,7 +302,7 @@ router.post('/signup', async (req, res) => {
       walletAddress,
       phoneNumber: validatedData.phoneNumber,
       nationality: validatedData.nationality,
-      referralCode: validatedData.referralCode,
+      referralCode: validatedData.referralCode && validatedData.referralCode.trim() !== '' ? validatedData.referralCode : undefined,
       emailVerificationToken,
       emailVerificationExpires,
       emailVerified: false,
@@ -349,6 +349,12 @@ router.post('/signup', async (req, res) => {
         return res.status(409).json({
           error: 'Wallet address already associated with another account',
           code: 'WALLET_EXISTS'
+        });
+      }
+      if (error.message.includes('Unique constraint failed on the fields: (`referralCode`)')) {
+        return res.status(409).json({
+          error: 'This referral code is already in use',
+          code: 'REFERRAL_CODE_EXISTS'
         });
       }
     }
@@ -444,9 +450,9 @@ router.post('/login/email', async (req, res) => {
     }
 
     console.error('Email login error:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
-      error: 'Internal server error' 
+      error: 'Internal server error'
     });
   }
 });

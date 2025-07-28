@@ -1,25 +1,29 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
     "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
     "composite": true,
-    "jsx": "react-jsx",
-    "noEmit": false,
-    "types": ["jest", "node"],
+    "types": ["jest"],
     "paths": {
       "@/*": ["./src/*"]
     }
-  },"include": [
-    "src/**/*",
-    "__tests__/**/*",
-    "nativewind-env.d.ts"
-  ],
-  "types": ["jest", "node"],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  },
+  "include": ["src/**/*", "nativewind-env.d.ts"],
+  "exclude": ["node_modules", "dist", "__tests__", "**/*.test.*", "**/*.spec.*"]
 }

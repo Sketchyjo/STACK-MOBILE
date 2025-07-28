@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { colors, typography, spacing, borderRadius } from '../../design/tokens';
+import { TouchableOpacity, Text, ActivityIndicator, TouchableOpacityProps, StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { colors, typography, spacing, borderRadius, shadows } from '../../design/tokens';
 
 export interface ButtonProps extends TouchableOpacityProps {
   title: string;
@@ -21,97 +21,152 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   disabled,
   className,
+  style,
   ...props
 }) => {
-  const getVariantStyles = () => {
+  const getVariantStyles = (): ViewStyle => {
     switch (variant) {
       case 'primary':
-        return 'bg-[#5852FF] shadow-lg active:bg-[#5852FF]/90';
+        return {
+          backgroundColor: colors.primary.royalBlue,
+          borderWidth: 1,
+          borderColor: colors.primary.royalBlue,
+          ...shadows.md,
+        };
       case 'accent':
-        return 'bg-[#B9FF4B] shadow-lg active:bg-[#B9FF4B]/90';
+        return {
+          backgroundColor: colors.accent.limeGreen,
+          borderWidth: 1,
+          borderColor: colors.accent.limeGreen,
+          ...shadows.md,
+        };
       case 'tertiary':
-        return 'bg-transparent border border-[#A0A0A0] active:bg-[#F7F7F7]';
+        return {
+          backgroundColor: 'transparent',
+          borderWidth: 1,
+          borderColor: colors.border.secondary,
+        };
       case 'fab':
-        return 'bg-[#B9FF4B] shadow-lg rounded-[28px] w-14 h-14 active:bg-[#B9FF4B]/90';
+        return {
+          backgroundColor: colors.accent.limeGreen,
+          borderWidth: 1,
+          borderColor: colors.accent.limeGreen,
+          ...shadows.md,
+          borderRadius: borderRadius.fab,
+          width: 56,
+          height: 56,
+        };
       default:
-        return 'bg-[#5852FF] shadow-lg active:bg-[#5852FF]/90';
+        return {
+          backgroundColor: colors.primary.royalBlue,
+          borderWidth: 1,
+          borderColor: colors.primary.royalBlue,
+          ...shadows.md,
+        };
     }
   };
 
-  const getTextStyles = () => {
+  const getTextColor = (): string => {
     switch (variant) {
       case 'primary':
-        return 'text-white';
+        return colors.text.onPrimary;
       case 'accent':
-        return 'text-black';
+        return colors.text.onAccent;
       case 'tertiary':
-        return 'text-black';
+        return colors.text.primary;
       case 'fab':
-        return 'text-black';
+        return colors.text.onAccent;
       default:
-        return 'text-white';
+        return colors.text.onPrimary;
     }
   };
 
-  const getSizeStyles = () => {
-    if (variant === 'fab') return 'p-0'; // FAB has fixed size
-    
+  const getSizeStyles = (): ViewStyle => {
+    if (variant === 'fab') return {}; // FAB has fixed size
+
     switch (size) {
       case 'small':
-        return 'px-4 py-2';
+        return {
+          paddingHorizontal: spacing.md,
+          paddingVertical: spacing.xs,
+          minHeight: 32,
+        };
       case 'medium':
-        return 'px-6 py-4'; // 16px 24px as per design.json
+        return {
+          paddingHorizontal: spacing.lg,
+          paddingVertical: spacing.md,
+          minHeight: 44,
+        };
       case 'large':
-        return 'px-8 py-5';
+        return {
+          paddingHorizontal: spacing.xl,
+          paddingVertical: spacing.md + 4,
+          minHeight: 52,
+        };
       default:
-        return 'px-6 py-4';
+        return {
+          paddingHorizontal: spacing.lg,
+          paddingVertical: spacing.md,
+          minHeight: 44,
+        };
     }
   };
 
-  const getTextSizeStyles = () => {
+  const getTextSize = (): number => {
     switch (size) {
       case 'small':
-        return 'text-xs'; // 12px
+        return typography.styles.caption.size;
       case 'medium':
-        return 'text-sm'; // 14px as per design.json label style
+        return typography.styles.label.size;
       case 'large':
-        return 'text-base'; // 16px
+        return typography.styles.body.size;
       default:
-        return 'text-sm';
+        return typography.styles.label.size;
     }
   };
 
   const isDisabled = disabled || loading;
   const isFab = variant === 'fab';
 
+  const buttonStyle: ViewStyle = {
+    borderRadius: isFab ? borderRadius.fab : borderRadius.lg,
+    flexDirection: isFab ? 'column' : 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: fullWidth && !isFab ? '100%' : undefined,
+    opacity: isDisabled ? 0.5 : 1,
+    ...getVariantStyles(),
+    ...getSizeStyles(),
+  };
+
+  const textStyle: TextStyle = {
+    color: getTextColor(),
+    fontSize: getTextSize(),
+    fontWeight: typography.weights.medium,
+    fontFamily: typography.fonts.secondary,
+  };
+
   return (
     <TouchableOpacity
       disabled={isDisabled}
-      className={`
-        ${getVariantStyles()}
-        ${getSizeStyles()}
-        ${isFab ? 'rounded-[28px] items-center justify-center' : 'rounded-[12px] flex-row items-center justify-center'}
-        ${fullWidth && !isFab ? 'w-full' : ''}
-        ${isDisabled ? 'opacity-50' : ''}
-        ${className || ''}
-      `}
+      style={[buttonStyle, style]}
       accessibilityRole="button"
       accessibilityState={{ disabled: isDisabled }}
       accessibilityLabel={title}
       {...props}
     >
       {loading ? (
-        <ActivityIndicator 
-          size="small" 
-          color={variant === 'tertiary' ? colors.primary.royalBlue : colors.text.onPrimary} 
+        <ActivityIndicator
+          size="small"
+          color={variant === 'tertiary' ? colors.primary.royalBlue : colors.text.onPrimary}
         />
       ) : (
         <>
-          {icon && !isFab && <>{icon}</>}
+          {icon && !isFab && icon}
           {isFab ? (
-            icon || <Text className={`font-medium ${getTextStyles()}`}>+</Text>
+            icon || <Text style={textStyle}>+</Text>
           ) : (
-            <Text className={`font-medium ${getTextStyles()} ${getTextSizeStyles()}`}>
+            <Text style={textStyle}>
               {title}
             </Text>
           )}

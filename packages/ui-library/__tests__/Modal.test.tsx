@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Text } from 'react-native';
 import { Modal } from '../src/components/atoms/Modal';
 
@@ -11,14 +11,13 @@ describe('Modal', () => {
   });
 
   it('renders children when visible', () => {
-    const component = render(
+    const { getByText } = render(
       <Modal isVisible={true} onClose={mockOnClose}>
         <Text>Modal Content</Text>
       </Modal>
     );
 
-    const tree = component.toJSON();
-    expect(JSON.stringify(tree)).toContain('Modal Content');
+    expect(getByText('Modal Content')).toBeInTheDocument();
   });
 
   it('does not render children when not visible', () => {
@@ -28,7 +27,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    expect(queryByText('Modal Content')).toBeNull();
+    expect(queryByText('Modal Content')).not.toBeInTheDocument();
   });
 
   it('shows close button by default', () => {
@@ -38,7 +37,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    expect(getByLabelText('Close modal')).toBeTruthy();
+    expect(getByLabelText('Close modal')).toBeInTheDocument();
   });
 
   it('calls onClose when close button is pressed', () => {
@@ -48,7 +47,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    fireEvent.press(getByLabelText('Close modal'));
+    fireEvent.click(getByLabelText('Close modal'));
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
@@ -59,6 +58,6 @@ describe('Modal', () => {
       </Modal>
     );
 
-    expect(queryByLabelText('Close modal')).toBeNull();
+    expect(queryByLabelText('Close modal')).not.toBeInTheDocument();
   });
 });

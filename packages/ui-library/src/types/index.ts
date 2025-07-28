@@ -72,6 +72,34 @@ export interface HeaderProps extends BaseComponentProps {
   rightAction?: React.ReactNode;
 }
 
+// Molecular component types
+export interface FeatureCardProps extends BaseComponentProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+export interface BalanceCardProps extends BaseComponentProps {
+  balance: string;
+  currency?: string;
+  onTopUpPress?: () => void;
+}
+
+export interface TextLinkProps extends BaseComponentProps {
+  text: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+  size?: 'small' | 'medium' | 'large';
+  underline?: boolean;
+  onPress?: () => void;
+  disabled?: boolean;
+}
+
+export interface IllustrationProps extends BaseComponentProps {
+  type: 'welcome' | 'gift' | 'custom';
+  size?: 'small' | 'medium' | 'large';
+  children?: React.ReactNode;
+}
+
 export interface TabBarProps extends BaseComponentProps {
   tabs: TabItem[];
   activeTab: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react';
 import { Text } from 'react-native';
 import { DataList, DataListItem } from '../src/components/organisms/DataList';
 
@@ -11,12 +11,13 @@ const mockData: DataListItem[] = [
 
 describe('DataList', () => {
   it('renders without crashing', () => {
-    const result = render(<DataList data={mockData} />);
-    expect(result).toBeTruthy();
+    render(<DataList data={mockData} />);
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
+    expect(screen.getByText('Description 1')).toBeInTheDocument();
   });
 
   it('renders with search functionality', () => {
-    const result = render(
+    render(
       <DataList 
         data={mockData}
         searchable
@@ -24,22 +25,24 @@ describe('DataList', () => {
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByPlaceholderText('Search items...')).toBeInTheDocument();
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
   });
 
   it('renders loading state', () => {
-    const result = render(
+    render(
       <DataList 
         data={[]}
         loading
       />
     );
     
-    expect(result).toBeTruthy();
+    // Check for loading indicator or spinner
+    expect(screen.queryByText('Item 1')).not.toBeInTheDocument();
   });
 
   it('renders empty state', () => {
-    const result = render(
+    render(
       <DataList 
         data={[]}
         emptyStateTitle="No items found"
@@ -47,12 +50,13 @@ describe('DataList', () => {
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByText('No items found')).toBeInTheDocument();
+    expect(screen.getByText('Try adjusting your search')).toBeInTheDocument();
   });
 
   it('renders with refresh control', () => {
     const mockOnRefresh = jest.fn();
-    const result = render(
+    render(
       <DataList 
         data={mockData}
         onRefresh={mockOnRefresh}
@@ -60,13 +64,13 @@ describe('DataList', () => {
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
   });
 
   it('renders with empty state icon', () => {
     const emptyIcon = <Text>📭</Text>;
     
-    const result = render(
+    render(
       <DataList 
         data={[]}
         emptyStateIcon={emptyIcon}
@@ -74,24 +78,25 @@ describe('DataList', () => {
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByText('No items')).toBeInTheDocument();
+    expect(screen.getByText('📭')).toBeInTheDocument();
   });
 
   it('renders with custom class name', () => {
-    const result = render(
+    render(
       <DataList 
         data={mockData}
         className="custom-list"
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
   });
 
   it('renders with search callback', () => {
     const mockOnSearch = jest.fn();
     
-    const result = render(
+    render(
       <DataList 
         data={mockData}
         searchable
@@ -99,7 +104,7 @@ describe('DataList', () => {
       />
     );
     
-    expect(result).toBeTruthy();
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
   });
 
   it('renders items with icons and actions', () => {
@@ -115,7 +120,11 @@ describe('DataList', () => {
       }
     ];
     
-    const result = render(<DataList data={dataWithIcons} />);
-    expect(result).toBeTruthy();
+    render(<DataList data={dataWithIcons} />);
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
+    expect(screen.getByText('Description 1')).toBeInTheDocument();
+    expect(screen.getByText('📄')).toBeInTheDocument();
+    expect(screen.getByText('→')).toBeInTheDocument();
+    expect(screen.getByText('Details')).toBeInTheDocument();
   });
 });

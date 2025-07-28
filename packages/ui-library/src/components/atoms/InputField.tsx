@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, TextInputProps } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TextInputProps,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+} from 'react-native';
+import { Ionicons } from './SafeIonicons';
 
-interface InputFieldProps extends TextInputProps {
+interface InputFieldProps extends Omit<TextInputProps, 'onFocus' | 'onBlur'> {
   label: string;
   error?: string;
   required?: boolean;
   type?: 'text' | 'email' | 'password' | 'phone';
   icon?: keyof typeof Ionicons.glyphMap;
+  isPasswordVisible?: boolean;
+  onTogglePasswordVisibility?: () => void;
+  isFocused?: boolean;
+  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
 
 export const InputField: React.FC<InputFieldProps> = ({
@@ -19,11 +32,13 @@ export const InputField: React.FC<InputFieldProps> = ({
   value,
   onChangeText,
   placeholder,
+  isPasswordVisible = false,
+  onTogglePasswordVisibility,
+  isFocused = false,
+  onFocus,
+  onBlur,
   ...props
 }) => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-
   const getKeyboardType = () => {
     switch (type) {
       case 'email':
@@ -82,8 +97,8 @@ export const InputField: React.FC<InputFieldProps> = ({
           autoCapitalize={getAutoCapitalize()}
           autoCorrect={false}
           secureTextEntry={isPassword && !isPasswordVisible}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={onFocus}
+          onBlur={onBlur}
           className="flex-1 font-body text-body text-text-primary"
           {...props}
         />
@@ -91,7 +106,7 @@ export const InputField: React.FC<InputFieldProps> = ({
         {/* Password Toggle */}
         {isPassword && (
           <TouchableOpacity
-            onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+            onPress={onTogglePasswordVisibility}
             className="ml-2"
           >
             <Ionicons

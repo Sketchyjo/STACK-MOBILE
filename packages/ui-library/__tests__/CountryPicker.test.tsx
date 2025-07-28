@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { CountryPicker } from '../src/components/atoms/CountryPicker';
 
 const mockOnSelect = jest.fn();
@@ -10,8 +10,8 @@ describe('CountryPicker', () => {
   });
 
   it('renders without crashing', () => {
-    const result = render(<CountryPicker onSelect={mockOnSelect} />);
-    expect(result).toBeTruthy();
+    render(<CountryPicker onSelect={mockOnSelect} />);
+    expect(document.body).toBeInTheDocument();
   });
 
   it('renders with placeholder text', () => {
@@ -19,7 +19,7 @@ describe('CountryPicker', () => {
       <CountryPicker onSelect={mockOnSelect} placeholder="Choose country" />
     );
     
-    expect(getByText('Choose country')).toBeTruthy();
+    expect(getByText('Choose country')).toBeInTheDocument();
   });
 
   it('renders with label', () => {
@@ -27,7 +27,7 @@ describe('CountryPicker', () => {
       <CountryPicker onSelect={mockOnSelect} label="Country" />
     );
     
-    expect(getByText('Country')).toBeTruthy();
+    expect(getByText('Country')).toBeInTheDocument();
   });
 
   it('renders with required indicator', () => {
@@ -35,8 +35,8 @@ describe('CountryPicker', () => {
       <CountryPicker onSelect={mockOnSelect} label="Country" required />
     );
     
-    expect(getByText('Country')).toBeTruthy();
-    expect(getByText('*')).toBeTruthy();
+    expect(getByText('Country')).toBeInTheDocument();
+    expect(getByText('*')).toBeInTheDocument();
   });
 
   it('renders with selected country value', () => {
@@ -44,8 +44,8 @@ describe('CountryPicker', () => {
       <CountryPicker onSelect={mockOnSelect} value="Canada" />
     );
     
-    expect(getByText('🇨🇦')).toBeTruthy();
-    expect(getByText('Canada')).toBeTruthy();
+    expect(getByText('🇨🇦')).toBeInTheDocument();
+    expect(getByText('Canada')).toBeInTheDocument();
   });
 
   it('opens modal when pressed', () => {
@@ -54,9 +54,9 @@ describe('CountryPicker', () => {
     );
     
     const picker = getByText('Select country');
-    fireEvent.press(picker);
+    fireEvent.click(picker);
     
-    expect(getByText('Select Country')).toBeTruthy();
+    expect(getByText('Select Country')).toBeInTheDocument();
   });
 
   it('renders with error message', () => {
@@ -64,7 +64,7 @@ describe('CountryPicker', () => {
       <CountryPicker onSelect={mockOnSelect} error="Please select a country" />
     );
     
-    expect(getByText('Please select a country')).toBeTruthy();
+    expect(getByText('Please select a country')).toBeInTheDocument();
   });
 
   it('handles country selection from modal', () => {
@@ -74,11 +74,11 @@ describe('CountryPicker', () => {
     
     // Open modal
     const picker = getByText('Select country');
-    fireEvent.press(picker);
+    fireEvent.click(picker);
     
     // Select a country
     const canadaOption = getByText('Canada');
-    fireEvent.press(canadaOption);
+    fireEvent.click(canadaOption);
     
     expect(mockOnSelect).toHaveBeenCalledWith({
       code: 'CA',
@@ -94,18 +94,18 @@ describe('CountryPicker', () => {
     
     // Open modal
     const picker = getByText('Select country');
-    fireEvent.press(picker);
+    fireEvent.click(picker);
     
-    expect(getByText('Select Country')).toBeTruthy();
+    expect(getByText('Select Country')).toBeInTheDocument();
     
     // Close modal
     const closeButton = getByText('Select Country').parent?.parent?.parent?.findByProps({ name: 'close' });
     if (closeButton) {
-      fireEvent.press(closeButton);
+      fireEvent.click(closeButton);
     }
     
     // Modal should be closed (this is a basic test, actual modal behavior may vary)
-    expect(queryByText('Select Country')).toBeTruthy(); // Modal might still be in DOM but not visible
+    expect(queryByText('Select Country')).toBeInTheDocument(); // Modal might still be in DOM but not visible
   });
 
   it('filters countries when searching', () => {
@@ -115,12 +115,12 @@ describe('CountryPicker', () => {
     
     // Open modal
     const picker = getByText('Select country');
-    fireEvent.press(picker);
+    fireEvent.click(picker);
     
     // Search for Canada
     const searchInput = getByPlaceholderText('Search countries...');
-    fireEvent.changeText(searchInput, 'Canada');
+    fireEvent.change(searchInput, { target: { value: 'Canada' } });
     
-    expect(getByText('Canada')).toBeTruthy();
+    expect(getByText('Canada')).toBeInTheDocument();
   });
 });

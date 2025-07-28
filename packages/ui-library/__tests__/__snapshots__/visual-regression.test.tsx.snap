@@ -1,0 +1,2831 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Visual Regression Tests Accessibility States Button - With accessibility props should match snapshot 1`] = `
+<button
+  aria-label="Submit form"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 1,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(255,255,255,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Accessible Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Accessibility States ToggleSwitch - On state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  data-testid="toggle-switch"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="switch"
+  style={
+    {
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "14px",
+      "borderBottomRightRadius": "14px",
+      "borderTopLeftRadius": "14px",
+      "borderTopRightRadius": "14px",
+      "height": "28px",
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": "3px",
+      "paddingLeft": "3px",
+      "paddingRight": "3px",
+      "paddingTop": "3px",
+      "transitionDuration": "0s",
+      "width": "48px",
+    }
+  }
+  tabIndex="0"
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+        "borderBottomLeftRadius": "11px",
+        "borderBottomRightRadius": "11px",
+        "borderTopLeftRadius": "11px",
+        "borderTopRightRadius": "11px",
+        "height": "22px",
+        "transform": "translateX(20px)",
+        "width": "22px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components Button - Accent variant should match snapshot 1`] = `
+<button
+  aria-label="Accent Button"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(185,255,75,1.00)",
+      "borderBottomColor": "rgba(185,255,75,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(185,255,75,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(185,255,75,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(185,255,75,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 1,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(0,0,0,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Accent Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Atomic Components Button - Disabled state should match snapshot 1`] = `
+<button
+  aria-disabled={true}
+  aria-label="Disabled Button"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+  dir={null}
+  disabled={true}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 0.5,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  tabIndex="-1"
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(255,255,255,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Disabled Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Atomic Components Button - Loading state should match snapshot 1`] = `
+<button
+  aria-disabled={true}
+  aria-label="Loading..."
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+  dir={null}
+  disabled={true}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 0.5,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  tabIndex="-1"
+  type="button"
+>
+  <div
+    aria-valuemax={1}
+    aria-valuemin={0}
+    className="css-view-g5y9jx r-alignItems-1awozwy r-justifyContent-1777fci"
+    dir={null}
+    ref={[Function]}
+    role="progressbar"
+  >
+    <div
+      className="css-view-g5y9jx r-height-z80fyv r-width-19wmn03 r-animationDuration-17bb2tj r-animationIterationCount-1muvv40 r-animationKeyframes-1yef0xd r-animationTimingFunction-1ldzwu0"
+      dir={null}
+      ref={[Function]}
+    >
+      <svg
+        height="100%"
+        viewBox="0 0 32 32"
+        width="100%"
+      >
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            {
+              "opacity": 0.2,
+              "stroke": "#FFFFFF",
+            }
+          }
+        />
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            {
+              "stroke": "#FFFFFF",
+              "strokeDasharray": 80,
+              "strokeDashoffset": 60,
+            }
+          }
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Atomic Components Button - Primary variant should match snapshot 1`] = `
+<button
+  aria-label="Primary Button"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 1,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(255,255,255,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Primary Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Atomic Components Button - Tertiary variant should match snapshot 1`] = `
+<button
+  aria-label="Tertiary Button"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(0,0,0,0.00)",
+      "borderBottomColor": "rgba(160,160,160,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(160,160,160,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(160,160,160,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(160,160,160,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 1,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(0,0,0,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Tertiary Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Atomic Components Card - Default variant should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(247,247,247,1.00)",
+      "borderBottomLeftRadius": "20px",
+      "borderBottomRightRadius": "20px",
+      "borderTopLeftRadius": "20px",
+      "borderTopRightRadius": "20px",
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "16px",
+    }
+  }
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Card Content
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components InputField - Default state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Email
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <input
+      autoCapitalize="sentences"
+      autoComplete="on"
+      autoCorrect="off"
+      className="css-textinput-11aywtz r-placeholderTextColor-6taxm2"
+      dir="auto"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onSelect={[Function]}
+      placeholder="Enter your email"
+      readOnly={false}
+      ref={[Function]}
+      rows={1}
+      spellCheck={false}
+      style={
+        {
+          "--placeholderTextColor": "#A0A0A0",
+        }
+      }
+      type="text"
+      value=""
+      virtualkeyboardpolicy="auto"
+    />
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components InputField - Error state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Email
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <input
+      autoCapitalize="sentences"
+      autoComplete="on"
+      autoCorrect="off"
+      className="css-textinput-11aywtz r-placeholderTextColor-6taxm2"
+      dir="auto"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onSelect={[Function]}
+      placeholder="Enter your email"
+      readOnly={false}
+      ref={[Function]}
+      rows={1}
+      spellCheck={false}
+      style={
+        {
+          "--placeholderTextColor": "#A0A0A0",
+        }
+      }
+      type="text"
+      value="invalid-email"
+      virtualkeyboardpolicy="auto"
+    />
+  </div>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Please enter a valid email address
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components ProgressBar - 50% progress should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  data-testid="progress-bar"
+  dir={null}
+  ref={[Function]}
+  role="progressbar"
+  style={
+    {
+      "backgroundColor": "rgba(234,226,255,1.00)",
+      "borderBottomLeftRadius": "9999px",
+      "borderBottomRightRadius": "9999px",
+      "borderTopLeftRadius": "9999px",
+      "borderTopRightRadius": "9999px",
+      "height": "8px",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(88,82,255,1.00)",
+        "borderBottomLeftRadius": "9999px",
+        "borderBottomRightRadius": "9999px",
+        "borderTopLeftRadius": "9999px",
+        "borderTopRightRadius": "9999px",
+        "height": "100%",
+        "width": "50%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components ProgressBar - 100% progress should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  data-testid="progress-bar"
+  dir={null}
+  ref={[Function]}
+  role="progressbar"
+  style={
+    {
+      "backgroundColor": "rgba(234,226,255,1.00)",
+      "borderBottomLeftRadius": "9999px",
+      "borderBottomRightRadius": "9999px",
+      "borderTopLeftRadius": "9999px",
+      "borderTopRightRadius": "9999px",
+      "height": "8px",
+      "overflowX": "hidden",
+      "overflowY": "hidden",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(88,82,255,1.00)",
+        "borderBottomLeftRadius": "9999px",
+        "borderBottomRightRadius": "9999px",
+        "borderTopLeftRadius": "9999px",
+        "borderTopRightRadius": "9999px",
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components ToggleSwitch - Disabled state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  data-testid="toggle-switch"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="switch"
+  style={
+    {
+      "backgroundColor": "rgba(234,226,255,1.00)",
+      "borderBottomLeftRadius": "14px",
+      "borderBottomRightRadius": "14px",
+      "borderTopLeftRadius": "14px",
+      "borderTopRightRadius": "14px",
+      "height": "28px",
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": "3px",
+      "paddingLeft": "3px",
+      "paddingRight": "3px",
+      "paddingTop": "3px",
+      "transitionDuration": "0s",
+      "width": "48px",
+    }
+  }
+  tabIndex="0"
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+        "borderBottomLeftRadius": "11px",
+        "borderBottomRightRadius": "11px",
+        "borderTopLeftRadius": "11px",
+        "borderTopRightRadius": "11px",
+        "height": "22px",
+        "transform": "translateX(0px)",
+        "width": "22px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Visual Regression Tests Atomic Components ToggleSwitch - Enabled state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  data-testid="toggle-switch"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="switch"
+  style={
+    {
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "14px",
+      "borderBottomRightRadius": "14px",
+      "borderTopLeftRadius": "14px",
+      "borderTopRightRadius": "14px",
+      "height": "28px",
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": "3px",
+      "paddingLeft": "3px",
+      "paddingRight": "3px",
+      "paddingTop": "3px",
+      "transitionDuration": "0s",
+      "width": "48px",
+    }
+  }
+  tabIndex="0"
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+        "borderBottomLeftRadius": "11px",
+        "borderBottomRightRadius": "11px",
+        "borderTopLeftRadius": "11px",
+        "borderTopRightRadius": "11px",
+        "height": "22px",
+        "transform": "translateX(20px)",
+        "width": "22px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Visual Regression Tests Component Combinations Card with Button should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(247,247,247,1.00)",
+      "borderBottomLeftRadius": "20px",
+      "borderBottomRightRadius": "20px",
+      "borderTopLeftRadius": "20px",
+      "borderTopRightRadius": "20px",
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "16px",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "paddingBottom": "16px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "paddingTop": "16px",
+      }
+    }
+  >
+    <div
+      className="css-text-146c3p1"
+      dir="auto"
+      ref={[Function]}
+      style={
+        {
+          "fontSize": "18px",
+          "fontWeight": "bold",
+          "marginBottom": "8px",
+        }
+      }
+    >
+      Card Title
+    </div>
+    <div
+      className="css-text-146c3p1"
+      dir="auto"
+      ref={[Function]}
+      style={
+        {
+          "marginBottom": "16px",
+        }
+      }
+    >
+      Card description text goes here.
+    </div>
+    <button
+      aria-label="Action Button"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="button"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(88,82,255,1.00)",
+          "borderBottomColor": "rgba(88,82,255,1.00)",
+          "borderBottomLeftRadius": "12px",
+          "borderBottomRightRadius": "12px",
+          "borderBottomWidth": "1px",
+          "borderLeftColor": "rgba(88,82,255,1.00)",
+          "borderLeftWidth": "1px",
+          "borderRightColor": "rgba(88,82,255,1.00)",
+          "borderRightWidth": "1px",
+          "borderTopColor": "rgba(88,82,255,1.00)",
+          "borderTopLeftRadius": "12px",
+          "borderTopRightRadius": "12px",
+          "borderTopWidth": "1px",
+          "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": "44px",
+          "opacity": 1,
+          "paddingBottom": "16px",
+          "paddingLeft": "24px",
+          "paddingRight": "24px",
+          "paddingTop": "16px",
+          "transitionDuration": "0s",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "14px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Action Button
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Component Combinations Form with InputField and Button should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <div
+      className="css-text-146c3p1"
+      dir="auto"
+      ref={[Function]}
+    >
+      Email
+    </div>
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <input
+        autoCapitalize="sentences"
+        autoComplete="on"
+        autoCorrect="off"
+        className="css-textinput-11aywtz r-placeholderTextColor-6taxm2"
+        dir="auto"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onSelect={[Function]}
+        placeholder="Enter your email"
+        readOnly={false}
+        ref={[Function]}
+        rows={1}
+        spellCheck={false}
+        style={
+          {
+            "--placeholderTextColor": "#A0A0A0",
+          }
+        }
+        type="text"
+        value=""
+        virtualkeyboardpolicy="auto"
+      />
+    </div>
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "marginTop": "16px",
+      }
+    }
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+      >
+        Password
+      </div>
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <input
+          autoCapitalize="sentences"
+          autoComplete="on"
+          autoCorrect="off"
+          className="css-textinput-11aywtz r-placeholderTextColor-6taxm2"
+          dir="auto"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onSelect={[Function]}
+          placeholder="Enter your password"
+          readOnly={false}
+          ref={[Function]}
+          rows={1}
+          spellCheck={false}
+          style={
+            {
+              "--placeholderTextColor": "#A0A0A0",
+            }
+          }
+          type="password"
+          value=""
+          virtualkeyboardpolicy="auto"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "marginTop": "24px",
+      }
+    }
+  >
+    <button
+      aria-label="Sign In"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="button"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(88,82,255,1.00)",
+          "borderBottomColor": "rgba(88,82,255,1.00)",
+          "borderBottomLeftRadius": "12px",
+          "borderBottomRightRadius": "12px",
+          "borderBottomWidth": "1px",
+          "borderLeftColor": "rgba(88,82,255,1.00)",
+          "borderLeftWidth": "1px",
+          "borderRightColor": "rgba(88,82,255,1.00)",
+          "borderRightWidth": "1px",
+          "borderTopColor": "rgba(88,82,255,1.00)",
+          "borderTopLeftRadius": "12px",
+          "borderTopRightRadius": "12px",
+          "borderTopWidth": "1px",
+          "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": "44px",
+          "opacity": 1,
+          "paddingBottom": "16px",
+          "paddingLeft": "24px",
+          "paddingRight": "24px",
+          "paddingTop": "16px",
+          "transitionDuration": "0s",
+          "width": "100%",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "14px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Sign In
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Error States Button - Loading state should match snapshot 1`] = `
+<button
+  aria-disabled={true}
+  aria-label="Loading..."
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+  dir={null}
+  disabled={true}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 0.5,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+    }
+  }
+  tabIndex="-1"
+  type="button"
+>
+  <div
+    aria-valuemax={1}
+    aria-valuemin={0}
+    className="css-view-g5y9jx r-alignItems-1awozwy r-justifyContent-1777fci"
+    dir={null}
+    ref={[Function]}
+    role="progressbar"
+  >
+    <div
+      className="css-view-g5y9jx r-height-z80fyv r-width-19wmn03 r-animationDuration-17bb2tj r-animationIterationCount-1muvv40 r-animationKeyframes-1yef0xd r-animationTimingFunction-1ldzwu0"
+      dir={null}
+      ref={[Function]}
+    >
+      <svg
+        height="100%"
+        viewBox="0 0 32 32"
+        width="100%"
+      >
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            {
+              "opacity": 0.2,
+              "stroke": "#FFFFFF",
+            }
+          }
+        />
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            {
+              "stroke": "#FFFFFF",
+              "strokeDasharray": 80,
+              "strokeDashoffset": 60,
+            }
+          }
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Error States InputField - Multiple errors should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Password
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <input
+      autoCapitalize="sentences"
+      autoComplete="on"
+      autoCorrect="off"
+      className="css-textinput-11aywtz r-placeholderTextColor-6taxm2"
+      dir="auto"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onSelect={[Function]}
+      placeholder="Enter your password"
+      readOnly={false}
+      ref={[Function]}
+      rows={1}
+      spellCheck={false}
+      style={
+        {
+          "--placeholderTextColor": "#A0A0A0",
+        }
+      }
+      type="text"
+      value="123"
+      virtualkeyboardpolicy="auto"
+    />
+  </div>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Password must be at least 8 characters long
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Molecular Components Header - Default configuration should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-paddingBottom-97e31f r-paddingLeft-bv2aro r-paddingRight-hxflta r-paddingTop-10xqauy"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(255,255,255,1.00)",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+      }
+    }
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "fontFamily": "MD Nichrome",
+              "fontSize": "18px",
+              "fontWeight": "700",
+            }
+          }
+        >
+          Screen Title
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Molecular Components Header - With back button should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-paddingBottom-97e31f r-paddingLeft-bv2aro r-paddingRight-hxflta r-paddingTop-10xqauy"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(255,255,255,1.00)",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+      }
+    }
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <button
+        aria-label="Go back"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        role="button"
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        type="button"
+      >
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+        >
+          ←
+        </div>
+      </button>
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "fontFamily": "MD Nichrome",
+              "fontSize": "18px",
+              "fontWeight": "700",
+            }
+          }
+        >
+          Screen Title
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Molecular Components Modal - Open state should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  data-testid="modal"
+  dir={null}
+  ref={[Function]}
+>
+  <div
+    className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+    dir={null}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onKeyDown={[Function]}
+    ref={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0,0,0,0.50)",
+        "flex": 1,
+        "justifyContent": "center",
+        "paddingBottom": "20px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "paddingTop": "20px",
+        "transitionDuration": "0s",
+      }
+    }
+    tabIndex="0"
+  >
+    <div
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+        style={
+          {
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomLeftRadius": "24px",
+            "borderBottomRightRadius": "24px",
+            "borderTopLeftRadius": "24px",
+            "borderTopRightRadius": "24px",
+            "maxHeight": "80%",
+            "maxWidth": "90%",
+            "paddingBottom": "20px",
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "20px",
+          }
+        }
+      >
+        <button
+          aria-label="Close modal"
+          className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+          dir={null}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onKeyDown={[Function]}
+          ref={[Function]}
+          role="button"
+          style={
+            {
+              "alignSelf": "flex-end",
+              "marginBottom": "8px",
+              "paddingBottom": "8px",
+              "paddingLeft": "8px",
+              "paddingRight": "8px",
+              "paddingTop": "8px",
+              "transitionDuration": "0s",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="css-text-146c3p1"
+            dir="auto"
+            ref={[Function]}
+            style={
+              {
+                "color": "rgba(84,84,84,1.00)",
+                "fontSize": "18px",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            ×
+          </div>
+        </button>
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          <div
+            className="css-text-146c3p1"
+            dir="auto"
+            ref={[Function]}
+          >
+            Modal Content
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Molecular Components QuestProgress - Active quest should match snapshot 1`] = `
+<div
+  aria-disabled={true}
+  aria-label="Quest: Daily Login, 75% complete"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  style={
+    {
+      "transitionDuration": "0s",
+    }
+  }
+  tabIndex="-1"
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(247,247,247,1.00)",
+        "borderBottomLeftRadius": "20px",
+        "borderBottomRightRadius": "20px",
+        "borderTopLeftRadius": "20px",
+        "borderTopRightRadius": "20px",
+        "paddingBottom": "16px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "paddingTop": "16px",
+      }
+    }
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(0,0,0,1.00)",
+              "fontFamily": "MD Nichrome",
+              "fontSize": "18px",
+              "fontWeight": "700",
+              "marginBottom": "4px",
+            }
+          }
+        >
+          Daily Login
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(84,84,84,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+            }
+          }
+        >
+          Log in to the app every day
+        </div>
+      </div>
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+        style={
+          {
+            "backgroundColor": "rgba(40,167,69,1.00)",
+          }
+        }
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <div
+            className="css-text-146c3p1"
+            dir="auto"
+            ref={[Function]}
+          >
+            star
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(255,255,255,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "600",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          easy
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(0,0,0,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "14px",
+              "fontWeight": "500",
+            }
+          }
+        >
+          Progress: 
+          3
+          /
+          4
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(88,82,255,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "14px",
+              "fontWeight": "600",
+            }
+          }
+        >
+          75
+          %
+        </div>
+      </div>
+      <div
+        className="css-view-g5y9jx"
+        data-testid="progress-bar"
+        dir={null}
+        ref={[Function]}
+        role="progressbar"
+        style={
+          {
+            "backgroundColor": "rgba(247,247,247,1.00)",
+            "borderBottomLeftRadius": "9999px",
+            "borderBottomRightRadius": "9999px",
+            "borderTopLeftRadius": "9999px",
+            "borderTopRightRadius": "9999px",
+            "height": "8px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+          }
+        }
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(88,82,255,1.00)",
+              "borderBottomLeftRadius": "9999px",
+              "borderBottomRightRadius": "9999px",
+              "borderTopLeftRadius": "9999px",
+              "borderTopRightRadius": "9999px",
+              "height": "100%",
+              "width": "75%",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              gift
+            </div>
+          </div>
+          <div
+            className="css-text-146c3p1"
+            dir="auto"
+            ref={[Function]}
+            style={
+              {
+                "color": "rgba(84,84,84,1.00)",
+                "fontFamily": "Gilroy",
+                "fontSize": "12px",
+                "fontWeight": "500",
+              }
+            }
+          >
+            100 XP
+          </div>
+        </div>
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              time
+            </div>
+          </div>
+          <div
+            className="css-text-146c3p1"
+            dir="auto"
+            ref={[Function]}
+            style={
+              {
+                "color": "rgba(160,160,160,1.00)",
+                "fontFamily": "Gilroy",
+                "fontSize": "12px",
+              }
+            }
+          >
+            2 days
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Organism Components BattlePass - Level 5 progress should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(247,247,247,1.00)",
+      "borderBottomLeftRadius": "20px",
+      "borderBottomRightRadius": "20px",
+      "borderTopLeftRadius": "20px",
+      "borderTopRightRadius": "20px",
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "16px",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(0,0,0,1.00)",
+            "fontFamily": "MD Nichrome",
+            "fontSize": "18px",
+            "fontWeight": "700",
+          }
+        }
+      >
+        Battle Pass
+      </div>
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(84,84,84,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "16px",
+          }
+        }
+      >
+        Level 
+        3
+      </div>
+    </div>
+    <button
+      aria-label="Upgrade to premium battle pass"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="button"
+      style={
+        {
+          "backgroundColor": "rgba(185,255,75,1.00)",
+          "transitionDuration": "0s",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "14px",
+            "fontWeight": "600",
+          }
+        }
+      >
+        Upgrade
+      </div>
+    </button>
+  </div>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+  >
+    <div
+      className="css-view-g5y9jx"
+      dir={null}
+      ref={[Function]}
+    >
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(0,0,0,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "14px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        750
+         / 
+        250
+         XP
+      </div>
+      <div
+        className="css-text-146c3p1"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "color": "rgba(88,82,255,1.00)",
+            "fontFamily": "Gilroy",
+            "fontSize": "14px",
+            "fontWeight": "600",
+          }
+        }
+      >
+        75
+        %
+      </div>
+    </div>
+    <div
+      className="css-view-g5y9jx"
+      data-testid="progress-bar"
+      dir={null}
+      ref={[Function]}
+      role="progressbar"
+      style={
+        {
+          "backgroundColor": "rgba(247,247,247,1.00)",
+          "borderBottomLeftRadius": "9999px",
+          "borderBottomRightRadius": "9999px",
+          "borderTopLeftRadius": "9999px",
+          "borderTopRightRadius": "9999px",
+          "height": "8px",
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+        }
+      }
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+        style={
+          {
+            "backgroundColor": "rgba(88,82,255,1.00)",
+            "borderBottomLeftRadius": "9999px",
+            "borderBottomRightRadius": "9999px",
+            "borderTopLeftRadius": "9999px",
+            "borderTopRightRadius": "9999px",
+            "height": "100%",
+            "width": "75%",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-agouwx r-scrollbarWidth-2eszeu"
+    dir={null}
+    onScroll={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    onWheel={[Function]}
+    ref={[Function]}
+  >
+    <div
+      className="css-view-g5y9jx r-flexDirection-18u37iz"
+      dir={null}
+      ref={[Function]}
+      style={
+        {
+          "paddingLeft": "8px",
+          "paddingRight": "8px",
+        }
+      }
+    >
+      <div
+        aria-disabled={true}
+        aria-label="Tier 1, 100 XP, claimed"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(88,82,255,1.00)",
+              "borderBottomColor": "rgba(234,226,255,1.00)",
+              "borderBottomWidth": "1px",
+              "borderLeftColor": "rgba(234,226,255,1.00)",
+              "borderLeftWidth": "1px",
+              "borderRightColor": "rgba(234,226,255,1.00)",
+              "borderRightWidth": "1px",
+              "borderTopColor": "rgba(234,226,255,1.00)",
+              "borderTopWidth": "1px",
+              "opacity": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "backgroundColor": "rgba(40,167,69,1.00)",
+              }
+            }
+          >
+            <div
+              className="css-view-g5y9jx"
+              dir={null}
+              ref={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="css-text-146c3p1"
+                dir="auto"
+                ref={[Function]}
+              >
+                checkmark
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              trophy
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(84,84,84,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "700",
+              "textAlign": "center",
+            }
+          }
+        >
+          1
+        </div>
+        <div
+          className="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "WebkitLineClamp": 2,
+              "color": "rgba(160,160,160,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "12px",
+              "marginTop": "4px",
+              "textAlign": "center",
+            }
+          }
+        >
+          100 XP
+        </div>
+      </div>
+      <div
+        aria-disabled={true}
+        aria-label="Tier 2, 200 XP, claimed"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(88,82,255,1.00)",
+              "borderBottomColor": "rgba(234,226,255,1.00)",
+              "borderBottomWidth": "1px",
+              "borderLeftColor": "rgba(234,226,255,1.00)",
+              "borderLeftWidth": "1px",
+              "borderRightColor": "rgba(234,226,255,1.00)",
+              "borderRightWidth": "1px",
+              "borderTopColor": "rgba(234,226,255,1.00)",
+              "borderTopWidth": "1px",
+              "opacity": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "backgroundColor": "rgba(40,167,69,1.00)",
+              }
+            }
+          >
+            <div
+              className="css-view-g5y9jx"
+              dir={null}
+              ref={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="css-text-146c3p1"
+                dir="auto"
+                ref={[Function]}
+              >
+                checkmark
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              trophy
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(84,84,84,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "700",
+              "textAlign": "center",
+            }
+          }
+        >
+          2
+        </div>
+        <div
+          className="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "WebkitLineClamp": 2,
+              "color": "rgba(160,160,160,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "12px",
+              "marginTop": "4px",
+              "textAlign": "center",
+            }
+          }
+        >
+          200 XP
+        </div>
+      </div>
+      <div
+        aria-disabled={true}
+        aria-label="Tier 3, 300 XP, available"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(88,82,255,1.00)",
+              "borderBottomColor": "rgba(88,82,255,1.00)",
+              "borderBottomWidth": "3px",
+              "borderLeftColor": "rgba(88,82,255,1.00)",
+              "borderLeftWidth": "3px",
+              "borderRightColor": "rgba(88,82,255,1.00)",
+              "borderRightWidth": "3px",
+              "borderTopColor": "rgba(88,82,255,1.00)",
+              "borderTopWidth": "3px",
+              "opacity": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "backgroundColor": "rgba(185,255,75,1.00)",
+              }
+            }
+          >
+            <div
+              className="css-view-g5y9jx"
+              dir={null}
+              ref={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="css-text-146c3p1"
+                dir="auto"
+                ref={[Function]}
+              >
+                gift
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              trophy
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(88,82,255,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "700",
+              "textAlign": "center",
+            }
+          }
+        >
+          3
+        </div>
+        <div
+          className="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "WebkitLineClamp": 2,
+              "color": "rgba(160,160,160,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "12px",
+              "marginTop": "4px",
+              "textAlign": "center",
+            }
+          }
+        >
+          300 XP
+        </div>
+      </div>
+      <div
+        aria-disabled={true}
+        aria-label="Tier 4, Premium Skin, locked"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(247,247,247,1.00)",
+              "borderBottomColor": "rgba(160,160,160,1.00)",
+              "borderBottomWidth": "1px",
+              "borderLeftColor": "rgba(160,160,160,1.00)",
+              "borderLeftWidth": "1px",
+              "borderRightColor": "rgba(160,160,160,1.00)",
+              "borderRightWidth": "1px",
+              "borderTopColor": "rgba(160,160,160,1.00)",
+              "borderTopWidth": "1px",
+              "opacity": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              diamond
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(84,84,84,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "700",
+              "textAlign": "center",
+            }
+          }
+        >
+          4
+        </div>
+        <div
+          className="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "WebkitLineClamp": 2,
+              "color": "rgba(160,160,160,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "12px",
+              "marginTop": "4px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Premium Skin
+        </div>
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(0,0,0,0.50)",
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              lock-closed
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-disabled={true}
+        aria-label="Tier 5, 500 XP, locked"
+        className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-pointerEvents-12vffkv"
+        dir={null}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        ref={[Function]}
+        style={
+          {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+          style={
+            {
+              "backgroundColor": "rgba(247,247,247,1.00)",
+              "borderBottomColor": "rgba(160,160,160,1.00)",
+              "borderBottomWidth": "1px",
+              "borderLeftColor": "rgba(160,160,160,1.00)",
+              "borderLeftWidth": "1px",
+              "borderRightColor": "rgba(160,160,160,1.00)",
+              "borderRightWidth": "1px",
+              "borderTopColor": "rgba(160,160,160,1.00)",
+              "borderTopWidth": "1px",
+              "opacity": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-g5y9jx"
+            dir={null}
+            ref={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <div
+              className="css-text-146c3p1"
+              dir="auto"
+              ref={[Function]}
+            >
+              trophy
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-146c3p1"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "color": "rgba(84,84,84,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "10px",
+              "fontWeight": "700",
+              "textAlign": "center",
+            }
+          }
+        >
+          5
+        </div>
+        <div
+          className="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01"
+          dir="auto"
+          ref={[Function]}
+          style={
+            {
+              "WebkitLineClamp": 2,
+              "color": "rgba(160,160,160,1.00)",
+              "fontFamily": "Gilroy",
+              "fontSize": "12px",
+              "marginTop": "4px",
+              "textAlign": "center",
+            }
+          }
+        >
+          500 XP
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Organism Components NavigationBar - Default tabs should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx r-paddingBottom-97e31f r-paddingLeft-bv2aro r-paddingRight-hxflta r-paddingTop-10xqauy"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(255,255,255,1.00)",
+    }
+  }
+>
+  <div
+    className="css-view-g5y9jx"
+    dir={null}
+    ref={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,1.00)",
+      }
+    }
+  >
+    <div
+      aria-label="Home"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="tab"
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          home
+        </div>
+      </div>
+      <div
+        className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "fontFamily": "Gilroy",
+            "fontSize": "10px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Home
+      </div>
+    </div>
+    <div
+      aria-label="Portfolio"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="tab"
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          pie-chart
+        </div>
+      </div>
+      <div
+        className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "fontFamily": "Gilroy",
+            "fontSize": "10px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Portfolio
+      </div>
+    </div>
+    <div
+      aria-label="Card"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="tab"
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          card
+        </div>
+      </div>
+      <div
+        className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "fontFamily": "Gilroy",
+            "fontSize": "10px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Card
+      </div>
+    </div>
+    <div
+      aria-label="Quests"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="tab"
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          trophy
+        </div>
+      </div>
+      <div
+        className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "fontFamily": "Gilroy",
+            "fontSize": "10px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Quests
+      </div>
+    </div>
+    <div
+      aria-label="Profile"
+      className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+      dir={null}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      ref={[Function]}
+      role="tab"
+      style={
+        {
+          "transitionDuration": "0s",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-g5y9jx"
+        dir={null}
+        ref={[Function]}
+      >
+        <div
+          className="css-view-g5y9jx"
+          dir={null}
+          ref={[Function]}
+        >
+          person
+        </div>
+      </div>
+      <div
+        className="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+        dir="auto"
+        ref={[Function]}
+        style={
+          {
+            "fontFamily": "Gilroy",
+            "fontSize": "10px",
+            "fontWeight": "500",
+          }
+        }
+      >
+        Profile
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Visual Regression Tests Responsive Behavior Button - Full width should match snapshot 1`] = `
+<button
+  aria-label="Full Width Button"
+  className="css-view-g5y9jx r-transitionProperty-1i6wzkk r-userSelect-lrvibr r-cursor-1loqt21 r-touchAction-1otgn73"
+  dir={null}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  ref={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(88,82,255,1.00)",
+      "borderBottomColor": "rgba(88,82,255,1.00)",
+      "borderBottomLeftRadius": "12px",
+      "borderBottomRightRadius": "12px",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(88,82,255,1.00)",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "rgba(88,82,255,1.00)",
+      "borderRightWidth": "1px",
+      "borderTopColor": "rgba(88,82,255,1.00)",
+      "borderTopLeftRadius": "12px",
+      "borderTopRightRadius": "12px",
+      "borderTopWidth": "1px",
+      "boxShadow": "0px 2px 4px rgba(0,0,0,0.15)",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minHeight": "44px",
+      "opacity": 1,
+      "paddingBottom": "16px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
+      "paddingTop": "16px",
+      "transitionDuration": "0s",
+      "width": "100%",
+    }
+  }
+  type="button"
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+    style={
+      {
+        "color": "rgba(255,255,255,1.00)",
+        "fontFamily": "Gilroy",
+        "fontSize": "14px",
+        "fontWeight": "500",
+      }
+    }
+  >
+    Full Width Button
+  </div>
+</button>
+`;
+
+exports[`Visual Regression Tests Responsive Behavior Card - With custom className should match snapshot 1`] = `
+<div
+  className="css-view-g5y9jx"
+  dir={null}
+  ref={[Function]}
+  style={
+    {
+      "backgroundColor": "rgba(247,247,247,1.00)",
+      "borderBottomLeftRadius": "20px",
+      "borderBottomRightRadius": "20px",
+      "borderTopLeftRadius": "20px",
+      "borderTopRightRadius": "20px",
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "16px",
+    }
+  }
+>
+  <div
+    className="css-text-146c3p1"
+    dir="auto"
+    ref={[Function]}
+  >
+    Custom styled card content
+  </div>
+</div>
+`;

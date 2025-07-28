@@ -1,10 +1,16 @@
 
 
-import { PrismaClient } from '@prisma/client'
+import dotenv from 'dotenv';
+
+// Ensure environment variables are loaded
+dotenv.config();
+
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate';
 
 const prisma = new PrismaClient({
   log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-})
+}).$extends(withAccelerate())
 
 declare global {
   // eslint-disable-next-line no-var

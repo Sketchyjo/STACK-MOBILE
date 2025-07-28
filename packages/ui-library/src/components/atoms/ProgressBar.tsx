@@ -42,6 +42,14 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <View
       className={className}
       style={combinedStyle}
+      testID="progress-bar"
+      accessibilityRole="progressbar"
+      accessibilityValue={{
+        min: 0,
+        max: 100,
+        now: clampedProgress,
+        text: `${clampedProgress}% complete`
+      }}
       {...props}
     >
       <View style={progressStyle} />
