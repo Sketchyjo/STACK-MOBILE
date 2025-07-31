@@ -9,6 +9,9 @@ export const colors = {
     // Primary colors from design.json
     primary: {
         royalBlue: '#5852FF',
+        dark: '#0A0427',
+        lavender: '#949FFF',
+        lavendertint: '#D7D6FF',
     },
     // Accent colors from design.json
     accent: {
@@ -17,7 +20,7 @@ export const colors = {
     // Background colors from design.json
     background: {
         main: '#FFFFFF',
-        dark: '#121212',
+        dark: '#000000',
     },
     // Surface colors from design.json
     surface: {
@@ -51,8 +54,8 @@ export const colors = {
  */
 export const typography = {
     fonts: {
-        primary: 'MD Nichrome', // For headings
-        secondary: 'Gilroy', // For body text and UI
+        primary: 'Gilroy', // For headings
+        secondary: 'MD Nichrome', // For body text and UI
     },
     styles: {
         h1: {
@@ -76,8 +79,8 @@ export const typography = {
             weight: 'regular',
         },
         label: {
-            font: 'Gilroy',
-            size: 14,
+            font: 'MD Nichrome',
+            size: 12,
             weight: 'medium',
         },
         caption: {

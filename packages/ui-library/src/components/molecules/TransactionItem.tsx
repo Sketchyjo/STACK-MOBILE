@@ -1,303 +1,186 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { colors, typography, spacing } from '../../design/tokens';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
+import { colors, typography, spacing } from '@stack/ui-library';
+import { Icon } from '@stack/ui-library';
 
-// Local type definitions based on Prisma schema
-export type TransactionType = 
-  | 'CARD_PURCHASE'
-  | 'INVESTMENT'
-  | 'LOAN_DISBURSEMENT'
-  | 'LOAN_REPAYMENT'
-  | 'REWARD'
-  | 'TRANSFER'
-  | 'WITHDRAWAL'
-  | 'DEPOSIT'
-  | 'FEE'
-  | 'REFUND';
+// --- Type Definitions ---
+export type TransactionType = 'DEBIT' | 'CREDIT' | 'SWAP';
 
-export type TransactionStatus = 
-  | 'PENDING'
-  | 'COMPLETED'
-  | 'FAILED'
-  | 'CANCELLED'
-  | 'PROCESSING'
-  | 'REVERSED';
+export type TransactionStatus = 'COMPLETED' | 'PENDING' | 'FAILED';
 
 export interface Transaction {
   id: string;
+  title: string;
+  category: string;
   amount: number;
-  currency: string;
+  currency?: string;
   type: TransactionType;
   status: TransactionStatus;
-  description: string | null;
-  metadata: any;
   createdAt: Date;
-  updatedAt: Date;
-  userId: string;
 }
 
-export interface TransactionItemProps {
+export interface TransactionItemProps extends TouchableOpacityProps {
   transaction: Transaction;
-  onPress?: (transaction: Transaction) => void;
-  showDate?: boolean;
-  compact?: boolean;
 }
 
-const getTransactionIcon = (type: TransactionType): string => {
+// --- Helper Functions ---
+
+const getTransactionDetails = (type: TransactionType) => {
   switch (type) {
-    case 'CARD_PURCHASE':
-      return '💳';
-    case 'INVESTMENT':
-      return '📈';
-    case 'WITHDRAWAL':
-      return '💸';
-    case 'DEPOSIT':
-      return '💰';
-    case 'TRANSFER':
-      return '🔄';
-    case 'LOAN_DISBURSEMENT':
-      return '🏦';
-    case 'LOAN_REPAYMENT':
-      return '💸';
-    case 'REWARD':
-      return '🎁';
-    case 'REFUND':
-      return '↩️';
-    case 'FEE':
-      return '📋';
+    case 'DEBIT':
+      return {
+        iconName: 'arrow-up-right',
+        iconColor: colors.semantic.danger,
+        amountColor: colors.text.primary,
+        sign: '-',
+      };
+    case 'CREDIT':
+      return {
+        iconName: 'arrow-down-left',
+        iconColor: colors.semantic.success,
+        amountColor: colors.semantic.success,
+        sign: '+',
+      };
+    case 'SWAP':
+      return {
+        iconName: 'repeat',
+        iconColor: colors.semantic.success,
+        amountColor: colors.text.primary,
+        sign: '',
+      };
     default:
-      return '💱';
+      return {
+        iconName: 'help-circle',
+        iconColor: colors.text.secondary,
+        amountColor: colors.text.primary,
+        sign: '',
+      };
   }
 };
 
-const getTransactionTypeLabel = (type: TransactionType): string => {
-  switch (type) {
-    case 'CARD_PURCHASE':
-      return 'Card Purchase';
-    case 'INVESTMENT':
-      return 'Investment';
-    case 'WITHDRAWAL':
-      return 'Withdrawal';
-    case 'DEPOSIT':
-      return 'Deposit';
-    case 'TRANSFER':
-      return 'Transfer';
-    case 'LOAN_DISBURSEMENT':
-      return 'Loan Disbursement';
-    case 'LOAN_REPAYMENT':
-      return 'Loan Repayment';
-    case 'REWARD':
-      return 'Reward';
-    case 'REFUND':
-      return 'Refund';
-    case 'FEE':
-      return 'Fee';
-    default:
-      return 'Transaction';
-  }
-};
+/**
+ * FIXED: Replaced `formatToParts` with a compatible method using `format()`
+ * to avoid crashes on the React Native Hermes engine.
+ */
+const formatCurrency = (
+  amount: number,
+  currency: string = 'NGN',
+  sign: string
+) => {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
-const getAmountColor = (type: TransactionType, status: TransactionStatus): string => {
-  if (status === 'FAILED' || status === 'REVERSED') {
-    return 'text-gray-400';
-  }
-  
-  switch (type) {
-    case 'CARD_PURCHASE':
-    case 'WITHDRAWAL':
-    case 'FEE':
-    case 'LOAN_REPAYMENT':
-    case 'TRANSFER': // Outgoing transfer
-      return 'text-red-400';
-    case 'DEPOSIT':
-    case 'INVESTMENT':
-    case 'LOAN_DISBURSEMENT':
-    case 'REWARD':
-    case 'REFUND':
-      return 'text-green-400';
-    default:
-      return 'text-white';
-  }
-};
+  const formattedString = formatter.format(Math.abs(amount));
 
-const getStatusIndicator = (status: TransactionStatus): { color: string; label: string } => {
-  switch (status) {
-    case 'PENDING':
-      return { color: 'bg-yellow-500', label: 'Pending' };
-    case 'PROCESSING':
-      return { color: 'bg-blue-500', label: 'Processing' };
-    case 'COMPLETED':
-      return { color: 'bg-green-500', label: 'Completed' };
-    case 'FAILED':
-      return { color: 'bg-red-500', label: 'Failed' };
-    case 'CANCELLED':
-      return { color: 'bg-gray-500', label: 'Cancelled' };
-    case 'REVERSED':
-      return { color: 'bg-orange-500', label: 'Reversed' };
-    default:
-      return { color: 'bg-gray-500', label: 'Unknown' };
-  }
-};
+  // Extract symbol and number part. This is a robust way to handle various currency formats.
+  const value = formattedString.replace(/[^0-9.,]/g, '');
+  const symbol = formattedString.replace(/[0-9.,]/g, '').trim();
 
-const formatAmount = (amount: number, currency: string, type: TransactionType): string => {
-  // Format the absolute amount first
-  const absAmount = Math.abs(amount);
-  let formattedAmount: string;
-  
-  // Handle different currencies with specific formatting
-  if (currency === 'USD') {
-    formattedAmount = `$${absAmount.toFixed(2)}`;
-  } else if (currency === 'EUR') {
-    formattedAmount = `€${absAmount.toFixed(2)}`;
-  } else {
-    // Use Intl.NumberFormat for other currencies
-    formattedAmount = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(absAmount);
-  }
-  
-  // Add thousands separator for large amounts
-  if (absAmount >= 1000) {
-    const parts = absAmount.toFixed(2).split('.');
-    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    const decimalPart = parts[1];
-    
-    if (currency === 'USD') {
-      formattedAmount = `$${integerPart}.${decimalPart}`;
-    } else if (currency === 'EUR') {
-      formattedAmount = `€${integerPart}.${decimalPart}`;
-    }
+  // Custom placement for Nigerian Naira (₦) as seen in reference.
+  if (currency === 'NGN') {
+    return `${sign}${symbol}${value}`;
   }
 
-  // Add sign based on transaction type
-  switch (type) {
-    case 'CARD_PURCHASE':
-    case 'WITHDRAWAL':
-    case 'FEE':
-    case 'LOAN_REPAYMENT':
-    case 'TRANSFER': // Outgoing transfer
-      return `-${formattedAmount}`;
-    case 'DEPOSIT':
-    case 'INVESTMENT':
-    case 'LOAN_DISBURSEMENT':
-    case 'REWARD':
-    case 'REFUND':
-      return `+${formattedAmount}`;
-    default:
-      return formattedAmount;
-  }
+  // Default format for others (e.g., USD)
+  return `${sign}${symbol}${value}`;
 };
 
 const formatDate = (date: Date): string => {
-  const now = new Date();
-  const diffInHours = (now.getTime() - date.getTime()) / (1000 * 60 * 60);
-  
-  if (diffInHours < 24) {
-    return date.toLocaleTimeString('en-US', { 
-      hour: 'numeric', 
-      minute: '2-digit',
-      hour12: true 
-    });
-  } else if (diffInHours < 168) { // 7 days
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'short',
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true
-    });
-  } else {
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
-    });
-  }
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 };
+
+// --- Main Component ---
 
 export const TransactionItem: React.FC<TransactionItemProps> = ({
   transaction,
-  onPress,
-  showDate = true,
-  compact = false,
+  ...props
 }) => {
-  const statusInfo = getStatusIndicator(transaction.status);
-  const amountColor = getAmountColor(transaction.type, transaction.status);
-  const transactionDate = new Date(transaction.createdAt);
+  const { iconName, iconColor, amountColor, sign } = getTransactionDetails(
+    transaction.type
+  );
 
-  const handlePress = () => {
-    if (onPress) {
-      onPress(transaction);
-    }
-  };
-
-  const Component = onPress ? TouchableOpacity : View;
+  const formattedAmount = formatCurrency(
+    transaction.amount,
+    transaction.currency,
+    sign
+  );
 
   return (
-    <Component
-      onPress={onPress ? handlePress : undefined}
-      className={`
-        flex-row items-center justify-between p-4 
-        bg-neutral-light rounded-lg mb-2
-        ${onPress ? 'active:bg-neutral-light/80' : ''}
-        ${compact ? 'py-3' : 'py-4'}
-      `}
-      accessibilityRole={onPress ? 'button' : 'text'}
-      accessibilityLabel={`${getTransactionTypeLabel(transaction.type)} transaction for ${formatAmount(Number(transaction.amount), transaction.currency, transaction.type)}`}
+    <TouchableOpacity
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: spacing.sm,
+      }}
+      accessibilityLabel={`Transaction: ${transaction.title}, Amount: ${formattedAmount}`}
+      {...props}
     >
-      {/* Left side - Icon and details */}
-      <View className="flex-row items-center flex-1">
-        {/* Transaction Icon */}
-        <View className="w-10 h-10 bg-primary/20 rounded-full items-center justify-center mr-3">
-          <Text className="text-lg">{getTransactionIcon(transaction.type)}</Text>
-        </View>
-
-        {/* Transaction Details */}
-        <View className="flex-1">
-          <View className="flex-row items-center">
-            <Text className="text-white font-medium text-base mr-2">
-              {getTransactionTypeLabel(transaction.type)}
-            </Text>
-            {/* Status Indicator */}
-            {transaction.status !== 'COMPLETED' && (
-              <View className={`w-2 h-2 rounded-full ${statusInfo.color}`} />
-            )}
-          </View>
-          
-          <Text className="text-gray-400 text-sm mt-1" numberOfLines={1}>
-            {transaction.description}
-          </Text>
-          
-          {showDate && !compact && (
-            <Text className="text-gray-500 text-xs mt-1">
-              {formatDate(transactionDate)}
-            </Text>
-          )}
-        </View>
+      {/* Icon */}
+      <View
+        style={{
+          width: 44,
+          height: 44,
+          borderRadius: 22,
+          backgroundColor: `${colors.semantic.success}1A`,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginRight: spacing.md,
+        }}
+      >
+        <Icon library="feather" name={iconName} size={22} color={iconColor} />
       </View>
 
-      {/* Right side - Amount and date */}
-      <View className="items-end">
-        <Text className={`font-bold text-base ${amountColor}`}>
-          {formatAmount(Number(transaction.amount), transaction.currency, transaction.type)}
+      {/* Details */}
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text
+          style={{
+            fontFamily: typography.fonts.primary,
+            fontSize: 16,
+            fontWeight: typography.weights.medium,
+            color: colors.text.primary,
+          }}
+          numberOfLines={1}
+        >
+          {transaction.title}
         </Text>
-        
-        {showDate && compact && (
-          <Text className="text-gray-500 text-xs mt-1">
-            {formatDate(transactionDate)}
-          </Text>
-        )}
-        
-        {transaction.status !== 'COMPLETED' && !compact && (
-          <Text className="text-gray-400 text-xs mt-1">
-            {statusInfo.label}
-          </Text>
-        )}
+        <Text
+          style={{
+            fontFamily: typography.fonts.secondary,
+            fontSize: 14,
+            color: colors.text.secondary,
+            marginTop: 2,
+          }}
+          numberOfLines={1}
+        >
+          {`${transaction.category} • ${formatDate(transaction.createdAt)}`}
+        </Text>
       </View>
-    </Component>
+
+      {/* Amount */}
+      <Text
+        style={{
+          fontFamily: typography.fonts.primary,
+          fontSize: 16,
+          fontWeight: typography.weights.medium,
+          color: amountColor,
+          marginLeft: spacing.sm,
+        }}
+      >
+        {formattedAmount}
+      </Text>
+    </TouchableOpacity>
   );
 };
-
-export default TransactionItem;

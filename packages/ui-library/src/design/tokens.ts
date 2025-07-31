@@ -10,25 +10,28 @@ export const colors = {
   // Primary colors from design.json
   primary: {
     royalBlue: '#5852FF',
+    dark: '#0A0427',
+    lavender: '#949FFF',
+    lavendertint: '#D7D6FF',
   },
-  
+
   // Accent colors from design.json
   accent: {
     limeGreen: '#B9FF4B',
   },
-  
+
   // Background colors from design.json
   background: {
     main: '#FFFFFF',
-    dark: '#121212',
+    dark: '#000000',
   },
-  
+
   // Surface colors from design.json
   surface: {
     card: '#F7F7F7',
     light: '#EAE2FF',
   },
-  
+
   // Text colors from design.json
   text: {
     primary: '#000000',
@@ -37,21 +40,21 @@ export const colors = {
     onPrimary: '#FFFFFF',
     onAccent: '#000000',
   },
-  
+
   // Semantic colors from design.json
   semantic: {
     success: '#28A745',
     danger: '#DC3545',
     warning: '#FFC107',
   },
-  
+
   // Additional utility colors
   border: {
     primary: '#EAE2FF',
     secondary: '#A0A0A0',
     tertiary: '#F7F7F7',
   },
-  
+
   overlay: 'rgba(0, 0, 0, 0.5)',
 } as const;
 
@@ -60,10 +63,10 @@ export const colors = {
  */
 export const typography = {
   fonts: {
-    primary: 'MD Nichrome', // For headings
-    secondary: 'Gilroy', // For body text and UI
+    primary: 'Gilroy', // For headings
+    secondary: 'MD Nichrome', // For body text and UI
   },
-  
+
   styles: {
     h1: {
       font: 'MD Nichrome',
@@ -86,8 +89,8 @@ export const typography = {
       weight: 'regular',
     },
     label: {
-      font: 'Gilroy',
-      size: 14,
+      font: 'MD Nichrome',
+      size: 12,
       weight: 'medium',
     },
     caption: {
@@ -96,14 +99,14 @@ export const typography = {
       weight: 'regular',
     },
   },
-  
+
   weights: {
     regular: '400',
     medium: '500',
     semibold: '600',
     bold: '700',
   },
-  
+
   lineHeights: {
     tight: 1.2,
     normal: 1.4,
@@ -124,11 +127,11 @@ export const layout = {
  * Spacing system based on 8px grid
  */
 export const spacing = {
-  xs: 4,   // 0.5 * 8px
-  sm: 8,   // 1 * 8px
-  md: 16,  // 2 * 8px (elementSpacing from design.json)
-  lg: 24,  // 3 * 8px (containerPadding from design.json)
-  xl: 32,  // 4 * 8px
+  xs: 4, // 0.5 * 8px
+  sm: 8, // 1 * 8px
+  md: 16, // 2 * 8px (elementSpacing from design.json)
+  lg: 24, // 3 * 8px (containerPadding from design.json)
+  xl: 32, // 4 * 8px
   xxl: 48, // 6 * 8px
   xxxl: 64, // 8 * 8px
 } as const;
@@ -139,8 +142,8 @@ export const spacing = {
 export const borderRadius = {
   sm: 4,
   md: 8,
-  lg: 12,  // Button corner radius from design.json
-  xl: 16,  // Quest card corner radius from design.json
+  lg: 12, // Button corner radius from design.json
+  xl: 16, // Quest card corner radius from design.json
   xxl: 20, // Default corner radius from design.json
   modal: 24, // Modal corner radius from design.json
   fab: 28, // FAB corner radius from design.json
@@ -187,9 +190,9 @@ export const animations = {
  * Breakpoints for responsive design
  */
 export const breakpoints = {
-  sm: 375,  // Small phones
-  md: 414,  // Large phones
-  lg: 768,  // Tablets
+  sm: 375, // Small phones
+  md: 414, // Large phones
+  lg: 768, // Tablets
   xl: 1024, // Large tablets
 } as const;
 

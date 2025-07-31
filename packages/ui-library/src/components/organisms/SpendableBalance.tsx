@@ -61,7 +61,7 @@ export const SpendableBalance: React.FC<SpendableBalanceProps> = ({
             { color: colors.text.secondary }
           ]}
         >
-          SPENDABLE BALANCE
+          Available for withdrawal
         </Text>
 
         {onViewDetails && (
@@ -77,11 +77,11 @@ export const SpendableBalance: React.FC<SpendableBalanceProps> = ({
       {/* Balance Display */}
       <View style={{ marginBottom: spacing.lg }}>
         {isLoading ? (
-          <View style={{ 
-            backgroundColor: colors.surface.light, 
-            height: 40, 
+          <View style={{
+            backgroundColor: colors.surface.light,
+            height: 40,
             borderRadius: borderRadius.md,
-            marginBottom: spacing.sm 
+            marginBottom: spacing.sm
           }} />
         ) : (
           <Text
@@ -97,23 +97,10 @@ export const SpendableBalance: React.FC<SpendableBalanceProps> = ({
             {formatCurrency(balance)}
           </Text>
         )}
-
-        <Text
-          style={[
-            {
-              fontFamily: typography.fonts.secondary,
-              fontSize: typography.styles.caption.size,
-              fontWeight: typography.styles.caption.weight,
-            },
-            { color: colors.text.secondary }
-          ]}
-        >
-          Available for spending
-        </Text>
       </View>
 
       {/* Action Buttons */}
-      <View style={{ flexDirection: 'row', gap: spacing.md }}>
+      <View style={{  gap: spacing.md }}>
         {onAddFunds && (
           <TouchableOpacity
             style={{
@@ -154,7 +141,7 @@ export const SpendableBalance: React.FC<SpendableBalanceProps> = ({
         <TouchableOpacity
           style={{
             flex: 1,
-            backgroundColor: colors.surface.light,
+            backgroundColor: colors.accent.limeGreen,
             borderRadius: borderRadius.lg,
             paddingVertical: spacing.md,
             paddingHorizontal: spacing.lg,

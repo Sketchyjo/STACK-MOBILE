@@ -10,4 +10,6 @@ export { PhoneNumberInput } from './PhoneNumberInput';
 export { OrSeparator } from './OrSeparator';
 export { Icon } from './Icon';
 export { Chart } from './Chart';
+export type { ChartDataPoint, ChartProps } from './Chart';
 export { RewardClaimAnimation } from './RewardClaimAnimation';
+export { Ionicons } from './SafeIonicons';

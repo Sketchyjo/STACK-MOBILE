@@ -1,15 +1,47 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Card } from '../atoms/Card';
 import { ProgressBar } from '../atoms/ProgressBar';
 import { Icon } from '../atoms/Icon';
+import { RewardClaimAnimation } from '../atoms/RewardClaimAnimation';
 import { colors, typography, spacing } from '../../design/tokens';
-export const BattlePass = ({ currentLevel, currentXP, xpToNextLevel, totalXP, tiers, hasPremium = false, onTierPress, onUpgradePress, className, testID, }) => {
+export const BattlePass = ({ currentLevel, currentXP, xpToNextLevel, totalXP, tiers, hasPremium = false, onTierPress, onUpgradePress, onRewardClaim, className, testID, }) => {
+    const [showRewardAnimation, setShowRewardAnimation] = useState(false);
+    const [claimedReward, setClaimedReward] = useState(null);
+    const [isClaimingReward, setIsClaimingReward] = useState(false);
     const progressPercentage = totalXP > 0 ? (currentXP / totalXP) * 100 : 0;
+    const handleTierPress = async (tier) => {
+        const canClaim = tier.isUnlocked && !tier.isClaimed;
+        if (canClaim && onRewardClaim) {
+            setIsClaimingReward(true);
+            try {
+                const success = await onRewardClaim(tier);
+                if (success) {
+                    setClaimedReward(tier);
+                    setShowRewardAnimation(true);
+                }
+            }
+            catch (error) {
+                console.error('Failed to claim reward:', error);
+            }
+            finally {
+                setIsClaimingReward(false);
+            }
+        }
+        else if (onTierPress) {
+            onTierPress(tier);
+        }
+    };
+    const handleAnimationComplete = () => {
+        setShowRewardAnimation(false);
+        setClaimedReward(null);
+    };
     const renderTier = (tier) => {
         const isActive = tier.level === currentLevel;
         const canClaim = tier.isUnlocked && !tier.isClaimed;
-        return (_jsxs(TouchableOpacity, { onPress: () => onTierPress?.(tier), disabled: !onTierPress, className: "items-center mx-2", accessibilityRole: onTierPress ? 'button' : undefined, accessibilityLabel: `Tier ${tier.level}, ${tier.reward}, ${tier.isClaimed ? 'claimed' : tier.isUnlocked ? 'available' : 'locked'}`, children: [_jsxs(View, { className: "relative items-center justify-center w-16 h-16 rounded-full mb-2", style: {
+        const isCurrentlyClaiming = isClaimingReward && claimedReward?.id === tier.id;
+        return (_jsxs(TouchableOpacity, { onPress: () => handleTierPress(tier), disabled: !onTierPress && !onRewardClaim, className: "items-center mx-2", accessibilityRole: onTierPress || onRewardClaim ? 'button' : undefined, accessibilityLabel: `Tier ${tier.level}, ${tier.reward}, ${tier.isClaimed ? 'claimed' : tier.isUnlocked ? 'available' : 'locked'}`, children: [_jsxs(View, { className: `relative items-center justify-center w-16 h-16 rounded-full mb-2 ${isCurrentlyClaiming ? 'animate-pulse' : ''}`, style: {
                         backgroundColor: tier.isUnlocked
                             ? tier.isPremium
                                 ? colors.accent.limeGreen
@@ -21,6 +53,7 @@ export const BattlePass = ({ currentLevel, currentXP, xpToNextLevel, totalXP, ti
                             : tier.isUnlocked
                                 ? colors.border.primary
                                 : colors.border.secondary,
+                        opacity: isCurrentlyClaiming ? 0.7 : 1,
                     }, children: [tier.isClaimed && (_jsx(View, { className: "absolute -top-1 -right-1 w-6 h-6 rounded-full items-center justify-center", style: { backgroundColor: colors.semantic.success }, children: _jsx(Icon, { name: "checkmark", library: "ionicons", size: 12, color: colors.text.onPrimary }) })), canClaim && (_jsx(View, { className: "absolute -top-1 -right-1 w-6 h-6 rounded-full items-center justify-center animate-pulse", style: { backgroundColor: colors.accent.limeGreen }, children: _jsx(Icon, { name: "gift", library: "ionicons", size: 12, color: colors.text.onPrimary }) })), _jsx(Icon, { name: tier.icon || (tier.isPremium ? 'diamond' : 'trophy'), library: "ionicons", size: 24, color: tier.isUnlocked ? colors.text.onPrimary : colors.text.tertiary })] }), _jsx(Text, { style: {
                         fontFamily: typography.fonts.secondary,
                         fontSize: 10,
@@ -66,5 +99,5 @@ export const BattlePass = ({ currentLevel, currentXP, xpToNextLevel, totalXP, ti
                                     fontSize: typography.styles.label.size,
                                     fontWeight: typography.weights.semibold,
                                     color: colors.primary.royalBlue,
-                                }, children: [Math.round(progressPercentage), "%"] })] }), _jsx(ProgressBar, { progress: progressPercentage, height: 8, progressColor: colors.primary.royalBlue, backgroundColor: colors.surface.card })] }), _jsx(ScrollView, { horizontal: true, showsHorizontalScrollIndicator: false, className: "flex-row", contentContainerStyle: { paddingHorizontal: spacing.sm }, children: tiers.map(renderTier) })] }));
+                                }, children: [Math.round(progressPercentage), "%"] })] }), _jsx(ProgressBar, { progress: progressPercentage, height: 8, progressColor: colors.primary.royalBlue, backgroundColor: colors.surface.card })] }), _jsx(ScrollView, { horizontal: true, showsHorizontalScrollIndicator: false, className: "flex-row", contentContainerStyle: { paddingHorizontal: spacing.sm }, children: tiers.map(renderTier) }), _jsx(RewardClaimAnimation, { isVisible: showRewardAnimation, rewardText: claimedReward?.reward || '', rewardIcon: claimedReward?.icon || (claimedReward?.isPremium ? 'diamond' : 'trophy'), onAnimationComplete: handleAnimationComplete, testID: "battle-pass-reward-animation" })] }));
 };

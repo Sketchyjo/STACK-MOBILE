@@ -1,17 +1,23 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import { colors, typography, spacing, borderRadius, shadows } from '../../design/tokens';
-export const Button = ({ title, variant = 'primary', size = 'medium', loading = false, fullWidth = false, icon, disabled, className, ...props }) => {
+export const Button = ({ title, variant = 'primary', size = 'medium', loading = false, fullWidth = false, icon, disabled, className, style, 
+//   textStyle,
+...props }) => {
     const getVariantStyles = () => {
         switch (variant) {
             case 'primary':
                 return {
                     backgroundColor: colors.primary.royalBlue,
+                    borderWidth: 1,
+                    borderColor: colors.primary.royalBlue,
                     ...shadows.md,
                 };
             case 'accent':
                 return {
                     backgroundColor: colors.accent.limeGreen,
+                    borderWidth: 1,
+                    borderColor: colors.accent.limeGreen,
                     ...shadows.md,
                 };
             case 'tertiary':
@@ -23,6 +29,8 @@ export const Button = ({ title, variant = 'primary', size = 'medium', loading = 
             case 'fab':
                 return {
                     backgroundColor: colors.accent.limeGreen,
+                    borderWidth: 1,
+                    borderColor: colors.accent.limeGreen,
                     ...shadows.md,
                     borderRadius: borderRadius.fab,
                     width: 56,
@@ -31,6 +39,8 @@ export const Button = ({ title, variant = 'primary', size = 'medium', loading = 
             default:
                 return {
                     backgroundColor: colors.primary.royalBlue,
+                    borderWidth: 1,
+                    borderColor: colors.primary.royalBlue,
                     ...shadows.md,
                 };
         }
@@ -56,22 +66,26 @@ export const Button = ({ title, variant = 'primary', size = 'medium', loading = 
             case 'small':
                 return {
                     paddingHorizontal: spacing.md,
-                    paddingVertical: spacing.xs,
+                    paddingVertical: spacing.md,
+                    minHeight: 22,
                 };
             case 'medium':
                 return {
                     paddingHorizontal: spacing.lg,
                     paddingVertical: spacing.md,
+                    minHeight: 44,
                 };
             case 'large':
                 return {
                     paddingHorizontal: spacing.xl,
                     paddingVertical: spacing.md + 4,
+                    minHeight: 52,
                 };
             default:
                 return {
                     paddingHorizontal: spacing.lg,
                     paddingVertical: spacing.md,
+                    minHeight: 44,
                 };
         }
     };
@@ -90,14 +104,15 @@ export const Button = ({ title, variant = 'primary', size = 'medium', loading = 
     const isDisabled = disabled || loading;
     const isFab = variant === 'fab';
     const buttonStyle = {
-        ...getVariantStyles(),
-        ...getSizeStyles(),
         borderRadius: isFab ? borderRadius.fab : borderRadius.lg,
         flexDirection: isFab ? 'column' : 'row',
         alignItems: 'center',
         justifyContent: 'center',
         width: fullWidth && !isFab ? '100%' : undefined,
         opacity: isDisabled ? 0.5 : 1,
+        ...getVariantStyles(),
+        ...getSizeStyles(),
+        columnGap: 4
     };
     const textStyle = {
         color: getTextColor(),
@@ -105,5 +120,5 @@ export const Button = ({ title, variant = 'primary', size = 'medium', loading = 
         fontWeight: typography.weights.medium,
         fontFamily: typography.fonts.secondary,
     };
-    return (_jsx(TouchableOpacity, { disabled: isDisabled, style: buttonStyle, accessibilityRole: "button", accessibilityState: { disabled: isDisabled }, accessibilityLabel: title, ...props, children: loading ? (_jsx(ActivityIndicator, { size: "small", color: variant === 'tertiary' ? colors.primary.royalBlue : colors.text.onPrimary })) : (_jsxs(_Fragment, { children: [icon && !isFab && icon, isFab ? (icon || _jsx(Text, { style: textStyle, children: "+" })) : (_jsx(Text, { style: textStyle, children: title }))] })) }));
+    return (_jsx(TouchableOpacity, { disabled: isDisabled, style: [buttonStyle, style], accessibilityRole: "button", accessibilityState: { disabled: isDisabled }, accessibilityLabel: title, ...props, children: loading ? (_jsx(ActivityIndicator, { size: "small", color: variant === 'tertiary' ? colors.primary.royalBlue : colors.text.onPrimary })) : (_jsxs(_Fragment, { children: [icon && !isFab && icon, isFab ? (icon || _jsx(Text, { style: textStyle, children: "+" })) : (_jsx(Text, { style: textStyle, children: title }))] })) }));
 };

@@ -1,74 +1,77 @@
 import React from 'react';
 import { View, Text, FlatList, ViewProps } from 'react-native';
 import { TransactionItem, Transaction } from './TransactionItem';
-import { colors, typography, spacing } from '../../design/tokens';
+import { colors, typography, spacing } from '@stack/ui-library';
+import { Icon } from '@stack/ui-library';
 
-export interface TransactionListProps extends ViewProps {
+export interface TransactionListProps extends Omit<ViewProps, 'children'> {
   transactions: Transaction[];
   title?: string;
-  emptyMessage?: string;
   onTransactionPress?: (transaction: Transaction) => void;
-  className?: string;
+  emptyStateMessage?: string;
 }
 
 export const TransactionList: React.FC<TransactionListProps> = ({
   transactions,
-  title = 'Recent Transactions',
-  emptyMessage = 'No transactions yet',
+  title,
   onTransactionPress,
-  className,
+  emptyStateMessage = 'You have no transactions yet.',
+  style,
   ...props
 }) => {
-  const renderTransaction = ({ item }: { item: Transaction }) => (
+  const renderItem = ({ item }: { item: Transaction }) => (
     <TransactionItem
       transaction={item}
-      onPress={onTransactionPress ? () => onTransactionPress(item) : undefined}
+      onPress={() => onTransactionPress?.(item)}
     />
   );
 
   const renderEmptyState = () => (
-    <View className="py-8 items-center">
-      <Text 
-        className="text-body text-text-secondary text-center"
+    <View
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: spacing.xxl,
+      }}
+    >
+      <Icon name="file-tray-outline" size={48} color={colors.text.tertiary} />
+      <Text
         style={{
           fontFamily: typography.fonts.primary,
-          fontSize: typography.styles.body.size,
+          fontSize: 16,
           color: colors.text.secondary,
+          marginTop: spacing.md,
+          textAlign: 'center',
         }}
       >
-        {emptyMessage}
+        {emptyStateMessage}
       </Text>
     </View>
   );
 
   return (
-    <View className={`${className || ''}`} {...props}>
-      {/* Title */}
-      <Text 
-        className="font-semibold text-h3 text-text-primary mb-4"
-        style={{
-          fontFamily: typography.fonts.primary,
-          fontSize: typography.styles.h3.size,
-          color: colors.text.primary,
-        }}
-      >
-        {title}
-      </Text>
-
-      {/* Transaction List */}
+    <View style={style} {...props}>
+      {title && (
+        <Text
+          style={{
+            fontFamily: typography.fonts.primary,
+            fontSize: 22,
+            fontWeight: typography.weights.bold,
+            color: colors.text.primary,
+            marginBottom: spacing.md,
+          }}
+        >
+          {title}
+        </Text>
+      )}
       <FlatList
         data={transactions}
-        renderItem={renderTransaction}
-        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
         ListEmptyComponent={renderEmptyState}
-        showsVerticalScrollIndicator={false}
-        scrollEnabled={false} // Disable scroll since this will be in a parent scroll view
-        ItemSeparatorComponent={() => (
-          <View 
-            className="h-px bg-border-tertiary mx-4"
-            style={{ backgroundColor: colors.border.tertiary }}
-          />
-        )}
+        scrollEnabled={false} // Assuming the list is inside a ScrollView
+        ItemSeparatorComponent={() => <View style={{ height: spacing.sm }} />} // Use spacing instead of a visible line
+        contentContainerStyle={{ paddingVertical: spacing.sm }}
       />
     </View>
   );

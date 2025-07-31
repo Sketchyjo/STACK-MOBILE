@@ -20,7 +20,10 @@
     },
     "dependencies": {
         "@expo/vector-icons": "^14.0.0",
-        "nativewind": "latest"
+        "expo-linear-gradient": "^14.1.5",
+        "moti": "^0.30.0",
+        "nativewind": "latest",
+        "react-native-gifted-charts": "^1.4.63"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^6.6.3",

@@ -10,6 +10,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   fullWidth?: boolean;
   icon?: React.ReactNode;
   className?: string;
+  textStyle?: TextStyle;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   className,
   style,
+//   textStyle,
   ...props
 }) => {
   const getVariantStyles = (): ViewStyle => {
@@ -88,8 +90,8 @@ export const Button: React.FC<ButtonProps> = ({
       case 'small':
         return {
           paddingHorizontal: spacing.md,
-          paddingVertical: spacing.xs,
-          minHeight: 32,
+          paddingVertical: spacing.md,
+          minHeight: 22,
         };
       case 'medium':
         return {
@@ -137,6 +139,7 @@ export const Button: React.FC<ButtonProps> = ({
     opacity: isDisabled ? 0.5 : 1,
     ...getVariantStyles(),
     ...getSizeStyles(),
+    columnGap: 4
   };
 
   const textStyle: TextStyle = {

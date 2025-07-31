@@ -5,6 +5,17 @@ export { ListItem } from './ListItem';
 export { Header } from './Header';
 export { TransactionItem } from './TransactionItem';
 export { TransactionList } from './TransactionList';
-export { VirtualCardDisplay } from './VirtualCardDisplay';
+export { VirtualCreditCard } from './VirtualCardDisplay';
 export { CollateralValueCard } from './CollateralValueCard';
 export { RoundUpToggle } from './RoundUpToggle';
+export { BasketFeedCard } from './BasketFeedCard';
+export { QuestFeedCard } from './QuestFeedCard';
+export { AITipCard } from './AITipCard';
+export { VirtualCreditCardFeed } from './VirtualCreditCardFeed';
+export type {
+  TransactionItemProps,
+  TransactionType,
+  TransactionStatus,
+  Transaction,
+} from './TransactionItem';
+export type { TransactionListProps } from './TransactionList';

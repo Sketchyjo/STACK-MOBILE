@@ -25,26 +25,19 @@ export const SpendableBalance = ({ balance, currency = 'USD', isLoading = false,
                                 fontWeight: typography.styles.caption.weight,
                             },
                             { color: colors.text.secondary }
-                        ], children: "SPENDABLE BALANCE" }), onViewDetails && (_jsx(Icon, { name: "chevron-forward", library: "ionicons", size: 16, color: colors.text.secondary }))] }), _jsxs(View, { style: { marginBottom: spacing.lg }, children: [isLoading ? (_jsx(View, { style: {
-                            backgroundColor: colors.surface.light,
-                            height: 40,
-                            borderRadius: borderRadius.md,
-                            marginBottom: spacing.sm
-                        } })) : (_jsx(Text, { style: [
-                            {
-                                fontFamily: typography.fonts.primary,
-                                fontSize: typography.styles.h1.size,
-                                fontWeight: typography.styles.h1.weight,
-                            },
-                            { color: colors.text.primary }
-                        ], children: formatCurrency(balance) })), _jsx(Text, { style: [
-                            {
-                                fontFamily: typography.fonts.secondary,
-                                fontSize: typography.styles.caption.size,
-                                fontWeight: typography.styles.caption.weight,
-                            },
-                            { color: colors.text.secondary }
-                        ], children: "Available for spending" })] }), _jsxs(View, { style: { flexDirection: 'row', gap: spacing.md }, children: [onAddFunds && (_jsxs(TouchableOpacity, { style: {
+                        ], children: "Available for withdrawal" }), onViewDetails && (_jsx(Icon, { name: "chevron-forward", library: "ionicons", size: 16, color: colors.text.secondary }))] }), _jsx(View, { style: { marginBottom: spacing.lg }, children: isLoading ? (_jsx(View, { style: {
+                        backgroundColor: colors.surface.light,
+                        height: 40,
+                        borderRadius: borderRadius.md,
+                        marginBottom: spacing.sm
+                    } })) : (_jsx(Text, { style: [
+                        {
+                            fontFamily: typography.fonts.primary,
+                            fontSize: typography.styles.h1.size,
+                            fontWeight: typography.styles.h1.weight,
+                        },
+                        { color: colors.text.primary }
+                    ], children: formatCurrency(balance) })) }), _jsxs(View, { style: { gap: spacing.md }, children: [onAddFunds && (_jsxs(TouchableOpacity, { style: {
                             flex: 1,
                             backgroundColor: colors.primary.royalBlue,
                             borderRadius: borderRadius.lg,
@@ -62,7 +55,7 @@ export const SpendableBalance = ({ balance, currency = 'USD', isLoading = false,
                                     { color: colors.text.primary }
                                 ], children: "Add Funds" })] })), _jsxs(TouchableOpacity, { style: {
                             flex: 1,
-                            backgroundColor: colors.surface.light,
+                            backgroundColor: colors.accent.limeGreen,
                             borderRadius: borderRadius.lg,
                             paddingVertical: spacing.md,
                             paddingHorizontal: spacing.lg,

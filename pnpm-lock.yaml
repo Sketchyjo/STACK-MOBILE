@@ -138,24 +138,36 @@ importers:
       '@expo/vector-icons':
         specifier: ^14.0.0
         version: 14.1.0(expo-font@13.3.2)(react-native@0.79.5)(react@19.0.0)
+      '@hugeicons/core-free-icons':
+        specifier: ^1.0.16
+        version: 1.0.16
+      '@hugeicons/react-native':
+        specifier: ^1.0.7
+        version: 1.0.7(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
       '@mobile-wallet-protocol/client':
         specifier: ^1.0.0
-        version: 1.0.0(@react-native-async-storage/async-storage@2.2.0)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
+        version: 1.0.0(@react-native-async-storage/async-storage@2.1.2)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
       '@react-native-async-storage/async-storage':
         specifier: ^2.1.2
-        version: 2.2.0(react-native@0.79.5)
+        version: 2.1.2(react-native@0.79.5)
       '@react-native-community/netinfo':
         specifier: 11.4.1
         version: 11.4.1(react-native@0.79.5)
       '@react-navigation/native':
         specifier: ^7.0.3
         version: 7.1.14(react-native@0.79.5)(react@19.0.0)
+      '@rneui/base':
+        specifier: 4.0.0-rc.8
+        version: 4.0.0-rc.8(react-native-safe-area-context@5.4.0)(react-native-vector-icons@10.3.0)(react-native@0.79.5)(react@19.0.0)
+      '@rneui/themed':
+        specifier: 4.0.0-rc.8
+        version: 4.0.0-rc.8(@rneui/base@4.0.0-rc.8)
       '@stack/ui-library':
         specifier: file:../../packages/ui-library
-        version: file:packages/ui-library(expo-font@13.3.2)(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
+        version: file:packages/ui-library(expo-font@13.3.2)(expo@53.0.20)(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
       '@walletconnect/react-native-compat':
         specifier: ^2.21.5
-        version: 2.21.5(@react-native-async-storage/async-storage@2.2.0)(@react-native-community/netinfo@11.4.1)(expo-application@6.1.5)(react-native-get-random-values@1.11.0)(react-native@0.79.5)
+        version: 2.21.5(@react-native-async-storage/async-storage@2.1.2)(@react-native-community/netinfo@11.4.1)(expo-application@6.1.5)(react-native-get-random-values@1.11.0)(react-native@0.79.5)
       amazon-cognito-identity-js:
         specifier: ^6.3.15
         version: 6.3.15
@@ -180,6 +192,9 @@ importers:
       expo-font:
         specifier: ~13.3.2
         version: 13.3.2(expo@53.0.20)(react@19.0.0)
+      expo-linear-gradient:
+        specifier: ^14.1.5
+        version: 14.1.5(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
       expo-linking:
         specifier: ~7.1.7
         version: 7.1.7(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
@@ -201,6 +216,9 @@ importers:
       fix:
         specifier: ^0.0.6
         version: 0.0.6
+      moti:
+        specifier: ^0.30.0
+        version: 0.30.0(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react@19.0.0)
       nativewind:
         specifier: latest
         version: 4.1.23(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
@@ -216,15 +234,24 @@ importers:
       react-native-aes-gcm-crypto:
         specifier: ^0.2.2
         version: 0.2.2(react-native@0.79.5)(react@19.0.0)
+      react-native-chart-kit:
+        specifier: ^6.12.0
+        version: 6.12.0(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
       react-native-css-interop:
         specifier: ^0.1.22
         version: 0.1.22(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
+      react-native-elements:
+        specifier: ^3.4.3
+        version: 3.4.3(react-native-safe-area-context@5.4.0)(react-native-vector-icons@10.3.0)(react-native@0.79.5)(react@19.0.0)
       react-native-gesture-handler:
         specifier: ~2.24.0
         version: 2.24.0(react-native@0.79.5)(react@19.0.0)
       react-native-get-random-values:
         specifier: ^1.11.0
         version: 1.11.0(react-native@0.79.5)
+      react-native-gifted-charts:
+        specifier: ^1.4.63
+        version: 1.4.63(expo-linear-gradient@14.1.5)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
       react-native-mmkv:
         specifier: ^3.3.0
         version: 3.3.0(react-native@0.79.5)(react@19.0.0)
@@ -246,6 +273,9 @@ importers:
       react-native-svg:
         specifier: 15.11.2
         version: 15.11.2(react-native@0.79.5)(react@19.0.0)
+      react-native-vector-icons:
+        specifier: ^10.3.0
+        version: 10.3.0
       react-native-web:
         specifier: ^0.20.0
         version: 0.20.0(react-dom@19.0.0)(react@19.0.0)
@@ -254,7 +284,7 @@ importers:
         version: 4.7.0
       thirdweb:
         specifier: ^5.105.18
-        version: 5.105.20(@coinbase/wallet-mobile-sdk@1.1.2)(@hey-api/openapi-ts@0.80.1)(@mobile-wallet-protocol/client@1.0.0)(@react-native-async-storage/async-storage@2.2.0)(@types/react@19.0.14)(expo-linking@7.1.7)(expo-web-browser@14.2.0)(react-dom@19.0.0)(react-native-aes-gcm-crypto@0.2.2)(react-native-passkey@3.1.0)(react-native-quick-crypto@0.7.15)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(storybook@9.0.18)(typescript@5.8.3)
+        version: 5.105.20(@coinbase/wallet-mobile-sdk@1.1.2)(@hey-api/openapi-ts@0.80.1)(@mobile-wallet-protocol/client@1.0.0)(@react-native-async-storage/async-storage@2.1.2)(@types/react@19.0.14)(expo-linking@7.1.7)(expo-web-browser@14.2.0)(react-dom@19.0.0)(react-native-aes-gcm-crypto@0.2.2)(react-native-passkey@3.1.0)(react-native-quick-crypto@0.7.15)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(storybook@9.0.18)(typescript@5.8.3)
       zustand:
         specifier: ^4.5.1
         version: 4.5.7(@types/react@19.0.14)(react@19.0.0)
@@ -420,9 +450,18 @@ importers:
       '@expo/vector-icons':
         specifier: ^14.0.0
         version: 14.1.0(expo-font@13.3.2)(react-native@0.79.5)(react@19.0.0)
+      expo-linear-gradient:
+        specifier: ^14.1.5
+        version: 14.1.5(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
+      moti:
+        specifier: ^0.30.0
+        version: 0.30.0(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react@19.0.0)
       nativewind:
         specifier: latest
         version: 4.1.23(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
+      react-native-gifted-charts:
+        specifier: ^1.4.63
+        version: 1.4.63(expo-linear-gradient@14.1.5)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -1745,11 +1784,25 @@ packages:
     resolution: {integrity: sha512-MyqliTZGuOm3+5ZRSaaBGP3USLw6+EGykkwZns2EPC5g8jJ4z9OrdZY9apkl3+UP9+sdz76YYkwCKP5gh8iY3g==}
     dev: false
 
+  /@emotion/is-prop-valid@0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
   /@emotion/is-prop-valid@1.3.1:
     resolution: {integrity: sha512-/ACwoqx7XQi9knQs/G0qKvv5teDMhD7bXYns9N/wM8ah8iNb8jZ2uNO0YOgiq2o2poIvVtJS2YALasQuMSQ7Kw==}
     dependencies:
       '@emotion/memoize': 0.9.0
     dev: false
+
+  /@emotion/memoize@0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /@emotion/memoize@0.9.0:
     resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
@@ -3453,6 +3506,22 @@ packages:
       - magicast
     dev: false
 
+  /@hugeicons/core-free-icons@1.0.16:
+    resolution: {integrity: sha512-rm48rjUN8a58yOZ7mpk3HkMvZPmOMTkMtNdXXq9m0Af6BsRQWJZl+4zd6ssj52y+A9Zn4Yg/TptobNtNpx3GCg==}
+    dev: false
+
+  /@hugeicons/react-native@1.0.7(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-gynokVikfwMDBs6N0GHo22F6s03+ZUDJ7HXM1GPvmqk1fDkrz+WGz8M+3UjvMQ8j+Lim665OC5s4uaGtg2HZjw==}
+    peerDependencies:
+      react: '>=16.0.0'
+      react-native: '>=0.60.0'
+      react-native-svg: '>=12.0.0'
+    dependencies:
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-svg: 15.11.2(react-native@0.79.5)(react@19.0.0)
+    dev: false
+
   /@humanfs/core@0.19.1:
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -4198,7 +4267,7 @@ packages:
       - supports-color
     dev: false
 
-  /@mobile-wallet-protocol/client@1.0.0(@react-native-async-storage/async-storage@2.2.0)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0):
+  /@mobile-wallet-protocol/client@1.0.0(@react-native-async-storage/async-storage@2.1.2)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0):
     resolution: {integrity: sha512-gzY/vwf98l4WJW+JheH/DqL5qG/0Y/0rHjOHFo07dDVejg+qyLh9JKZPUQUV1bpwVMjT11G7UdZkTzLh9vpbVQ==}
     peerDependencies:
       '@react-native-async-storage/async-storage': '*'
@@ -4210,7 +4279,7 @@ packages:
       '@noble/ciphers': 0.5.3
       '@noble/curves': 1.9.4
       '@noble/hashes': 1.8.0
-      '@react-native-async-storage/async-storage': 2.2.0(react-native@0.79.5)
+      '@react-native-async-storage/async-storage': 2.1.2(react-native@0.79.5)
       eventemitter3: 5.0.1
       expo: 53.0.20(@babel/core@7.28.0)(react-native@0.79.5)(react@19.0.0)
       expo-web-browser: 14.2.0(expo@53.0.20)(react-native@0.79.5)
@@ -4225,6 +4294,17 @@ packages:
       '@motionone/easing': 10.18.0
       '@motionone/types': 10.17.1
       '@motionone/utils': 10.18.0
+      tslib: 2.8.1
+    dev: false
+
+  /@motionone/dom@10.12.0:
+    resolution: {integrity: sha512-UdPTtLMAktHiqV0atOczNYyDd/d8Cf5fFsd1tua03PqTwwCe/6lwhLSQ8a7TbnQ5SN0gm44N1slBfj+ORIhrqw==}
+    dependencies:
+      '@motionone/animation': 10.18.0
+      '@motionone/generators': 10.18.0
+      '@motionone/types': 10.17.1
+      '@motionone/utils': 10.18.0
+      hey-listen: 1.0.8
       tslib: 2.8.1
     dev: false
 
@@ -6470,8 +6550,8 @@ packages:
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
     dev: false
 
-  /@react-native-async-storage/async-storage@2.2.0(react-native@0.79.5):
-    resolution: {integrity: sha512-gvRvjR5JAaUZF8tv2Kcq/Gbt3JHwbKFYfmb445rhOj6NUMx3qPLixmDx5pZAyb9at1bYvJ4/eTUipU5aki45xw==}
+  /@react-native-async-storage/async-storage@2.1.2(react-native@0.79.5):
+    resolution: {integrity: sha512-dvlNq4AlGWC+ehtH12p65+17V0Dx7IecOWl6WanF2ja38O1Dcjjvn7jVzkUHJ5oWkQBlyASurTPlTHgKXyYiow==}
     peerDependencies:
       react-native: ^0.0.0-0 || >=0.65 <1.0
     dependencies:
@@ -6752,6 +6832,33 @@ packages:
     resolution: {integrity: sha512-42mZrMzQ0LfKxUb5OHIurYrPYyRsXFLolucILrvm21f0O40Sw0Ufh1bnn/jRqnxZZu7wvpUGIGYM8nS9zVE1Aw==}
     dependencies:
       nanoid: 3.3.11
+    dev: false
+
+  /@rneui/base@4.0.0-rc.8(react-native-safe-area-context@5.4.0)(react-native-vector-icons@10.3.0)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-teJ6bUki+TQ+r+abefEWYb2wRUaMgRhp1oxtKa84UfDqTiCF0ItyJ0L8FhMb6AAkTOkWC34301T7j3H4df6ueA==}
+    peerDependencies:
+      react-native-safe-area-context: '>= 3.0.0'
+      react-native-vector-icons: '>7.0.0'
+    dependencies:
+      '@types/react-native-vector-icons': 6.4.18
+      color: 3.2.1
+      deepmerge: 4.3.1
+      hoist-non-react-statics: 3.3.2
+      react-native-ratings: 8.1.0(react-native@0.79.5)(react@19.0.0)
+      react-native-safe-area-context: 5.4.0(react-native@0.79.5)(react@19.0.0)
+      react-native-size-matters: 0.4.2(react-native@0.79.5)
+      react-native-vector-icons: 10.3.0
+    transitivePeerDependencies:
+      - react
+      - react-native
+    dev: false
+
+  /@rneui/themed@4.0.0-rc.8(@rneui/base@4.0.0-rc.8):
+    resolution: {integrity: sha512-8L/XOrL9OK/r+/iBLvx63TbIdZOXF8SIjN9eArMYm6kRbMr8m4BitXllDN8nBhBsSPNYvL6EAgjk+i2MfY4sBA==}
+    peerDependencies:
+      '@rneui/base': 4.0.0-rc.7
+    dependencies:
+      '@rneui/base': 4.0.0-rc.8(react-native-safe-area-context@5.4.0)(react-native-vector-icons@10.3.0)(react-native@0.79.5)(react@19.0.0)
     dev: false
 
   /@rtsao/scc@1.1.0:
@@ -8165,6 +8272,19 @@ packages:
       '@types/react': 19.0.14
     dev: true
 
+  /@types/react-native-vector-icons@6.4.18:
+    resolution: {integrity: sha512-YGlNWb+k5laTBHd7+uZowB9DpIK3SXUneZqAiKQaj1jnJCZM0x71GDim5JCTMi4IFkhc9m8H/Gm28T5BjyivUw==}
+    dependencies:
+      '@types/react': 19.0.14
+      '@types/react-native': 0.70.19
+    dev: false
+
+  /@types/react-native@0.70.19:
+    resolution: {integrity: sha512-c6WbyCgWTBgKKMESj/8b4w+zWcZSsCforson7UdXtXMecG3MxCinYi6ihhrHVPyUrVzORsvEzK8zg32z4pK6Sg==}
+    dependencies:
+      '@types/react': 19.0.14
+    dev: false
+
   /@types/react-native@0.72.8(react-native@0.79.5):
     resolution: {integrity: sha512-St6xA7+EoHN5mEYfdWnfYt0e8u6k2FR0P9s2arYgakQGFgU1f9FlPrIEcj0X24pLCF5c5i3WVuLCUdiCYHmOoA==}
     dependencies:
@@ -8830,7 +8950,7 @@ packages:
       '@walletconnect/jsonrpc-types': 1.0.3
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/jsonrpc-ws-connection': 1.0.14
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
@@ -8875,7 +8995,7 @@ packages:
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/jsonrpc-ws-connection': 1.0.14
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.0.4
@@ -8910,7 +9030,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/core@2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/core@2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-DxybNfznr7aE/U9tJqvpEorUW2f/6kR0S1Zk78NqKam1Ex+BQFDM5j2Az3WayfFDZz3adkxkLAszfdorvPxDlw==}
     engines: {node: '>=18'}
     dependencies:
@@ -8919,14 +9039,14 @@ packages:
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/jsonrpc-ws-connection': 1.0.16
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.2.0)
-      '@walletconnect/utils': 2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.1.2)
+      '@walletconnect/utils': 2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       '@walletconnect/window-getters': 1.0.1
       es-toolkit: 1.33.0
       events: 3.3.0
@@ -8956,7 +9076,7 @@ packages:
       - zod
     dev: false
 
-  /@walletconnect/core@2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/core@2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-XtwPUCj3bCNX/2yjYGlQyvcsn32wkzixCjyWOD4pdKFVk7opZPAdF4xr85rmo6nJ7AiBYxjV1IH0bemTPEdE6Q==}
     engines: {node: '>=18'}
     dependencies:
@@ -8965,14 +9085,14 @@ packages:
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/jsonrpc-ws-connection': 1.0.16
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.2.0)
-      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.1.2)
+      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       '@walletconnect/window-getters': 1.0.1
       es-toolkit: 1.39.3
       events: 3.3.0
@@ -9011,7 +9131,7 @@ packages:
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/jsonrpc-ws-connection': 1.0.16
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
@@ -9190,7 +9310,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/keyvaluestorage@1.1.1(@react-native-async-storage/async-storage@2.2.0):
+  /@walletconnect/keyvaluestorage@1.1.1(@react-native-async-storage/async-storage@2.1.2):
     resolution: {integrity: sha512-V7ZQq2+mSxAq7MrRqDxanTzu2RcElfK1PfNYiaVnJgJ7Q7G7hTVwF8voIBx92qsRyGHZihrwNPHuZd1aKkd0rA==}
     peerDependencies:
       '@react-native-async-storage/async-storage': 1.x
@@ -9198,7 +9318,7 @@ packages:
       '@react-native-async-storage/async-storage':
         optional: true
     dependencies:
-      '@react-native-async-storage/async-storage': 2.2.0(react-native@0.79.5)
+      '@react-native-async-storage/async-storage': 2.1.2(react-native@0.79.5)
       '@walletconnect/safe-json': 1.0.2
       idb-keyval: 6.2.2
       unstorage: 1.16.1(idb-keyval@6.2.2)
@@ -9261,7 +9381,7 @@ packages:
       - react
     dev: false
 
-  /@walletconnect/react-native-compat@2.21.5(@react-native-async-storage/async-storage@2.2.0)(@react-native-community/netinfo@11.4.1)(expo-application@6.1.5)(react-native-get-random-values@1.11.0)(react-native@0.79.5):
+  /@walletconnect/react-native-compat@2.21.5(@react-native-async-storage/async-storage@2.1.2)(@react-native-community/netinfo@11.4.1)(expo-application@6.1.5)(react-native-get-random-values@1.11.0)(react-native@0.79.5):
     resolution: {integrity: sha512-FbL33ZoBUrTupsKGmOyXUSia4rMV6dasw6x+sUZq4qlYcn2r5ebnBc84VoIeQYzWOgEtFIxQzJijgBOHeRwzww==}
     peerDependencies:
       '@react-native-async-storage/async-storage': '*'
@@ -9273,7 +9393,7 @@ packages:
       expo-application:
         optional: true
     dependencies:
-      '@react-native-async-storage/async-storage': 2.2.0(react-native@0.79.5)
+      '@react-native-async-storage/async-storage': 2.1.2(react-native@0.79.5)
       '@react-native-community/netinfo': 11.4.1(react-native@0.79.5)
       events: 3.3.0
       expo-application: 6.1.5(expo@53.0.20)
@@ -9389,17 +9509,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/sign-client@2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/sign-client@2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-QXzIAHbyZZ52+97Bp/+/SBkN3hX0pam8l4lnA4P7g+aFPrVZUrMwZPIf+FV7UbEswqqwo3xmFI41TKgj8w8B9w==}
     dependencies:
-      '@walletconnect/core': 2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/core': 2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/logger': 2.1.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.2.0)
-      '@walletconnect/utils': 2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.1.2)
+      '@walletconnect/utils': 2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       events: 3.3.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -9426,17 +9546,17 @@ packages:
       - zod
     dev: false
 
-  /@walletconnect/sign-client@2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/sign-client@2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-v1OJ9IQCZAqaDEUYGFnGLe2fSp8DN9cv7j8tUYm5ngiFK7h6LjP4Ew3gGCca4AHWzMFkHuIRNQ+6Ypep1K/B7g==}
     dependencies:
-      '@walletconnect/core': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/core': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/logger': 2.1.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.2.0)
-      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.1.2)
+      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       events: 3.3.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -9512,7 +9632,7 @@ packages:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.1
       '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -9542,7 +9662,7 @@ packages:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-types': 1.0.4
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -9566,13 +9686,13 @@ packages:
       - uploadthing
     dev: false
 
-  /@walletconnect/types@2.20.1(@react-native-async-storage/async-storage@2.2.0):
+  /@walletconnect/types@2.20.1(@react-native-async-storage/async-storage@2.1.2):
     resolution: {integrity: sha512-HM0YZxT+wNqskoZkuju5owbKTlqUXNKfGlJk/zh9pWaVWBR2QamvQ+47Cx09OoGPRQjQH0JmgRiUV4bOwWNeHg==}
     dependencies:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-types': 1.0.4
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -9596,13 +9716,13 @@ packages:
       - uploadthing
     dev: false
 
-  /@walletconnect/types@2.21.4(@react-native-async-storage/async-storage@2.2.0):
+  /@walletconnect/types@2.21.4(@react-native-async-storage/async-storage@2.1.2):
     resolution: {integrity: sha512-6O61esDSW8FZNdFezgB4bX2S35HM6tCwBEjGHNB8JeoKCfpXG33hw2raU/SBgBL/jmM57QRW4M1aFH7v1u9z7g==}
     dependencies:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-types': 1.0.4
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -9632,7 +9752,7 @@ packages:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-types': 1.0.4
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -9692,7 +9812,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/universal-provider@2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/universal-provider@2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-ZSYU5H7Zi/nEy3L21kw5l3ovMagrbXDRKBG8vjPpGQAkflQocRj6d0SesFOCBEdJS16nt+6dKI2f5blpOGzyTQ==}
     dependencies:
       '@walletconnect/events': 1.0.1
@@ -9700,11 +9820,11 @@ packages:
       '@walletconnect/jsonrpc-provider': 1.0.14
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/logger': 2.1.2
-      '@walletconnect/sign-client': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
-      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.2.0)
-      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/sign-client': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.1.2)
+      '@walletconnect/utils': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       es-toolkit: 1.39.3
       events: 3.3.0
     transitivePeerDependencies:
@@ -9782,7 +9902,7 @@ packages:
       '@stablelib/sha256': 1.0.1
       '@stablelib/x25519': 1.0.3
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.0.4
       '@walletconnect/safe-json': 1.0.2
@@ -9815,19 +9935,19 @@ packages:
       - uploadthing
     dev: false
 
-  /@walletconnect/utils@2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/utils@2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-u/uyJkVyxLLUbHbpMv7MmuOkGfElG08l6P2kMTAfN7nAVyTgpb8g6kWLMNqfmYXVz+h+finf5FSV4DgL2vOvPQ==}
     dependencies:
       '@noble/ciphers': 1.2.1
       '@noble/curves': 1.8.1
       '@noble/hashes': 1.7.1
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/types': 2.20.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/window-getters': 1.0.1
       '@walletconnect/window-metadata': 1.0.1
       bs58: 6.0.0
@@ -9860,7 +9980,7 @@ packages:
       - zod
     dev: false
 
-  /@walletconnect/utils@2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75):
+  /@walletconnect/utils@2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75):
     resolution: {integrity: sha512-LuSyBXvRLiDqIu4uMFei5eJ/WPhkIkdW58fmDlRnryatIuBPCho3dlrNSbOjVSdsID+OvxjOlpPLi+5h4oTbaA==}
     dependencies:
       '@msgpack/msgpack': 3.1.2
@@ -9869,12 +9989,12 @@ packages:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/types': 2.21.4(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/window-getters': 1.0.1
       '@walletconnect/window-metadata': 1.0.1
       blakejs: 1.2.1
@@ -9917,7 +10037,7 @@ packages:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.2.0)
+      '@walletconnect/keyvaluestorage': 1.1.1(@react-native-async-storage/async-storage@2.1.2)
       '@walletconnect/relay-api': 1.0.11
       '@walletconnect/relay-auth': 1.1.0
       '@walletconnect/safe-json': 1.0.2
@@ -11449,6 +11569,13 @@ packages:
   /color-support@1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
     hasBin: true
+    dev: false
+
+  /color@3.2.1:
+    resolution: {integrity: sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==}
+    dependencies:
+      color-convert: 1.9.3
+      color-string: 1.9.1
     dev: false
 
   /color@4.2.3:
@@ -13629,6 +13756,18 @@ packages:
       react: 19.0.0
     dev: false
 
+  /expo-linear-gradient@14.1.5(expo@53.0.20)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-BSN3MkSGLZoHMduEnAgfhoj3xqcDWaoICgIr4cIYEx1GcHfKMhzA/O4mpZJ/WC27BP1rnAqoKfbclk1eA70ndQ==}
+    peerDependencies:
+      expo: '*'
+      react: '*'
+      react-native: '*'
+    dependencies:
+      expo: 53.0.20(@babel/core@7.28.0)(react-native@0.79.5)(react@19.0.0)
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
   /expo-linking@7.1.7(expo@53.0.20)(react-native@0.79.5)(react@19.0.0):
     resolution: {integrity: sha512-ZJaH1RIch2G/M3hx2QJdlrKbYFUTOjVVW4g39hfxrE5bPX9xhZUYXqxqQtzMNl1ylAevw9JkgEfWbBWddbZ3UA==}
     peerDependencies:
@@ -14217,6 +14356,30 @@ packages:
     resolution: {integrity: sha512-H5KQDspykdHuztLTg+ajGN0Z2qUjcEf3Ybxc6hLt0k7/zPkn29XnKnxlBPyW2XIddWrGaJBzBl4VLYOtk39yZg==}
     dev: true
 
+  /framer-motion@6.5.1(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-o1BGqqposwi7cgDrtg0dNONhkmPsUFDaLcKXigzuTFC5x58mE8iyTazxSudFzmT6MEyJKfjjU8ItoMe3W+3fiw==}
+    peerDependencies:
+      react: '>=16.8 || ^17.0.0 || ^18.0.0'
+      react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
+    dependencies:
+      '@motionone/dom': 10.12.0
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      popmotion: 11.0.3
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      style-value-types: 5.0.0
+      tslib: 2.8.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
+  /framesync@6.0.1:
+    resolution: {integrity: sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA==}
+    dependencies:
+      tslib: 2.8.1
+    dev: false
+
   /freeport-async@2.0.0:
     resolution: {integrity: sha512-K7od3Uw45AJg00XUmy15+Hae2hOcgKcmN3/EF6Y7i01O0gaqiRx8sUSpsb9+BRNL8RPBrhzPsVfy8q9ADlJuWQ==}
     engines: {node: '>=8'}
@@ -14386,6 +14549,18 @@ packages:
   /getenv@2.0.0:
     resolution: {integrity: sha512-VilgtJj/ALgGY77fiLam5iD336eSWi96Q15JSAG1zi8NRBysm3LXKdGnHb4m5cuyxvOLQQKWpBZAT6ni4FI2iQ==}
     engines: {node: '>=6'}
+    dev: false
+
+  /gifted-charts-core@0.1.65(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-sMRXnPwT6ouIrZ4TBFdEAfywn1F9tPuP57HmGA8HzITDtWz79Rhlp5ZFaD8YgPhNLbQanqaHarY3Z4ZqDK5XnQ==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+      react-native-svg: '*'
+    dependencies:
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-svg: 15.11.2(react-native@0.79.5)(react@19.0.0)
     dev: false
 
   /giget@1.2.5:
@@ -17115,6 +17290,18 @@ packages:
     resolution: {integrity: sha512-EGWKgxALGMgzvxYF1UyGTy0HXX/2vHLkw6+NvDKW2jypWbHpjQuj4UMcqQWXHERJhVGKikolT06G3bcKe4fi7w==}
     dev: true
 
+  /moti@0.30.0(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react@19.0.0):
+    resolution: {integrity: sha512-YN78mcefo8kvJaL+TZNyusq6YA2aMFvBPl8WiLPy4eb4wqgOFggJOjP9bUr2YO8PrAt0uusmRG8K4RPL4OhCsA==}
+    peerDependencies:
+      react-native-reanimated: '*'
+    dependencies:
+      framer-motion: 6.5.1(react-dom@19.0.0)(react@19.0.0)
+      react-native-reanimated: 3.17.5(@babel/core@7.28.0)(react-native@0.79.5)(react@19.0.0)
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: false
+
   /motion@10.16.2:
     resolution: {integrity: sha512-p+PurYqfUdcJZvtnmAqu5fJgV2kR0uLFQuBKtLeFVTrYEVllI99tiOTSefVNYuip9ELTEkepIIDftNdze76NAQ==}
     dependencies:
@@ -17566,6 +17753,11 @@ packages:
       is-wsl: 2.2.0
     dev: false
 
+  /opencollective-postinstall@2.0.3:
+    resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
+    hasBin: true
+    dev: false
+
   /optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
@@ -17876,6 +18068,11 @@ packages:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
     dev: false
 
+  /paths-js@0.4.11:
+    resolution: {integrity: sha512-3mqcLomDBXOo7Fo+UlaenG6f71bk1ZezPQy2JCmYHy2W2k5VKpP+Jbin9H0bjXynelTbglCqdFhSEkeIkKTYUA==}
+    engines: {node: '>=0.11.0'}
+    dev: false
+
   /pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
 
@@ -18047,9 +18244,22 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /point-in-polygon@1.1.0:
+    resolution: {integrity: sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==}
+    dev: false
+
   /pony-cause@2.1.11:
     resolution: {integrity: sha512-M7LhCsdNbNgiLYiP4WjsfLUuFmCfnjdF6jKe2R9NKl4WFN+HZPGHJZ9lnLP7f9ZnKe3U9nuWD0szirmj+migUg==}
     engines: {node: '>=12.0.0'}
+    dev: false
+
+  /popmotion@11.0.3:
+    resolution: {integrity: sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==}
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      style-value-types: 5.0.0
+      tslib: 2.8.1
     dev: false
 
   /possible-typed-array-names@1.1.0:
@@ -18608,6 +18818,21 @@ packages:
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
     dev: false
 
+  /react-native-chart-kit@6.12.0(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-nZLGyCFzZ7zmX0KjYeeSV1HKuPhl1wOMlTAqa0JhlyW62qV/1ZPXHgT8o9s8mkFaGxdqbspOeuaa6I9jUQDgnA==}
+    peerDependencies:
+      react: '> 16.7.0'
+      react-native: '>= 0.50.0'
+      react-native-svg: '> 6.4.1'
+    dependencies:
+      lodash: 4.17.21
+      paths-js: 0.4.11
+      point-in-polygon: 1.1.0
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-svg: 15.11.2(react-native@0.79.5)(react@19.0.0)
+    dev: false
+
   /react-native-css-interop@0.1.22(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17):
     resolution: {integrity: sha512-Mu01e+H9G+fxSWvwtgWlF5MJBJC4VszTCBXopIpeR171lbeBInHb8aHqoqRPxmJpi3xIHryzqKFOJYAdk7PBxg==}
     engines: {node: '>=18'}
@@ -18650,6 +18875,28 @@ packages:
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
     dev: false
 
+  /react-native-elements@3.4.3(react-native-safe-area-context@5.4.0)(react-native-vector-icons@10.3.0)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-VtZc25EecPZyUBER85zFK9ZbY6kkUdcm1ZwJ9hdoGSCr1R/GFgxor4jngOcSYeMvQ+qimd5No44OVJW3rSJECA==}
+    requiresBuild: true
+    peerDependencies:
+      react-native-safe-area-context: '>= 3.0.0'
+      react-native-vector-icons: '>7.0.0'
+    dependencies:
+      '@types/react-native-vector-icons': 6.4.18
+      color: 3.2.1
+      deepmerge: 4.3.1
+      hoist-non-react-statics: 3.3.2
+      lodash.isequal: 4.5.0
+      opencollective-postinstall: 2.0.3
+      react-native-ratings: 8.0.4(react-native@0.79.5)(react@19.0.0)
+      react-native-safe-area-context: 5.4.0(react-native@0.79.5)(react@19.0.0)
+      react-native-size-matters: 0.3.1(react-native@0.79.5)
+      react-native-vector-icons: 10.3.0
+    transitivePeerDependencies:
+      - react
+      - react-native
+    dev: false
+
   /react-native-gesture-handler@2.24.0(react-native@0.79.5)(react@19.0.0):
     resolution: {integrity: sha512-ZdWyOd1C8axKJHIfYxjJKCcxjWEpUtUWgTOVY2wynbiveSQDm8X/PDyAKXSer/GOtIpjudUbACOndZXCN3vHsw==}
     peerDependencies:
@@ -18670,6 +18917,27 @@ packages:
     dependencies:
       fast-base64-decode: 1.0.0
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
+  /react-native-gifted-charts@1.4.63(expo-linear-gradient@14.1.5)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-+/FW+YQv2ZaYn+BqWMXzlAXRXn6WpQGbEyLo/Z8w8/4/a863U1mhYiQNI2nCcQPP+qwntI3qpCXWExawp/xIuA==}
+    peerDependencies:
+      expo-linear-gradient: '*'
+      react: '*'
+      react-native: '*'
+      react-native-linear-gradient: '*'
+      react-native-svg: '*'
+    peerDependenciesMeta:
+      expo-linear-gradient:
+        optional: true
+      react-native-linear-gradient:
+        optional: true
+    dependencies:
+      expo-linear-gradient: 14.1.5(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
+      gifted-charts-core: 0.1.65(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-svg: 15.11.2(react-native@0.79.5)(react@19.0.0)
     dev: false
 
   /react-native-is-edge-to-edge@1.1.7(react-native@0.79.5)(react@19.0.0):
@@ -18745,6 +19013,28 @@ packages:
       - react-native
     dev: false
 
+  /react-native-ratings@8.0.4(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      lodash: 4.17.21
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
+  /react-native-ratings@8.1.0(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-+QOJ4G3NjVkI1D+tk4EGx1dCvVfbD2nQdkrj9cXrcAoEiwmbep4z4bZbCKmWMpQ5h2dqbxABU8/eBnbDmvAc3g==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      lodash: 4.17.21
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
   /react-native-reanimated@3.17.5(@babel/core@7.28.0)(react-native@0.79.5)(react@19.0.0):
     resolution: {integrity: sha512-SxBK7wQfJ4UoWoJqQnmIC7ZjuNgVb9rcY5Xc67upXAFKftWg0rnkknTw6vgwnjRcvYThrjzUVti66XoZdDJGtw==}
     peerDependencies:
@@ -18794,6 +19084,22 @@ packages:
       warn-once: 0.1.1
     dev: false
 
+  /react-native-size-matters@0.3.1(react-native@0.79.5):
+    resolution: {integrity: sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==}
+    peerDependencies:
+      react-native: '*'
+    dependencies:
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
+  /react-native-size-matters@0.4.2(react-native@0.79.5):
+    resolution: {integrity: sha512-DKE3f/sdcozd24oASgkP1iGg+YU3HoajRa5k3a4wkRzpiqREq8SGX12Y5zBgAt/8IivLQoTMYkyQu1/Giuy+zQ==}
+    peerDependencies:
+      react-native: '*'
+    dependencies:
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
   /react-native-svg@15.11.2(react-native@0.79.5)(react@19.0.0):
     resolution: {integrity: sha512-+YfF72IbWQUKzCIydlijV1fLuBsQNGMT6Da2kFlo1sh+LE3BIm/2Q7AR1zAAR6L0BFLi1WaQPLfFUC9bNZpOmw==}
     peerDependencies:
@@ -18814,6 +19120,15 @@ packages:
     dependencies:
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
       whatwg-url-without-unicode: 8.0.0-3
+    dev: false
+
+  /react-native-vector-icons@10.3.0:
+    resolution: {integrity: sha512-IFQ0RE57819hOUdFvgK4FowM5aMXg7C7XKsuGLevqXkkIJatc3QopN0wYrb2IrzUgmdpfP+QVIbI3S6h7M0btw==}
+    deprecated: react-native-vector-icons package has moved to a new model of per-icon-family packages. See the https://github.com/oblador/react-native-vector-icons/blob/master/MIGRATION.md on how to migrate
+    hasBin: true
+    dependencies:
+      prop-types: 15.8.1
+      yargs: 16.2.0
     dev: false
 
   /react-native-web@0.20.0(react-dom@19.0.0)(react@19.0.0):
@@ -20111,6 +20426,13 @@ packages:
     resolution: {integrity: sha512-PdHt7hHUJKxvTCgbKX9C1V/ftOcjJQgz8BZwNfV5c4B6dcGqlpelTbJ999jBGZ2jYiPAwcX5dP6oBwVlBlUbxw==}
     dev: false
 
+  /style-value-types@5.0.0:
+    resolution: {integrity: sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==}
+    dependencies:
+      hey-listen: 1.0.8
+      tslib: 2.8.1
+    dev: false
+
   /styleq@0.1.3:
     resolution: {integrity: sha512-3ZUifmCDCQanjeej1f6kyl/BeP/Vae5EYkQ9iJfUm/QwZvlgnZzyflqAsAWYURdtea8Vkvswu2GrC57h3qffcA==}
 
@@ -20366,7 +20688,7 @@ packages:
     dependencies:
       any-promise: 1.3.0
 
-  /thirdweb@5.105.20(@coinbase/wallet-mobile-sdk@1.1.2)(@hey-api/openapi-ts@0.80.1)(@mobile-wallet-protocol/client@1.0.0)(@react-native-async-storage/async-storage@2.2.0)(@types/react@19.0.14)(expo-linking@7.1.7)(expo-web-browser@14.2.0)(react-dom@19.0.0)(react-native-aes-gcm-crypto@0.2.2)(react-native-passkey@3.1.0)(react-native-quick-crypto@0.7.15)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(storybook@9.0.18)(typescript@5.8.3):
+  /thirdweb@5.105.20(@coinbase/wallet-mobile-sdk@1.1.2)(@hey-api/openapi-ts@0.80.1)(@mobile-wallet-protocol/client@1.0.0)(@react-native-async-storage/async-storage@2.1.2)(@types/react@19.0.14)(expo-linking@7.1.7)(expo-web-browser@14.2.0)(react-dom@19.0.0)(react-native-aes-gcm-crypto@0.2.2)(react-native-passkey@3.1.0)(react-native-quick-crypto@0.7.15)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(storybook@9.0.18)(typescript@5.8.3):
     resolution: {integrity: sha512-5h7iVV9VtE+UUEICm0IK5xcy60fdPxHFD3slncZ6yeWKLbI4D+f1mKoqbUeIsa/6Qy5c0DTQ6QpfFvUinkH0Kw==}
     engines: {node: '>=18'}
     hasBin: true
@@ -20425,7 +20747,7 @@ packages:
       '@coinbase/wallet-sdk': 4.3.0
       '@emotion/react': 11.14.0(@types/react@19.0.14)(react@19.0.0)
       '@emotion/styled': 11.14.1(@emotion/react@11.14.0)(@types/react@19.0.14)(react@19.0.0)
-      '@mobile-wallet-protocol/client': 1.0.0(@react-native-async-storage/async-storage@2.2.0)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
+      '@mobile-wallet-protocol/client': 1.0.0(@react-native-async-storage/async-storage@2.1.2)(expo-web-browser@14.2.0)(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
       '@noble/curves': 1.8.2
       '@noble/hashes': 1.7.2
       '@passwordless-id/webauthn': 2.3.1
@@ -20433,13 +20755,13 @@ packages:
       '@radix-ui/react-focus-scope': 1.1.7(@types/react@19.0.14)(react-dom@19.0.0)(react@19.0.0)
       '@radix-ui/react-icons': 1.3.2(react@19.0.0)
       '@radix-ui/react-tooltip': 1.2.7(@types/react@19.0.14)(react-dom@19.0.0)(react@19.0.0)
-      '@react-native-async-storage/async-storage': 2.2.0(react-native@0.79.5)
+      '@react-native-async-storage/async-storage': 2.1.2(react-native@0.79.5)
       '@storybook/react': 9.0.15(react-dom@19.0.0)(react@19.0.0)(storybook@9.0.18)(typescript@5.8.3)
       '@tanstack/react-query': 5.81.5(react@19.0.0)
       '@thirdweb-dev/engine': 3.2.1(@hey-api/openapi-ts@0.80.1)(typescript@5.8.3)
       '@thirdweb-dev/insight': 1.1.0(typescript@5.8.3)
-      '@walletconnect/sign-client': 2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
-      '@walletconnect/universal-provider': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/sign-client': 2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/universal-provider': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       abitype: 1.0.8(typescript@5.8.3)(zod@3.25.75)
       cross-spawn: 7.0.6
       expo-linking: 7.1.7(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
@@ -20560,8 +20882,8 @@ packages:
       '@tanstack/react-query': 5.81.5(react@18.3.1)
       '@thirdweb-dev/engine': 3.2.1(@hey-api/openapi-ts@0.80.1)(typescript@5.8.3)
       '@thirdweb-dev/insight': 1.1.0(typescript@5.8.3)
-      '@walletconnect/sign-client': 2.20.1(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
-      '@walletconnect/universal-provider': 2.21.4(@react-native-async-storage/async-storage@2.2.0)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/sign-client': 2.20.1(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
+      '@walletconnect/universal-provider': 2.21.4(@react-native-async-storage/async-storage@2.1.2)(typescript@5.8.3)(zod@3.25.75)
       abitype: 1.0.8(typescript@5.8.3)(zod@3.25.75)
       cross-spawn: 7.0.6
       ethers: 6.15.0
@@ -22566,7 +22888,7 @@ packages:
       use-sync-external-store: 1.5.0(react@19.0.0)
     dev: false
 
-  file:packages/ui-library(expo-font@13.3.2)(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17):
+  file:packages/ui-library(expo-font@13.3.2)(expo@53.0.20)(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17):
     resolution: {directory: packages/ui-library, type: directory}
     id: file:packages/ui-library
     name: '@stack/ui-library'
@@ -22575,11 +22897,17 @@ packages:
       react-native: 0.79.5
     dependencies:
       '@expo/vector-icons': 14.1.0(expo-font@13.3.2)(react-native@0.79.5)(react@19.0.0)
+      expo-linear-gradient: 14.1.5(expo@53.0.20)(react-native@0.79.5)(react@19.0.0)
+      moti: 0.30.0(react-dom@19.0.0)(react-native-reanimated@3.17.5)(react@19.0.0)
       nativewind: 4.1.23(react-native-reanimated@3.17.5)(react-native-safe-area-context@5.4.0)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)(tailwindcss@3.4.17)
       react: 19.0.0
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-gifted-charts: 1.4.63(expo-linear-gradient@14.1.5)(react-native-svg@15.11.2)(react-native@0.79.5)(react@19.0.0)
     transitivePeerDependencies:
+      - expo
       - expo-font
+      - react-dom
+      - react-native-linear-gradient
       - react-native-reanimated
       - react-native-safe-area-context
       - react-native-svg

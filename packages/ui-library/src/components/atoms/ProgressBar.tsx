@@ -8,6 +8,7 @@ export interface ProgressBarProps extends ViewProps {
   backgroundColor?: string;
   progressColor?: string;
   className?: string;
+  color?: string
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -17,6 +18,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   progressColor = colors.primary.royalBlue, // #5852FF from design.json
   className,
   style,
+  color,
   ...props
 }) => {
   // Clamp progress between 0 and 100

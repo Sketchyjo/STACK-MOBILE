@@ -1,17 +1,26 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { View, Text, FlatList } from 'react-native';
 import { TransactionItem } from './TransactionItem';
-import { colors, typography } from '../../design/tokens';
-export const TransactionList = ({ transactions, title = 'Recent Transactions', emptyMessage = 'No transactions yet', onTransactionPress, className, ...props }) => {
-    const renderTransaction = ({ item }) => (_jsx(TransactionItem, { transaction: item, onPress: onTransactionPress ? () => onTransactionPress(item) : undefined }));
-    const renderEmptyState = () => (_jsx(View, { className: "py-8 items-center", children: _jsx(Text, { className: "text-body text-text-secondary text-center", style: {
-                fontFamily: typography.fonts.primary,
-                fontSize: typography.styles.body.size,
-                color: colors.text.secondary,
-            }, children: emptyMessage }) }));
-    return (_jsxs(View, { className: `${className || ''}`, ...props, children: [_jsx(Text, { className: "font-semibold text-h3 text-text-primary mb-4", style: {
+import { colors, typography, spacing } from '@stack/ui-library';
+import { Icon } from '@stack/ui-library';
+export const TransactionList = ({ transactions, title, onTransactionPress, emptyStateMessage = 'You have no transactions yet.', style, ...props }) => {
+    const renderItem = ({ item }) => (_jsx(TransactionItem, { transaction: item, onPress: () => onTransactionPress?.(item) }));
+    const renderEmptyState = () => (_jsxs(View, { style: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: spacing.xxl,
+        }, children: [_jsx(Icon, { name: "file-tray-outline", size: 48, color: colors.text.tertiary }), _jsx(Text, { style: {
                     fontFamily: typography.fonts.primary,
-                    fontSize: typography.styles.h3.size,
+                    fontSize: 16,
+                    color: colors.text.secondary,
+                    marginTop: spacing.md,
+                    textAlign: 'center',
+                }, children: emptyStateMessage })] }));
+    return (_jsxs(View, { style: style, ...props, children: [title && (_jsx(Text, { style: {
+                    fontFamily: typography.fonts.primary,
+                    fontSize: 22,
+                    fontWeight: typography.weights.bold,
                     color: colors.text.primary,
-                }, children: title }), _jsx(FlatList, { data: transactions, renderItem: renderTransaction, keyExtractor: (item) => item.id, ListEmptyComponent: renderEmptyState, showsVerticalScrollIndicator: false, scrollEnabled: false, ItemSeparatorComponent: () => (_jsx(View, { className: "h-px bg-border-tertiary mx-4", style: { backgroundColor: colors.border.tertiary } })) })] }));
+                    marginBottom: spacing.md,
+                }, children: title })), _jsx(FlatList, { data: transactions, renderItem: renderItem, keyExtractor: item => item.id, ListEmptyComponent: renderEmptyState, scrollEnabled: false, ItemSeparatorComponent: () => _jsx(View, { style: { height: spacing.sm } }), contentContainerStyle: { paddingVertical: spacing.sm } })] }));
 };

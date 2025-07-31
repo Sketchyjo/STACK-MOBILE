@@ -1,224 +1,276 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { colors, typography, spacing, borderRadius, shadows } from '../../design/tokens';
+import React, { useState, useRef } from 'react';
+import { View, Text, TouchableOpacity, Animated, Easing } from 'react-native';
+import { Card } from '../atoms/Card';
 import { Icon } from '../atoms/Icon';
+import {
+  colors,
+  typography,
+  spacing,
+  shadows,
+  animations,
+} from '../../design/tokens';
 
-export interface VirtualCardDisplayProps extends TouchableOpacityProps {
+export interface CardData {
+  cardType?: 'visa' | 'mastercard';
   cardNumber: string;
-  cardholderName: string;
-  expiryDate: string;
   balance: number;
   currency?: string;
-  cardType?: 'visa' | 'mastercard' | 'amex';
-  isActive?: boolean;
-  onPress?: () => void;
-  onToggleVisibility?: () => void;
-  isNumberVisible?: boolean;
-  className?: string;
-  testID?: string;
 }
 
-export const VirtualCardDisplay: React.FC<VirtualCardDisplayProps> = ({
+export interface VirtualCreditCardProps {
+  cardTitle?: string;
+  cardNumber?: string;
+  cardholderName?: string;
+  expiryDate?: string;
+  cvc?: string;
+  cardType?: 'visa' | 'mastercard';
+  balance?: number;
+  currency?: string;
+  card?: CardData;
+}
+
+export const VirtualCreditCard: React.FC<VirtualCreditCardProps> = ({
+  cardTitle,
   cardNumber,
   cardholderName,
   expiryDate,
-  balance,
-  currency = 'USD',
+  cvc,
   cardType = 'visa',
-  isActive = true,
-  onPress,
-  onToggleVisibility,
-  isNumberVisible = false,
-  className,
-  testID,
-  style,
-  ...props
+  balance = 0,
+  currency = 'USD',
+  card,
 }) => {
-  const formatCardNumber = (number: string) => {
-    if (!isNumberVisible) {
-      return `•••• •••• •••• ${number.slice(-4)}`;
-    }
-    return number.replace(/(.{4})/g, '$1 ').trim();
+  // Use card object values as fallbacks if direct props aren't provided
+  const resolvedCardType = cardType || card?.cardType || 'visa';
+  const resolvedCardNumber = cardNumber || card?.cardNumber || '';
+  const resolvedBalance = balance || card?.balance || 0;
+  const resolvedCurrency = currency || card?.currency || 'USD';
+  const [isFlipped, setIsFlipped] = useState(false);
+  const rotationAnim = useRef(new Animated.Value(0)).current;
+
+  const formatCardNumber = (num: string) => {
+    if (!num) return '';
+    return `**** **** **** ${num.slice(-4)}`;
   };
 
   const formatBalance = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
-      minimumFractionDigits: 2,
+      currency: resolvedCurrency,
     }).format(amount);
   };
 
-  const getCardTypeIcon = () => {
-    switch (cardType) {
-      case 'visa':
-        return 'card';
-      case 'mastercard':
-        return 'card';
-      case 'amex':
-        return 'card';
-      default:
-        return 'card';
-    }
+  const frontAnimatedStyle = {
+    transform: [
+      {
+        rotateY: rotationAnim.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', '180deg'],
+        }),
+      },
+    ],
+  };
+
+  const backAnimatedStyle = {
+    transform: [
+      {
+        rotateY: rotationAnim.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['180deg', '360deg'],
+        }),
+      },
+    ],
+  };
+
+  const flipCard = () => {
+    Animated.timing(rotationAnim, {
+      toValue: isFlipped ? 0 : 1,
+      duration: animations.normal,
+      easing: Easing.ease,
+      useNativeDriver: true,
+    }).start();
+    setIsFlipped(!isFlipped);
   };
 
   return (
-    <TouchableOpacity
-      style={[
-        {
-          backgroundColor: isActive ? colors.primary.royalBlue : colors.surface.light,
-          borderRadius: borderRadius.xl,
-          padding: spacing.lg,
-          minHeight: 200,
-          ...shadows.md,
-        },
-        style,
-      ]}
-      className={className}
-      testID={testID}
-      onPress={onPress}
-      disabled={!onPress}
-      {...props}
-    >
-      {/* Card Header */}
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.lg }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Icon
-            name={getCardTypeIcon()}
-            library="ionicons"
-            size={24}
-            color={isActive ? colors.text.onPrimary : colors.text.primary}
-          />
-          <Text
-            style={[
-              { 
-                fontFamily: typography.fonts.secondary, 
-                fontSize: typography.styles.label.size,
-                fontWeight: typography.styles.label.weight,
-                marginLeft: spacing.sm,
-              },
-              { color: isActive ? colors.text.onPrimary : colors.text.primary }
-            ]}
+    <TouchableOpacity onPress={flipCard} activeOpacity={0.9}>
+      <View style={{ height: 230, width: '100%' }}>
+        <Animated.View
+          style={[
+            shadows.lg,
+            {
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: 'hidden',
+            },
+            frontAnimatedStyle,
+          ]}
+        >
+          <Card
+            padding="medium"
+            style={{
+              height: '100%',
+              backgroundColor: colors.accent.limeGreen,
+              justifyContent: 'space-between',
+            }}
           >
-            {cardType.toUpperCase()}
-          </Text>
-        </View>
-        
-        {onToggleVisibility && (
-          <TouchableOpacity onPress={onToggleVisibility}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <Text
+                style={[
+                  {
+                    fontFamily: typography.fonts.secondary,
+                    fontSize: 18,
+                    fontWeight: 'bold',
+                    color: colors.text.onAccent,
+                  },
+                ]}
+              >
+                {cardTitle || 'Virtual Card'}
+              </Text>
+              <Icon
+                name={resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard'}
+                library="fontawesome"
+                size={28}
+                color={colors.text.onAccent}
+              />
+            </View>
+            <View>
+              <Text
+                style={[
+                  {
+                    fontSize: typography.styles.body.size,
+                    color: colors.text.onAccent,
+                    letterSpacing: 2,
+                    marginBottom: spacing.md,
+                    fontFamily: 'monospace',
+                  },
+                ]}
+              >
+                {formatCardNumber(resolvedCardNumber)}
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Text
+                  style={[
+                    {
+                      fontFamily: typography.fonts.primary,
+                      fontSize: typography.styles.caption.size,
+                      color: colors.text.onAccent,
+                    },
+                  ]}
+                >
+                  {cardholderName || ''}
+                </Text>
+              </View>
+            </View>
+            <View>
+              <Text
+                style={[
+                  {
+                    fontFamily: typography.fonts.primary,
+                    fontSize: typography.styles.caption.size,
+                    color: colors.text.secondary,
+                  },
+                ]}
+              >
+                Balance
+              </Text>
+              <Text
+                style={[
+                  {
+                    fontFamily: typography.fonts.secondary,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    color: colors.text.onAccent,
+                  },
+                ]}
+              >
+                {formatBalance(resolvedBalance)}
+              </Text>
+            </View>
+          </Card>
+        </Animated.View>
+        <Animated.View
+          style={[
+            shadows.lg,
+            {
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: 'hidden',
+            },
+            backAnimatedStyle,
+          ]}
+        >
+          <Card
+            padding="medium"
+            style={{
+              height: '100%',
+              backgroundColor: colors.accent.limeGreen,
+              justifyContent: 'space-between',
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  backgroundColor: colors.text.onAccent,
+                  height: 50,
+                  marginTop: spacing.lg,
+                }}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: spacing.md,
+                  backgroundColor: colors.text.onAccent,
+                  padding: spacing.sm,
+                  borderRadius: spacing.xs,
+                }}
+              >
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'right',
+                    color: colors.text.onPrimary,
+                    fontFamily: 'monospace',
+                    fontSize: 16,
+                  }}
+                >
+                  {cvc || '***'}
+                </Text>
+              </View>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  marginTop: spacing.lg,
+                  alignSelf: 'flex-end',
+                }}
+              >
+                {expiryDate ? `Expires: ${expiryDate}` : 'Expires: MM/YY'}
+              </Text>
+            </View>
             <Icon
-              name={isNumberVisible ? 'eye-off' : 'eye'}
-              library="ionicons"
-              size={20}
-              color={isActive ? colors.text.onPrimary : colors.text.secondary}
+              name={resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard'}
+              library="fontawesome"
+              size={28}
+              color="black"
+              style={{ alignSelf: 'flex-end' }}
             />
-          </TouchableOpacity>
-        )}
-      </View>
-
-      {/* Card Number */}
-      <View style={{ marginBottom: spacing.lg }}>
-        <Text
-          style={[
-            {
-              fontFamily: typography.fonts.primary,
-              fontSize: 18,
-              fontWeight: typography.weights.medium,
-              letterSpacing: 2,
-            },
-            { color: isActive ? colors.text.onPrimary : colors.text.primary }
-          ]}
-        >
-          {formatCardNumber(cardNumber)}
-        </Text>
-      </View>
-
-      {/* Card Details */}
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-        <View>
-          <Text
-            style={[
-              {
-                fontFamily: typography.fonts.secondary,
-                fontSize: typography.styles.caption.size,
-                fontWeight: typography.styles.caption.weight,
-                marginBottom: spacing.xs,
-              },
-              { color: isActive ? colors.text.onPrimary : colors.text.secondary }
-            ]}
-          >
-            CARDHOLDER NAME
-          </Text>
-          <Text
-            style={[
-              {
-                fontFamily: typography.fonts.secondary,
-                fontSize: typography.styles.label.size,
-                fontWeight: typography.styles.label.weight,
-              },
-              { color: isActive ? colors.text.onPrimary : colors.text.primary }
-            ]}
-          >
-            {cardholderName.toUpperCase()}
-          </Text>
-        </View>
-
-        <View style={{ alignItems: 'flex-end' }}>
-          <Text
-            style={[
-              {
-                fontFamily: typography.fonts.secondary,
-                fontSize: typography.styles.caption.size,
-                fontWeight: typography.styles.caption.weight,
-                marginBottom: spacing.xs,
-              },
-              { color: isActive ? colors.text.onPrimary : colors.text.secondary }
-            ]}
-          >
-            EXPIRES
-          </Text>
-          <Text
-            style={[
-              {
-                fontFamily: typography.fonts.secondary,
-                fontSize: typography.styles.label.size,
-                fontWeight: typography.styles.label.weight,
-              },
-              { color: isActive ? colors.text.onPrimary : colors.text.primary }
-            ]}
-          >
-            {expiryDate}
-          </Text>
-        </View>
-      </View>
-
-      {/* Available Balance */}
-      <View style={{ marginTop: spacing.lg, paddingTop: spacing.md, borderTopWidth: 1, borderTopColor: isActive ? colors.text.onPrimary : colors.border.primary }}>
-        <Text
-          style={[
-            {
-              fontFamily: typography.fonts.secondary,
-              fontSize: typography.styles.caption.size,
-              fontWeight: typography.styles.caption.weight,
-              marginBottom: spacing.xs,
-            },
-            { color: isActive ? colors.text.onPrimary : colors.text.secondary }
-          ]}
-        >
-          AVAILABLE BALANCE
-        </Text>
-        <Text
-          style={[
-            {
-              fontFamily: typography.fonts.primary,
-              fontSize: typography.styles.h2.size,
-              fontWeight: typography.styles.h2.weight,
-            },
-            { color: isActive ? colors.text.onPrimary : colors.text.primary }
-          ]}
-        >
-          {formatBalance(balance)}
-        </Text>
+          </Card>
+        </Animated.View>
       </View>
     </TouchableOpacity>
   );

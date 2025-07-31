@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { colors, typography, spacing } from '../../design/tokens';
+import { Icon } from '../atoms';
 
 export interface HeaderProps {
   title: string;
@@ -27,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <SafeAreaView style={{ backgroundColor }}>
-      <View 
+      <View
         className={`
           flex-row items-center justify-between px-4 py-3
           ${className || ''}
@@ -43,15 +44,21 @@ export const Header: React.FC<HeaderProps> = ({
               accessibilityRole="button"
               accessibilityLabel={showBackButton ? 'Go back' : 'Left action'}
             >
-              {leftIcon || (showBackButton && (
-                <Text className="text-[#000000] text-lg">←</Text>
-              ))}
+              {leftIcon ||
+                (showBackButton && (
+                  <Icon
+                    library="ionicons"
+                    name="arrow-back"
+                    size={24}
+                    color={colors.text.primary}
+                  />
+                ))}
             </TouchableOpacity>
           )}
 
           {/* Title and Subtitle */}
           <View className="flex-1">
-            <Text 
+            <Text
               className="text-[#000000] text-lg font-bold"
               style={{
                 fontFamily: typography.fonts.primary,
@@ -63,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({
               {title}
             </Text>
             {subtitle && (
-              <Text 
+              <Text
                 className="text-[#A0A0A0] text-sm"
                 style={{
                   fontFamily: typography.fonts.secondary,

@@ -1,193 +1,140 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  useWindowDimensions,
+  TouchableOpacityProps,
+} from 'react-native';
 import { Card } from '../atoms/Card';
-import { Icon } from '../atoms/Icon';
-import { Badge } from '../atoms/Badge';
-import { PerformanceIndicator } from './PerformanceIndicator';
-import { colors, typography, spacing } from '../../design/tokens';
+import { Chart, ChartDataPoint } from '../atoms/Chart';
+import { colors, typography, spacing, shadows } from '../../design/tokens';
 
-export interface BasketCardProps extends Omit<TouchableOpacityProps, 'children'> {
-  id: string;
+/**
+ * Props for the BasketCard component.
+ */
+export interface BasketCardProps
+  extends Omit<TouchableOpacityProps, 'children'> {
+  /** The main name of the basket, e.g., "Facebook" */
   name: string;
-  description: string;
-  riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
-  iconUrl?: string;
-  performanceIndicator?: {
-    returnPercentage: number;
-    totalInvested: number;
-    currentValue: number;
-  } | null;
-  isCommunity?: boolean;
+  /** The issuer or subtitle, e.g., "Youtube.Inc" */
+  issuerName: string;
+  /** The main value to display in large text */
+  value: number;
+  /** Currency for the value */
+  currency?: string;
+  /** React node for the logo, e.g., <Image /> or an <Icon /> */
+  logo: React.ReactNode;
+  /** Data points for the line chart */
+  chartData: ChartDataPoint[];
+  /** The color of the line and the chart's gradient */
+  chartColor: string;
+  /** Function to call when the card is pressed */
   onPress?: () => void;
+  /** Additional class names for styling */
   className?: string;
 }
 
 export const BasketCard: React.FC<BasketCardProps> = ({
-  id,
   name,
-  description,
-  riskLevel,
-  iconUrl,
-  performanceIndicator,
-  isCommunity = false,
+  issuerName,
+  value,
+  currency = 'USD',
+  logo,
+  chartData,
+  chartColor,
   onPress,
   className,
   style,
   ...props
 }) => {
-  const getRiskBadgeVariant = (risk: string) => {
-    switch (risk) {
-      case 'LOW':
-        return 'low';
-      case 'MEDIUM':
-        return 'medium';
-      case 'HIGH':
-        return 'high';
-      default:
-        return 'default';
-    }
-  };
+  const { width: screenWidth } = useWindowDimensions();
 
-  const getRiskLabel = (risk: string) => {
-    switch (risk) {
-      case 'LOW':
-        return 'Low Risk';
-      case 'MEDIUM':
-        return 'Medium Risk';
-      case 'HIGH':
-        return 'High Risk';
-      default:
-        return risk;
-    }
+  // Adjust chart width based on typical screen padding.
+  // This assumes the grid container for these cards has some horizontal padding.
+  const chartWidth = screenWidth / 2 - 48;
+
+  /**
+   * Formats a number into a currency string.
+   * e.g., 60692 -> $60,692
+   */
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
   };
 
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={style}
+      activeOpacity={0.8}
       className={className}
-      activeOpacity={0.7}
+      style={[shadows.md, style]}
       {...props}
     >
-      <Card variant="default" padding="large">
-        {/* Header Row */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: spacing.md }}>
-          {/* Icon and Title */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginRight: spacing.sm }}>
-            {/* Basket Icon */}
-            <View
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 24,
-                backgroundColor: colors.surface.light,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: spacing.md,
-              }}
-            >
-              <Icon
-                name="basket-outline"
-                library="ionicons"
-                size={24}
-                color={colors.primary.royalBlue}
-              />
-            </View>
-
-            {/* Title and Community Badge */}
-            <View style={{ flex: 1 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: spacing.xs }}>
-                <Text
-                  style={{
-                    fontFamily: typography.fonts.primary,
-                    fontSize: typography.styles.h3.size,
-                    fontWeight: typography.weights.bold,
-                    color: colors.text.primary,
-                    flex: 1,
-                  }}
-                  numberOfLines={1}
-                >
-                  {name}
-                </Text>
-                {isCommunity && (
-                  <Icon
-                    name="people-outline"
-                    library="ionicons"
-                    size={16}
-                    color={colors.text.secondary}
-                    style={{ marginLeft: spacing.xs }}
-                  />
-                )}
-              </View>
-              
-              {/* Risk Level Badge */}
-              <Badge
-                variant={getRiskBadgeVariant(riskLevel)}
-                size="small"
-              >
-                {getRiskLabel(riskLevel)}
-              </Badge>
-            </View>
-          </View>
-
-          {/* Performance Indicator */}
-          {performanceIndicator && (
-            <PerformanceIndicator
-              returnPercentage={performanceIndicator.returnPercentage}
-              size="medium"
-            />
-          )}
+      <Card
+        variant="default"
+        padding="none" // Padding is handled internally for more control
+        style={{
+          backgroundColor: colors.background.main, // White background like in the screenshot
+          overflow: 'hidden', // Ensures the chart gradient doesn't bleed out
+        }}
+      >
+        {/* Top Content Section */}
+        <View style={{ padding: spacing.lg, paddingBottom: spacing.md }}>
+          {logo}
+          <Text
+            style={{
+              fontFamily: typography.fonts.primary,
+              fontSize: typography.styles.h2.size,
+              fontWeight: typography.weights.bold,
+              color: colors.text.primary,
+              marginTop: spacing.lg,
+            }}
+            numberOfLines={1}
+          >
+            {name}
+          </Text>
+          <Text
+            style={{
+              fontFamily: typography.fonts.secondary,
+              fontSize: typography.styles.label.size,
+              color: colors.text.secondary,
+              marginTop: spacing.xs,
+            }}
+            numberOfLines={1}
+          >
+            {issuerName}
+          </Text>
+          <Text
+            style={{
+              fontFamily: typography.fonts.primary,
+              fontSize: 54, // Large font size for the value
+              fontWeight: typography.weights.semibold,
+              color: colors.text.primary,
+              marginTop: spacing.md,
+            }}
+            numberOfLines={1}
+            adjustsFontSizeToFit
+          >
+            {formatCurrency(value)}
+          </Text>
         </View>
 
-        {/* Description */}
-        <Text
-          style={{
-            fontFamily: typography.fonts.secondary,
-            fontSize: typography.styles.body.size,
-            color: colors.text.secondary,
-            lineHeight: typography.styles.body.size * typography.lineHeights.normal,
-            marginBottom: spacing.md,
-          }}
-          numberOfLines={2}
-        >
-          {description}
-        </Text>
-
-        {/* Footer Row */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Investment Summary */}
-          {performanceIndicator ? (
-            <View>
-              <Text
-                style={{
-                  fontFamily: typography.fonts.secondary,
-                  fontSize: typography.styles.caption.size,
-                  color: colors.text.tertiary,
-                }}
-              >
-                Current Value
-              </Text>
-              <Text
-                style={{
-                  fontFamily: typography.fonts.secondary,
-                  fontSize: typography.styles.label.size,
-                  fontWeight: typography.weights.medium,
-                  color: colors.text.primary,
-                }}
-              >
-                ${performanceIndicator.currentValue.toLocaleString()}
-              </Text>
-            </View>
-          ) : (
-            <View />
-          )}
-
-          {/* Action Arrow */}
-          <Icon
-            name="chevron-forward-outline"
-            library="ionicons"
-            size={20}
-            color={colors.text.tertiary}
+        {/* Chart Section */}
+        <View style={{ marginLeft: -spacing.lg, marginBottom: -spacing.lg }}>
+          <Chart
+            data={chartData}
+            type="line"
+            height={100}
+            width={chartWidth + spacing.lg * 2} // Make chart span full width of card
+            color={chartColor}
+            startFillColor={chartColor}
+            endFillColor={`${colors.background.main}00`} // Fade to transparent white
           />
         </View>
       </Card>
