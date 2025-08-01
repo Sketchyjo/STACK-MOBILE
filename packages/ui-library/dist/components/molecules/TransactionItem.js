@@ -83,7 +83,7 @@ export const TransactionItem = ({ transaction, ...props }) => {
                 }, children: _jsx(Icon, { library: "feather", name: iconName, size: 22, color: iconColor }) }), _jsxs(View, { style: { flex: 1, justifyContent: 'center' }, children: [_jsx(Text, { style: {
                             fontFamily: typography.fonts.primary,
                             fontSize: 16,
-                            fontWeight: typography.weights.regular,
+                            fontWeight: typography.weights.medium,
                             color: colors.text.primary,
                         }, numberOfLines: 1, children: transaction.title }), _jsx(Text, { style: {
                             fontFamily: typography.fonts.secondary,

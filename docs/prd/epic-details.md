@@ -199,7 +199,7 @@
 
 **Acceptance Criteria:**
 
-1.  The mobile app fetches and displays a list of available "Baskets" from the backend.
+1.  The mobile app fetches and displays a list of available "Baskets" from the backend through the polygon.io endpoints.
 2.  Each "Basket" in the list is displayed with its name, a descriptive icon or logo, and a simple performance indicator (e.g., "+5% this week").
 3.  The display uses simple names and logos, not financial tickers, for all assets.
 4.  Tapping on a "Basket" navigates the user to a dedicated "Basket Detail View".

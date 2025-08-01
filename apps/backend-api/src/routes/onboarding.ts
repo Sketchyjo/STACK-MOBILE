@@ -69,8 +69,8 @@ router.post('/starter-investment', async (req, res) => {
         const walletResult = await createWallet(user.id);
         userWallet = walletResult.address;
         
-        // Update user with wallet address
-        await updateUser(user.id, { walletAddress: userWallet });
+        // Note: walletAddress is set during user creation, not updated here
+        // The wallet address should already be set from the authentication flow
       }
 
       // Simulate starter investment allocation

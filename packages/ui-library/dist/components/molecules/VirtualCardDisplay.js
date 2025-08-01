@@ -28,7 +28,7 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
             {
                 rotateY: rotationAnim.interpolate({
                     inputRange: [0, 1],
-                    outputRange: ['0deg', '180deg']
+                    outputRange: ['0deg', '180deg'],
                 }),
             },
         ],
@@ -38,7 +38,7 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
             {
                 rotateY: rotationAnim.interpolate({
                     inputRange: [0, 1],
-                    outputRange: ['180deg', '360deg']
+                    outputRange: ['180deg', '360deg'],
                 }),
             },
         ],
@@ -63,16 +63,23 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
                         frontAnimatedStyle,
                     ], children: _jsxs(Card, { padding: "medium", style: {
                             height: '100%',
-                            backgroundColor: '#1C1C1E',
+                            backgroundColor: colors.accent.limeGreen,
                             justifyContent: 'space-between',
                         }, children: [_jsxs(View, { style: {
                                     flexDirection: 'row',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
-                                }, children: [_jsx(Text, { style: [{ fontFamily: typography.fonts.secondary, fontSize: 18, fontWeight: 'bold', color: colors.text.onPrimary }], children: cardTitle || 'Virtual Card' }), _jsx(Icon, { name: resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard', library: "fontawesome", size: 28, color: "white" })] }), _jsxs(View, { children: [_jsx(Text, { style: [
+                                }, children: [_jsx(Text, { style: [
+                                            {
+                                                fontFamily: typography.fonts.secondary,
+                                                fontSize: 18,
+                                                fontWeight: 'bold',
+                                                color: colors.text.onAccent,
+                                            },
+                                        ], children: cardTitle || 'Virtual Card' }), _jsx(Icon, { name: resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard', library: "fontawesome", size: 28, color: colors.text.onAccent })] }), _jsxs(View, { children: [_jsx(Text, { style: [
                                             {
                                                 fontSize: typography.styles.body.size,
-                                                color: colors.text.onPrimary,
+                                                color: colors.text.onAccent,
                                                 letterSpacing: 2,
                                                 marginBottom: spacing.md,
                                                 fontFamily: 'monospace',
@@ -80,7 +87,26 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
                                         ], children: formatCardNumber(resolvedCardNumber) }), _jsx(View, { style: {
                                             flexDirection: 'row',
                                             justifyContent: 'space-between',
-                                        }, children: _jsx(Text, { style: [{ fontFamily: typography.fonts.primary, fontSize: typography.styles.caption.size, color: 'white' }], children: cardholderName || '' }) })] }), _jsxs(View, { children: [_jsx(Text, { style: [{ fontFamily: typography.fonts.primary, fontSize: typography.styles.caption.size, color: colors.text.secondary }], children: "Balance" }), _jsx(Text, { style: [{ fontFamily: typography.fonts.secondary, fontSize: 20, fontWeight: 'bold', color: 'white' }], children: formatBalance(resolvedBalance) })] })] }) }), _jsx(Animated.View, { style: [
+                                        }, children: _jsx(Text, { style: [
+                                                {
+                                                    fontFamily: typography.fonts.primary,
+                                                    fontSize: typography.styles.caption.size,
+                                                    color: colors.text.onAccent,
+                                                },
+                                            ], children: cardholderName || '' }) })] }), _jsxs(View, { children: [_jsx(Text, { style: [
+                                            {
+                                                fontFamily: typography.fonts.primary,
+                                                fontSize: typography.styles.caption.size,
+                                                color: colors.text.secondary,
+                                            },
+                                        ], children: "Balance" }), _jsx(Text, { style: [
+                                            {
+                                                fontFamily: typography.fonts.secondary,
+                                                fontSize: 20,
+                                                fontWeight: 'bold',
+                                                color: colors.text.onAccent,
+                                            },
+                                        ], children: formatBalance(resolvedBalance) })] })] }) }), _jsx(Animated.View, { style: [
                         shadows.lg,
                         {
                             position: 'absolute',
@@ -91,17 +117,17 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
                         backAnimatedStyle,
                     ], children: _jsxs(Card, { padding: "medium", style: {
                             height: '100%',
-                            backgroundColor: '#1C1C1E',
+                            backgroundColor: colors.accent.limeGreen,
                             justifyContent: 'space-between',
                         }, children: [_jsxs(View, { children: [_jsx(View, { style: {
-                                            backgroundColor: 'black',
+                                            backgroundColor: colors.text.onAccent,
                                             height: 50,
                                             marginTop: spacing.lg,
                                         } }), _jsx(View, { style: {
                                             flexDirection: 'row',
                                             alignItems: 'center',
                                             marginTop: spacing.md,
-                                            backgroundColor: '#333333',
+                                            backgroundColor: colors.text.onAccent,
                                             padding: spacing.sm,
                                             borderRadius: spacing.xs,
                                         }, children: _jsx(Text, { style: {
@@ -111,9 +137,9 @@ export const VirtualCreditCard = ({ cardTitle, cardNumber, cardholderName, expir
                                                 fontFamily: 'monospace',
                                                 fontSize: 16,
                                             }, children: cvc || '***' }) }), _jsx(Text, { style: {
-                                            color: 'white',
+                                            color: "black",
                                             fontSize: 12,
                                             marginTop: spacing.lg,
                                             alignSelf: 'flex-end',
-                                        }, children: expiryDate ? `Expires: ${expiryDate}` : 'Expires: MM/YY' })] }), _jsx(Icon, { name: resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard', library: "fontawesome", size: 28, color: "white", style: { alignSelf: 'flex-end' } })] }) })] }) }));
+                                        }, children: expiryDate ? `Expires: ${expiryDate}` : 'Expires: MM/YY' })] }), _jsx(Icon, { name: resolvedCardType === 'visa' ? 'cc-visa' : 'cc-mastercard', library: "fontawesome", size: 28, color: "black", style: { alignSelf: 'flex-end' } })] }) })] }) }));
 };

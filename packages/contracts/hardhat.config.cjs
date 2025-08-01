@@ -8,9 +8,9 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
-    CitreaTestnet: {
-      url: 'https://rpc.testnet.citrea.xyz',
-      chainId: 5115,
+    EtherlinkTestnet: {
+      url: 'https://node.ghostnet.etherlink.com',
+      chainId: 128123,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
   },

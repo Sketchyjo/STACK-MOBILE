@@ -18,6 +18,7 @@
     "db:seed": "tsx src/scripts/seedBaskets.ts"
   },
   "dependencies": {
+    "@polygon.io/client-js": "^8.0.0",
     "@prisma/client": "^5.10.0",
     "@thirdweb-dev/auth": "^4.1.97",
     "@thirdweb-dev/sdk": "^4.0.0",

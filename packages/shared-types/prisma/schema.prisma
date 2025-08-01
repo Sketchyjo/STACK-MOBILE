@@ -111,6 +111,19 @@ model Basket {
   riskLevel     RiskLevel @default(MEDIUM)
   assets        Json      // Array of asset compositions with weights
   isCommunity   Boolean   @default(false)
+  category      String?   // Category of the basket (e.g., Technology, Healthcare)
+  
+  // Performance metrics
+  performanceOneDay      Decimal? @db.Decimal(10, 4)
+  performanceOneWeek     Decimal? @db.Decimal(10, 4)
+  performanceOneMonth    Decimal? @db.Decimal(10, 4)
+  performanceThreeMonths Decimal? @db.Decimal(10, 4)
+  performanceOneYear     Decimal? @db.Decimal(10, 4)
+  
+  // Financial metrics
+  totalValue    Decimal? @db.Decimal(18, 8)
+  assetCount    Int?     @default(0)
+  
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   curator       User?     @relation("CuratedBy", fields: [curatorId], references: [id], onDelete: SetNull)

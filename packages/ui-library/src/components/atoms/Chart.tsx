@@ -64,7 +64,6 @@ export const Chart: React.FC<ChartProps> = ({
             barWidth={20}
             frontColor={color}
             spacing={20}
-            showValuesOnTopOfBars={showValues}
             isAnimated
             animationDuration={animationDuration}
             height={height}

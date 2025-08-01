@@ -16,20 +16,22 @@ import { colors, typography, spacing, shadows } from '../../design/tokens';
  */
 export interface BasketCardProps
   extends Omit<TouchableOpacityProps, 'children'> {
-  /** The main name of the basket, e.g., "Facebook" */
+  /** Unique identifier for the basket */
+  id: string;
+  /** The main name of the basket */
   name: string;
-  /** The issuer or subtitle, e.g., "Youtube.Inc" */
-  issuerName: string;
-  /** The main value to display in large text */
-  value: number;
-  /** Currency for the value */
-  currency?: string;
-  /** React node for the logo, e.g., <Image /> or an <Icon /> */
-  logo: React.ReactNode;
-  /** Data points for the line chart */
-  chartData: ChartDataPoint[];
-  /** The color of the line and the chart's gradient */
-  chartColor: string;
+  /** Description of the basket */
+  description: string;
+  /** Risk level of the basket */
+  riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+  /** URL for the basket icon */
+  iconUrl?: string;
+  /** Performance indicator data */
+  performanceIndicator: {
+    returnPercentage: number;
+    totalInvested: number;
+    currentValue: number;
+  };
   /** Function to call when the card is pressed */
   onPress?: () => void;
   /** Additional class names for styling */
@@ -37,13 +39,12 @@ export interface BasketCardProps
 }
 
 export const BasketCard: React.FC<BasketCardProps> = ({
+  id,
   name,
-  issuerName,
-  value,
-  currency = 'USD',
-  logo,
-  chartData,
-  chartColor,
+  description,
+  riskLevel,
+  iconUrl,
+  performanceIndicator,
   onPress,
   className,
   style,
@@ -52,7 +53,6 @@ export const BasketCard: React.FC<BasketCardProps> = ({
   const { width: screenWidth } = useWindowDimensions();
 
   // Adjust chart width based on typical screen padding.
-  // This assumes the grid container for these cards has some horizontal padding.
   const chartWidth = screenWidth / 2 - 48;
 
   /**
@@ -62,11 +62,50 @@ export const BasketCard: React.FC<BasketCardProps> = ({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
   };
+
+  /**
+   * Get risk level color
+   */
+  const getRiskLevelColor = (risk: string) => {
+    switch (risk) {
+      case 'LOW':
+        return colors.semantic.success;
+      case 'MEDIUM':
+        return colors.semantic.warning;
+      case 'HIGH':
+        return colors.semantic.danger;
+      default:
+        return colors.text.secondary;
+    }
+  };
+
+  /**
+   * Get performance color based on percentage
+   */
+  const getPerformanceColor = (percentage: number) => {
+    return percentage >= 0 ? colors.semantic.success : colors.semantic.danger;
+  };
+
+  // Generate simple chart data based on performance
+  const generateChartData = (): ChartDataPoint[] => {
+    const baseValue = performanceIndicator.totalInvested;
+    const currentValue = performanceIndicator.currentValue;
+    const change = currentValue - baseValue;
+    
+    // Create a simple upward or downward trend
+    return Array.from({ length: 7 }, (_, i) => ({
+      value: baseValue + (change * i) / 6,
+      label: `Day ${i + 1}`,
+    }));
+  };
+
+  const chartData = generateChartData();
+  const chartColor = getPerformanceColor(performanceIndicator.returnPercentage);
 
   return (
     <TouchableOpacity
@@ -80,13 +119,47 @@ export const BasketCard: React.FC<BasketCardProps> = ({
         variant="default"
         padding="none" // Padding is handled internally for more control
         style={{
-          backgroundColor: colors.background.main, // White background like in the screenshot
+          backgroundColor: colors.background.main, // White background
           overflow: 'hidden', // Ensures the chart gradient doesn't bleed out
         }}
       >
         {/* Top Content Section */}
         <View style={{ padding: spacing.lg, paddingBottom: spacing.md }}>
-          {logo}
+          {/* Icon */}
+          {iconUrl ? (
+            <Image
+              source={{ uri: iconUrl }}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 8,
+              }}
+              resizeMode="contain"
+            />
+          ) : (
+            <View
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 8,
+                backgroundColor: colors.surface.card,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: typography.fonts.primary,
+                  fontSize: 16,
+                  fontWeight: typography.weights.bold,
+                  color: colors.text.primary,
+                }}
+              >
+                {name.charAt(0)}
+              </Text>
+            </View>
+          )}
+          
           <Text
             style={{
               fontFamily: typography.fonts.primary,
@@ -99,6 +172,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({
           >
             {name}
           </Text>
+          
           <Text
             style={{
               fontFamily: typography.fonts.secondary,
@@ -106,14 +180,39 @@ export const BasketCard: React.FC<BasketCardProps> = ({
               color: colors.text.secondary,
               marginTop: spacing.xs,
             }}
-            numberOfLines={1}
+            numberOfLines={2}
           >
-            {issuerName}
+            {description}
           </Text>
+
+          {/* Risk Level Badge */}
+          <View
+            style={{
+              backgroundColor: getRiskLevelColor(riskLevel),
+              paddingHorizontal: spacing.sm,
+              paddingVertical: spacing.xs,
+              borderRadius: 12,
+              alignSelf: 'flex-start',
+              marginTop: spacing.sm,
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: typography.fonts.primary,
+                fontSize: typography.styles.caption.size,
+                fontWeight: typography.weights.medium,
+                color: colors.background.main,
+              }}
+            >
+              {riskLevel} RISK
+            </Text>
+          </View>
+          
+          {/* Performance Value */}
           <Text
             style={{
               fontFamily: typography.fonts.primary,
-              fontSize: 54, // Large font size for the value
+              fontSize: 32,
               fontWeight: typography.weights.semibold,
               color: colors.text.primary,
               marginTop: spacing.md,
@@ -121,7 +220,21 @@ export const BasketCard: React.FC<BasketCardProps> = ({
             numberOfLines={1}
             adjustsFontSizeToFit
           >
-            {formatCurrency(value)}
+            {formatCurrency(performanceIndicator.currentValue)}
+          </Text>
+
+          {/* Performance Percentage */}
+          <Text
+            style={{
+              fontFamily: typography.fonts.primary,
+              fontSize: typography.styles.body.size,
+              fontWeight: typography.weights.medium,
+              color: getPerformanceColor(performanceIndicator.returnPercentage),
+              marginTop: spacing.xs,
+            }}
+          >
+            {performanceIndicator.returnPercentage >= 0 ? '+' : ''}
+            {performanceIndicator.returnPercentage.toFixed(2)}%
           </Text>
         </View>
 
@@ -130,7 +243,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({
           <Chart
             data={chartData}
             type="line"
-            height={100}
+            height={80}
             width={chartWidth + spacing.lg * 2} // Make chart span full width of card
             color={chartColor}
             startFillColor={chartColor}

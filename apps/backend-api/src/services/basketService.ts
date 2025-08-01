@@ -86,9 +86,9 @@ export class BasketService {
       id: basket.id,
       name: basket.name,
       description: basket.description,
-      iconUrl: basket.iconUrl,
+      iconUrl: basket.iconUrl || '',
       riskLevel: basket.riskLevel,
-      category: basket.category,
+      category: basket.category || '',
       performance: {
         oneDay: basket.performanceOneDay?.toNumber() || 0,
         oneWeek: basket.performanceOneWeek?.toNumber() || 0,
@@ -97,7 +97,7 @@ export class BasketService {
         oneYear: basket.performanceOneYear?.toNumber() || 0,
       },
       totalValue: basket.totalValue?.toNumber() || 0,
-      assetCount: basket.assetCount
+      assetCount: basket.assetCount || 0
     }));
 
     return {
@@ -124,9 +124,9 @@ export class BasketService {
       id: basket.id,
       name: basket.name,
       description: basket.description,
-      iconUrl: basket.iconUrl,
+      iconUrl: basket.iconUrl || '',
       riskLevel: basket.riskLevel,
-      category: basket.category,
+      category: basket.category || '',
       performance: {
         oneDay: basket.performanceOneDay?.toNumber() || 0,
         oneWeek: basket.performanceOneWeek?.toNumber() || 0,
@@ -135,7 +135,7 @@ export class BasketService {
         oneYear: basket.performanceOneYear?.toNumber() || 0,
       },
       totalValue: basket.totalValue?.toNumber() || 0,
-      assetCount: basket.assetCount
+      assetCount: basket.assetCount || 0
     };
   }
 
@@ -153,8 +153,15 @@ export class BasketService {
         name: 'Tech Giants',
         description: 'The biggest names in technology driving innovation forward',
         iconUrl: 'https://example.com/icons/tech.svg',
-        riskLevel: RiskLevel.MEDIUM,
+        riskLevel: 'MEDIUM' as RiskLevel,
         category: 'Technology',
+        assets: [
+          { symbol: 'AAPL', weight: 0.25 },
+          { symbol: 'GOOGL', weight: 0.25 },
+          { symbol: 'MSFT', weight: 0.25 },
+          { symbol: 'AMZN', weight: 0.15 },
+          { symbol: 'META', weight: 0.10 }
+        ],
         performanceOneDay: 1.2,
         performanceOneWeek: 3.5,
         performanceOneMonth: 8.7,
@@ -168,8 +175,18 @@ export class BasketService {
         name: 'Green Energy',
         description: 'Sustainable energy companies building the future',
         iconUrl: 'https://example.com/icons/green.svg',
-        riskLevel: RiskLevel.HIGH,
+        riskLevel: 'HIGH' as RiskLevel,
         category: 'Energy',
+        assets: [
+          { symbol: 'TSLA', weight: 0.20 },
+          { symbol: 'ENPH', weight: 0.15 },
+          { symbol: 'SEDG', weight: 0.15 },
+          { symbol: 'NEE', weight: 0.15 },
+          { symbol: 'ICLN', weight: 0.10 },
+          { symbol: 'PLUG', weight: 0.10 },
+          { symbol: 'FSLR', weight: 0.10 },
+          { symbol: 'SPWR', weight: 0.05 }
+        ],
         performanceOneDay: 2.1,
         performanceOneWeek: 5.8,
         performanceOneMonth: 12.3,
@@ -183,8 +200,22 @@ export class BasketService {
         name: 'Dividend Kings',
         description: 'Reliable companies with consistent dividend payments',
         iconUrl: 'https://example.com/icons/dividend.svg',
-        riskLevel: RiskLevel.LOW,
+        riskLevel: 'LOW' as RiskLevel,
         category: 'Income',
+        assets: [
+          { symbol: 'JNJ', weight: 0.12 },
+          { symbol: 'KO', weight: 0.10 },
+          { symbol: 'PG', weight: 0.10 },
+          { symbol: 'MMM', weight: 0.08 },
+          { symbol: 'CL', weight: 0.08 },
+          { symbol: 'PEP', weight: 0.08 },
+          { symbol: 'WMT', weight: 0.08 },
+          { symbol: 'MCD', weight: 0.08 },
+          { symbol: 'ABT', weight: 0.08 },
+          { symbol: 'CVX', weight: 0.08 },
+          { symbol: 'XOM', weight: 0.06 },
+          { symbol: 'T', weight: 0.06 }
+        ],
         performanceOneDay: 0.3,
         performanceOneWeek: 1.2,
         performanceOneMonth: 3.8,
@@ -198,8 +229,16 @@ export class BasketService {
         name: 'Crypto Leaders',
         description: 'Top cryptocurrency and blockchain companies',
         iconUrl: 'https://example.com/icons/crypto.svg',
-        riskLevel: RiskLevel.HIGH,
+        riskLevel: 'HIGH' as RiskLevel,
         category: 'Cryptocurrency',
+        assets: [
+          { symbol: 'COIN', weight: 0.25 },
+          { symbol: 'MSTR', weight: 0.20 },
+          { symbol: 'RIOT', weight: 0.15 },
+          { symbol: 'MARA', weight: 0.15 },
+          { symbol: 'SQ', weight: 0.15 },
+          { symbol: 'PYPL', weight: 0.10 }
+        ],
         performanceOneDay: -1.5,
         performanceOneWeek: 8.2,
         performanceOneMonth: 18.9,
@@ -213,8 +252,20 @@ export class BasketService {
         name: 'Healthcare Heroes',
         description: 'Medical and pharmaceutical companies improving lives',
         iconUrl: 'https://example.com/icons/healthcare.svg',
-        riskLevel: RiskLevel.MEDIUM,
+        riskLevel: 'MEDIUM' as RiskLevel,
         category: 'Healthcare',
+        assets: [
+          { symbol: 'JNJ', weight: 0.15 },
+          { symbol: 'PFE', weight: 0.12 },
+          { symbol: 'UNH', weight: 0.12 },
+          { symbol: 'ABBV', weight: 0.10 },
+          { symbol: 'MRK', weight: 0.10 },
+          { symbol: 'TMO', weight: 0.08 },
+          { symbol: 'ABT', weight: 0.08 },
+          { symbol: 'DHR', weight: 0.08 },
+          { symbol: 'BMY', weight: 0.08 },
+          { symbol: 'AMGN', weight: 0.09 }
+        ],
         performanceOneDay: 0.8,
         performanceOneWeek: 2.1,
         performanceOneMonth: 6.4,
