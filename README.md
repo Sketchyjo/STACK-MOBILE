@@ -1,4 +1,7 @@
-<img width="1024" height="1536" alt="Poster Design Concepts Jul 27 2025" src="https://github.com/user-attachments/assets/b6d951bd-57bc-4dd5-b31e-e63471647071" />
+
+<img width="1024" height="1024" alt="Branding Presentation for Stack Logo" src="https://github.com/user-attachments/assets/836e56bd-dfc4-4df8-98a1-8f26a2f7bc88" />
+<img width="1024" height="1024" alt="Empowering Gen Z Investments" src="https://github.com/user-attachments/assets/0f71adaf-fd89-412f-8167-2443c9ce6b73" />
+
 
 # **STACK - Decentralized Investment Platform**
 
