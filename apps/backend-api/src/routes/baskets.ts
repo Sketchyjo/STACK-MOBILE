@@ -174,10 +174,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /baskets/:id - Get specific basket details
+// GET /baskets/:id - Get specific basket details with chart data
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const { timeframe = '1M' } = req.query;
     
     const basket = await prisma.basket.findUnique({
       where: { id },
@@ -232,6 +233,22 @@ router.get('/:id', async (req, res) => {
       assetCount = basket.assets.length;
     }
     
+    // Generate mock chart data based on timeframe
+    const chartData = generateMockChartData(timeframe as string, performance.percentage);
+    
+    // Enhanced asset details with mock data
+    const enhancedAssets = Array.isArray(basket.assets) ? basket.assets.map((asset: any) => ({
+      symbol: asset.symbol,
+      name: asset.name || getAssetName(asset.symbol),
+      weight: asset.weight || 0,
+      type: asset.type || 'stock',
+      price: generateMockPrice(asset.symbol),
+      change: generateMockChange(),
+      changePercent: generateMockChangePercent(),
+      logoUrl: asset.logoUrl || generateLogoUrl(asset.symbol),
+      allocation: asset.weight || 0,
+    })) : [];
+    
     // Remove holdings from response as we've processed them
     const { holdings, ...basketData } = basket;
     
@@ -242,10 +259,23 @@ router.get('/:id', async (req, res) => {
       iconUrl: basketData.iconUrl,
       riskLevel: basketData.riskLevel,
       category,
-      performance,
+      performance: {
+        ...performance,
+        oneDay: generateMockPerformance(),
+        oneWeek: generateMockPerformance(),
+        oneMonth: generateMockPerformance(),
+        threeMonth: generateMockPerformance(),
+        sixMonth: generateMockPerformance(),
+        oneYear: generateMockPerformance(),
+        ytd: generateMockPerformance(),
+      },
       totalValue,
       assetCount,
-      assets: basketData.assets, // Include full asset details
+      assets: enhancedAssets,
+      chartData,
+      timeframe,
+      createdAt: basketData.createdAt,
+      updatedAt: basketData.updatedAt,
     });
     
   } catch (error) {
@@ -256,5 +286,105 @@ router.get('/:id', async (req, res) => {
     });
   }
 });
+
+// Helper functions for mock data generation
+function generateMockChartData(timeframe: string, basePerformance: number) {
+  const dataPoints = [];
+  let points = 30; // Default for 1M
+  
+  switch (timeframe) {
+    case '1W':
+      points = 7;
+      break;
+    case '1M':
+      points = 30;
+      break;
+    case '3M':
+      points = 90;
+      break;
+    case '6M':
+      points = 180;
+      break;
+    case '1Y':
+      points = 365;
+      break;
+    default:
+      points = 30;
+  }
+  
+  const baseValue = 1000;
+  let currentValue = baseValue;
+  
+  for (let i = 0; i < points; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() - (points - i));
+    
+    // Generate realistic price movement
+    const randomChange = (Math.random() - 0.5) * 0.05; // ±2.5% daily change
+    currentValue *= (1 + randomChange);
+    
+    dataPoints.push({
+      date: date.toISOString().split('T')[0],
+      value: Number(currentValue.toFixed(2)),
+      timestamp: date.getTime(),
+    });
+  }
+  
+  // Adjust final value to match performance
+  const finalAdjustment = 1 + (basePerformance / 100);
+  const lastPoint = dataPoints[dataPoints.length - 1];
+  lastPoint.value = Number((baseValue * finalAdjustment).toFixed(2));
+  
+  return dataPoints;
+}
+
+function getAssetName(symbol: string): string {
+  const assetNames: { [key: string]: string } = {
+    'AAPL': 'Apple Inc.',
+    'MSFT': 'Microsoft Corporation',
+    'GOOGL': 'Alphabet Inc.',
+    'AMZN': 'Amazon.com Inc.',
+    'META': 'Meta Platforms Inc.',
+    'TSLA': 'Tesla Inc.',
+    'NVDA': 'NVIDIA Corporation',
+    'BTC': 'Bitcoin',
+    'ETH': 'Ethereum',
+    'SPY': 'SPDR S&P 500 ETF',
+  };
+  
+  return assetNames[symbol] || symbol;
+}
+
+function generateMockPrice(symbol: string): number {
+  const basePrices: { [key: string]: number } = {
+    'AAPL': 175.50,
+    'MSFT': 378.25,
+    'GOOGL': 138.75,
+    'AMZN': 145.30,
+    'META': 325.80,
+    'TSLA': 248.50,
+    'NVDA': 875.25,
+  };
+  
+  const basePrice = basePrices[symbol] || 100;
+  const variation = (Math.random() - 0.5) * 0.1; // ±5% variation
+  return Number((basePrice * (1 + variation)).toFixed(2));
+}
+
+function generateMockChange(): number {
+  return Number(((Math.random() - 0.5) * 10).toFixed(2)); // ±$5 change
+}
+
+function generateMockChangePercent(): number {
+  return Number(((Math.random() - 0.5) * 6).toFixed(2)); // ±3% change
+}
+
+function generateMockPerformance(): number {
+  return Number(((Math.random() - 0.3) * 20).toFixed(2)); // Slightly positive bias
+}
+
+function generateLogoUrl(symbol: string): string {
+  return `https://logo.clearbit.com/${symbol.toLowerCase()}.com`;
+}
 
 export { router as basketsRouter };

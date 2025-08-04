@@ -26,6 +26,9 @@ importers:
 
   apps/backend-api:
     dependencies:
+      '@google/generative-ai':
+        specifier: ^0.24.1
+        version: 0.24.1
       '@polygon.io/client-js':
         specifier: ^8.0.0
         version: 8.0.0
@@ -141,6 +144,9 @@ importers:
       '@expo/vector-icons':
         specifier: ^14.0.0
         version: 14.1.0(expo-font@13.3.2)(react-native@0.79.5)(react@19.0.0)
+      '@gorhom/bottom-sheet':
+        specifier: ^5.1.8
+        version: 5.1.8(@types/react@19.0.14)(react-native-gesture-handler@2.24.0)(react-native-reanimated@3.17.5)(react-native@0.79.5)(react@19.0.0)
       '@hugeicons/core-free-icons':
         specifier: ^1.0.16
         version: 1.0.16
@@ -156,6 +162,9 @@ importers:
       '@react-native-community/netinfo':
         specifier: 11.4.1
         version: 11.4.1(react-native@0.79.5)
+      '@react-native-community/slider':
+        specifier: 4.5.6
+        version: 4.5.6
       '@react-navigation/native':
         specifier: ^7.0.3
         version: 7.1.14(react-native@0.79.5)(react@19.0.0)
@@ -3384,12 +3393,52 @@ packages:
       - supports-color
     dev: false
 
+  /@google/generative-ai@0.24.1:
+    resolution: {integrity: sha512-MqO+MLfM6kjxcKoy0p1wRzG3b4ZZXtPI+z2IE26UogS2Cm/XHO+7gGRBh6gcJsOiIVoH93UwKvW4HdgiOZCy9Q==}
+    engines: {node: '>=18.0.0'}
+    dev: false
+
   /@google/model-viewer@2.1.1:
     resolution: {integrity: sha512-5umyLoD5vMxlSVQwtmUXeNCNWs9dzmWykGm1qrHe/pCYrj/1lyJIgJRw+IxoMNodGqtcHEtfDhdNjRDM9yo/TA==}
     engines: {node: '>=6.0.0'}
     dependencies:
       lit: 2.8.0
       three: 0.146.0
+    dev: false
+
+  /@gorhom/bottom-sheet@5.1.8(@types/react@19.0.14)(react-native-gesture-handler@2.24.0)(react-native-reanimated@3.17.5)(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-QuYIVjn3K9bW20n5bgOSjvxBYoWG4YQXiLGOheEAMgISuoT6sMcA270ViSkkb0fenPxcIOwzCnFNuxmr739T9A==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-native': '*'
+      react: '*'
+      react-native: '*'
+      react-native-gesture-handler: '>=2.16.1'
+      react-native-reanimated: '>=3.16.0 || >=4.0.0-'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-native':
+        optional: true
+    dependencies:
+      '@gorhom/portal': 1.0.14(react-native@0.79.5)(react@19.0.0)
+      '@types/react': 19.0.14
+      invariant: 2.2.4
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+      react-native-gesture-handler: 2.24.0(react-native@0.79.5)(react@19.0.0)
+      react-native-reanimated: 3.17.5(@babel/core@7.28.0)(react-native@0.79.5)(react@19.0.0)
+    dev: false
+
+  /@gorhom/portal@1.0.14(react-native@0.79.5)(react@19.0.0):
+    resolution: {integrity: sha512-MXyL4xvCjmgaORr/rtryDNFy3kU4qUbKlwtQqqsygd0xX3mhKjOLn6mQK8wfu0RkoE0pBE0nAasRoHua+/QZ7A==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      nanoid: 3.3.11
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
     dev: false
 
   /@grpc/grpc-js@1.13.4:
@@ -6537,6 +6586,10 @@ packages:
       react-native: '>=0.59'
     dependencies:
       react-native: 0.79.5(@babel/core@7.28.0)(@types/react@19.0.14)(react@19.0.0)
+    dev: false
+
+  /@react-native-community/slider@4.5.6:
+    resolution: {integrity: sha512-UhLPFeqx0YfPLrEz8ffT3uqAyXWu6iqFjohNsbp4cOU7hnJwg2RXtDnYHoHMr7MOkZDVdlLMdrSrAuzY6KGqrg==}
     dev: false
 
   /@react-native/assets-registry@0.79.5:

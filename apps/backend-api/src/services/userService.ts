@@ -1,4 +1,3 @@
-
 import { prisma } from '@stack/shared-types';
 import { z } from 'zod';
 
@@ -79,7 +78,9 @@ export async function createUser(userData: CreateUserData) {
     const validatedData = CreateUserSchema.parse(userData);
 
     // Check if user already exists (case-insensitive)
-    const existingUser = await findUserByWalletAddress(validatedData.walletAddress);
+    const existingUser = await findUserByWalletAddress(
+      validatedData.walletAddress
+    );
 
     if (existingUser) {
       throw new Error('User with this wallet address already exists');
@@ -95,7 +96,10 @@ export async function createUser(userData: CreateUserData) {
         avatarUrl: validatedData.avatarUrl,
         phoneNumber: validatedData.phoneNumber,
         nationality: validatedData.nationality,
-        referralCode: validatedData.referralCode && validatedData.referralCode.trim() !== '' ? validatedData.referralCode : null,
+        referralCode:
+          validatedData.referralCode && validatedData.referralCode.trim() !== ''
+            ? validatedData.referralCode
+            : null,
         passwordHash: validatedData.passwordHash,
         emailVerified: validatedData.emailVerified || false,
         emailVerificationToken: validatedData.emailVerificationToken,
@@ -109,7 +113,9 @@ export async function createUser(userData: CreateUserData) {
     return user;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      throw new Error(`Validation error: ${error.errors.map(e => e.message).join(', ')}`);
+      throw new Error(
+        `Validation error: ${error.errors.map(e => e.message).join(', ')}`
+      );
     }
     throw error;
   }
@@ -124,8 +130,8 @@ export async function findUserByWalletAddress(walletAddress: string) {
       where: {
         walletAddress: {
           equals: walletAddress,
-          mode: 'insensitive'
-        }
+          mode: 'insensitive',
+        },
       },
     });
 
@@ -145,8 +151,8 @@ export async function findUserByEmail(email: string) {
       where: {
         email: {
           equals: email,
-          mode: 'insensitive'
-        }
+          mode: 'insensitive',
+        },
       },
     });
 
@@ -160,7 +166,10 @@ export async function findUserByEmail(email: string) {
 /**
  * Update user information
  */
-export async function updateUser(walletAddress: string, updateData: UpdateUserData) {
+export async function updateUser(
+  walletAddress: string,
+  updateData: UpdateUserData
+) {
   try {
     const validatedData = UpdateUserSchema.parse(updateData);
 
@@ -181,7 +190,9 @@ export async function updateUser(walletAddress: string, updateData: UpdateUserDa
     return user;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      throw new Error(`Validation error: ${error.errors.map(e => e.message).join(', ')}`);
+      throw new Error(
+        `Validation error: ${error.errors.map(e => e.message).join(', ')}`
+      );
     }
     throw error;
   }
@@ -190,14 +201,19 @@ export async function updateUser(walletAddress: string, updateData: UpdateUserDa
 /**
  * Get or create user (for authentication flow)
  */
-export async function getOrCreateUser(walletAddress: string, additionalData?: Partial<CreateUserData>) {
+export async function getOrCreateUser(
+  walletAddress: string,
+  additionalData?: Partial<CreateUserData>
+) {
   try {
     // Try to find existing user
     let user = await findUserByWalletAddress(walletAddress);
 
     if (!user) {
       // Create new user if doesn't exist
-      const defaultDisplayName = additionalData?.displayName || `User ${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+      const defaultDisplayName =
+        additionalData?.displayName ||
+        `User ${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
       user = await createUser({
         walletAddress,
         displayName: defaultDisplayName,
@@ -242,8 +258,8 @@ export async function getUserStats(walletAddress: string) {
       where: {
         walletAddress: {
           equals: walletAddress,
-          mode: 'insensitive'
-        }
+          mode: 'insensitive',
+        },
       },
       include: {
         _count: {

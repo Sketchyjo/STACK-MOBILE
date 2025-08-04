@@ -10,6 +10,8 @@ import { authRouter } from './routes/auth';
 import { userRouter } from './routes/users';
 import onboardingRouter from './routes/onboarding';
 import { basketsRouter } from './routes/baskets';
+import { feedRouter } from './routes/feed';
+import { aiRouter } from './routes/ai';
 import { errorHandler } from './middleware/errorHandler';
 import { testEmailConfiguration } from './services/emailService';
 
@@ -33,6 +35,8 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/onboarding', onboardingRouter);
 app.use('/api/baskets', basketsRouter);
+app.use('/api/feed', feedRouter);
+app.use('/api/ai', aiRouter);
 
 // Error handling middleware
 app.use(errorHandler);

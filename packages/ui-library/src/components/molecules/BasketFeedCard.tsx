@@ -30,7 +30,7 @@ export interface BasketFeedCardProps {
   stocks: Array<{
     id: string;
     symbol: string;
-    avatar?: string;
+    logoUrl?: string;
     allocation: number;
   }>;
   onPress: () => void;
@@ -50,17 +50,19 @@ export const BasketFeedCard: React.FC<BasketFeedCardProps> = ({
   const { width: screenWidth } = useWindowDimensions();
   // The dashboard container has 'px-6' (24px on each side).
   const chartWidth = screenWidth - 24 * 2;
+  console.log("stocks", stocks)
 
   const performanceColor = performance.isPositive
     ? colors.semantic.success
     : colors.semantic.danger;
   const performanceSign = performance.isPositive ? '+' : '';
+  const formattedPerformance = Number(performance.value.toFixed(2));
 
   return (
     <TouchableOpacity
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel={`${name} basket. ${description}. Performance: ${performanceSign}${performance.value}%`}
+      accessibilityLabel={`${name} basket. ${description}. Performance: ${performanceSign}${formattedPerformance}%`}
       accessibilityHint="Tap to view basket details"
       className={className}
     >
@@ -149,7 +151,7 @@ export const BasketFeedCard: React.FC<BasketFeedCardProps> = ({
                 }}
               >
                 {performanceSign}
-                {performance.value}%
+                {formattedPerformance}%
               </Text>
             </View>
           </View>
@@ -195,23 +197,19 @@ export const BasketFeedCard: React.FC<BasketFeedCardProps> = ({
                       ...shadows.sm,
                     }}
                   >
-                    {stock.avatar ? (
+                    {stock.logoUrl ? (
                       <Image
-                        source={{ uri: stock.avatar }}
+                        source={{ uri: stock.logoUrl }}
                         style={{ width: 24, height: 24, borderRadius: 12 }}
                         accessibilityLabel={`${stock.symbol} stock`}
                       />
                     ) : (
-                      <Text
-                        style={{
-                          fontFamily: typography.fonts.primary,
-                          fontSize: 10,
-                          fontWeight: typography.weights.bold,
-                          color: colors.text.primary,
-                        }}
-                      >
-                        {stock.symbol.slice(0, 2)}
-                      </Text>
+                      <Icon
+                        name="trending-up"
+                        size={16}
+                        color={colors.text.primary}
+                        accessibilityLabel={`${stock.symbol} stock icon`}
+                      />
                     )}
                   </View>
                 ))}

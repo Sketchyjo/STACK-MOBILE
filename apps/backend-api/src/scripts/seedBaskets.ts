@@ -1,5 +1,6 @@
 import { prisma, RiskLevel } from '@stack/shared-types';
-import * as polygonService from '../services/polygonService.js';
+import { stocks } from '../../../../packages/shared-types/data/STOCKS_DATA.js';
+import { crypto } from '../../../../packages/shared-types/data/CRYPTO_DATA.js';
 
 interface AssetData {
   symbol: string;
@@ -431,78 +432,69 @@ const basketTemplates = [
   },
 ];
 
-// Helper function to fetch asset data from Polygon API
-async function fetchAssetData(
+// Helper function to fetch asset data from local data files
+function fetchAssetData(
   symbol: string,
   type: 'stock' | 'crypto' | 'reit'
-): Promise<AssetData> {
-  console.log(`🔍 Fetching ${type} data for ${symbol} from Polygon API...`);
+): AssetData {
+  console.log(`🔍 Fetching ${type} data for ${symbol} from local data...`);
 
   if (type === 'crypto') {
-    const details = await polygonService.getCryptoDetails(symbol);
-    const price = await polygonService.getCryptoPrice(symbol);
-
-    // Validate that we received valid data from Polygon API
-    if (!details || !price) {
-      throw new Error(
-        `Failed to fetch complete crypto data for ${symbol} from Polygon API`
-      );
-    }
-
-    if (!details.name || price.price === undefined || price.price === null) {
-      throw new Error(
-        `Invalid crypto data received from Polygon API for ${symbol}`
-      );
+    const cryptoData = crypto.find(c => c.symbol === symbol);
+    
+    if (!cryptoData) {
+      throw new Error(`Crypto data not found for symbol: ${symbol}`);
     }
 
     console.log(
-      `✅ Successfully fetched crypto data for ${symbol}: ${details.name} at $${price.price}`
+      `✅ Successfully fetched crypto data for ${symbol}: ${cryptoData.name}`
     );
+
+    // Generate mock price data for demonstration
+    const mockPrice = Math.random() * 50000 + 1000; // Random price between $1000-$51000
+    const mockChange = (Math.random() - 0.5) * 1000; // Random change between -$500 to +$500
+    const mockChangePercent = (mockChange / mockPrice) * 100;
 
     return {
       symbol,
-      name: details.name,
+      name: cryptoData.name,
       weight: 0, // Will be set by basket template
       type,
-      price: price.price,
-      change: price.change || 0,
-      changePercent: price.changePercent || 0,
-      logoUrl: undefined, // Crypto details don't have logo URL in current interface
-      description: `${details.description}`,
-      marketCap: details.market_cap, // Not available in current crypto interface
+      price: mockPrice,
+      change: mockChange,
+      changePercent: mockChangePercent,
+      logoUrl: cryptoData.branding?.logo_url,
+      description: cryptoData.description,
+      marketCap: cryptoData.market_cap,
     };
   } else {
-    const details = await polygonService.getCryptoDetails(symbol);
-    const price = await polygonService.getCryptoPrice(symbol);
-
-    // Validate that we received valid data from Polygon API
-    if (!details || !price) {
-      throw new Error(
-        `Failed to fetch complete stock data for ${symbol} from Polygon API`
-      );
-    }
-
-    if (!details.name || price.price === undefined || price.price === null) {
-      throw new Error(
-        `Invalid stock data received from Polygon API for ${symbol}`
-      );
+    // For stocks and REITs, search in stocks data
+    const stockData = stocks.find(s => s.ticker === symbol);
+    
+    if (!stockData) {
+      throw new Error(`Stock data not found for symbol: ${symbol}`);
     }
 
     console.log(
-      `✅ Successfully fetched stock data for ${symbol}: ${details.name} at $${price.price}`
+      `✅ Successfully fetched stock data for ${symbol}: ${stockData.name}`
     );
+
+    // Generate mock price data for demonstration
+    const mockPrice = Math.random() * 500 + 10; // Random price between $10-$510
+    const mockChange = (Math.random() - 0.5) * 20; // Random change between -$10 to +$10
+    const mockChangePercent = (mockChange / mockPrice) * 100;
 
     return {
       symbol,
-      name: details.name,
+      name: stockData.name,
       weight: 0, // Will be set by basket template
       type,
-      price: price.price,
-      change: price.change || 0,
-      changePercent: price.changePercent || 0,
-      logoUrl: details.branding?.logo_url,
-      description: details.description || `${details.name} stock`,
-      marketCap: details.market_cap,
+      price: mockPrice,
+      change: mockChange,
+      changePercent: mockChangePercent,
+      logoUrl: stockData.branding?.logo_url,
+      description: stockData.description || `${stockData.name} stock`,
+      marketCap: stockData.market_cap,
     };
   }
 }
@@ -551,9 +543,9 @@ function calculateBasketPerformance(assets: AssetData[]): {
 
 // Main seeding function
 export async function seedInitialBaskets() {
-  console.log('🌱 Starting basket seeding with ONLY real Polygon API data...');
+  console.log('🌱 Starting basket seeding with local data...');
   console.log(
-    '⚠️ No fallback data will be used - all data must come from Polygon API'
+    '📊 Using data from shared-types package instead of external APIs'
   );
 
   try {
@@ -565,21 +557,41 @@ export async function seedInitialBaskets() {
     let errorCount = 0;
 
     // Process each basket template
-    for (const template of basketTemplates) {
-      console.log(`📊 Processing basket: ${template.name}`);
+    for (const basketTemplate of basketTemplates) {
+      console.log(`\n📦 Processing basket: ${basketTemplate.name}`);
 
       try {
-        // Fetch real data for all assets in parallel with rate limiting
-        const assetPromises = template.assets.map(async (asset, index) => {
-          // Add delay to respect rate limits (5 requests per minute for free tier)
-          await new Promise(resolve => setTimeout(resolve, index * 200));
+        // Fetch asset data for all assets in the basket
+        const assetsWithData: AssetData[] = [];
 
-          const assetData = await fetchAssetData(asset.symbol, asset.type);
-          assetData.weight = asset.weight; // Set the weight from template
-          return assetData;
-        });
+        for (const asset of basketTemplate.assets) {
+          try {
+            const assetData = fetchAssetData(asset.symbol, asset.type);
+            assetData.weight = asset.weight;
+            assetsWithData.push(assetData);
+          } catch (error) {
+            console.error(
+              `❌ Failed to fetch data for ${asset.symbol}:`,
+              error
+            );
+            // Skip this asset and continue with others
+            continue;
+          }
+        }
 
-        const enrichedAssets = await Promise.all(assetPromises);
+        // Validate that we have at least some assets with data
+        if (assetsWithData.length === 0) {
+          console.error(
+            `❌ No valid asset data found for basket: ${basketTemplate.name}`
+          );
+          continue;
+        }
+
+        console.log(
+          `✅ Successfully fetched data for ${assetsWithData.length}/${basketTemplate.assets.length} assets`
+        );
+
+        const enrichedAssets = assetsWithData;
 
         // Validate that all assets have valid data
         const invalidAssets = enrichedAssets.filter(
@@ -602,14 +614,14 @@ export async function seedInitialBaskets() {
         // Create basket in database
         const createdBasket = await prisma.basket.create({
           data: {
-            id: template.id,
-            name: template.name,
-            description: template.description,
-            iconUrl: template.iconUrl,
-            riskLevel: template.riskLevel,
-            category: template.category,
+            id: basketTemplate.id,
+            name: basketTemplate.name,
+            description: basketTemplate.description,
+            iconUrl: basketTemplate.iconUrl,
+            riskLevel: basketTemplate.riskLevel,
+            category: basketTemplate.category,
             assets: enrichedAssets,
-            isCommunity: template.isCommunity,
+            isCommunity: basketTemplate.isCommunity,
             performanceOneDay: performance.oneDay,
             performanceOneWeek: performance.oneWeek,
             performanceOneMonth: performance.oneMonth,
@@ -621,13 +633,13 @@ export async function seedInitialBaskets() {
         });
 
         console.log(
-          `✅ Created basket: ${createdBasket.name} with ${enrichedAssets.length} assets (all from Polygon API)`
+          `✅ Created basket: ${createdBasket.name} with ${enrichedAssets.length} assets (from local data)`
         );
         successCount++;
       } catch (error) {
-        console.error(`❌ Error creating basket ${template.name}:`, error);
+        console.error(`❌ Error creating basket ${basketTemplate.name}:`, error);
         console.error(
-          `💥 Skipping basket ${template.name} - no fallback data will be created`
+          `💥 Skipping basket ${basketTemplate.name} - no fallback data will be created`
         );
         errorCount++;
       }
@@ -639,10 +651,10 @@ export async function seedInitialBaskets() {
 
     if (errorCount > 0) {
       console.log(
-        `⚠️ ${errorCount} baskets were skipped due to Polygon API failures`
+        `⚠️ ${errorCount} baskets were skipped due to missing data in local files`
       );
       console.log(
-        '🔑 Please verify your POLYGON_API_KEY is valid and has sufficient quota'
+        '📁 Please verify that the required symbols exist in STOCKS_DATA.js and CRYPTO_DATA.js'
       );
     }
   } catch (error) {

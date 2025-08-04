@@ -416,6 +416,23 @@ model Notification {
   @@map("notifications")
 }
 
+// --- OTP MODEL ---
+
+model OTP {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  verified  Boolean  @default(false)
+  attempts  Int      @default(0)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email, code])
+  @@index([expiresAt])
+  @@map("otps")
+}
+
 // --- ENUMS ---
 
 enum RiskLevel {

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { createAuth } from 'thirdweb/auth';
 import { privateKeyToAccount } from 'thirdweb/wallets';
 import { thirdwebClient } from '../thirdwebClient';
+import jsonwebtoken from 'jsonwebtoken';
 
 // Extend Express Request type to include user
 declare global {
@@ -28,6 +29,7 @@ const thirdwebAuth = createAuth({
 /**
  * Middleware to authenticate requests using JWT tokens
  * Checks for JWT in cookies or Authorization header
+ * Supports both Thirdweb JWT tokens and regular JWT tokens
  */
 export async function authenticateToken(req: Request, res: Response, next: NextFunction) {
   try {
@@ -47,22 +49,42 @@ export async function authenticateToken(req: Request, res: Response, next: NextF
       });
     }
 
-    // Verify JWT with Thirdweb Auth
-    const authResult = await thirdwebAuth.verifyJWT({ jwt });
+    // First try to verify as a regular JWT token (for email/password auth)
+    try {
+      const decoded = jsonwebtoken.verify(jwt, process.env.JWT_SECRET!) as any;
+      
+      // Add user info to request object for regular JWT
+      req.user = {
+        address: decoded.walletAddress,
+        chainId: decoded.chainId,
+      };
+      
+      return next();
+    } catch (jwtError) {
+      // If regular JWT verification fails, try Thirdweb JWT
+      try {
+        const authResult = await thirdwebAuth.verifyJWT({ jwt });
 
-    if (!authResult.valid) {
-      return res.status(401).json({
-        error: 'Access denied. Invalid authentication token.'
-      });
+        if (!authResult.valid) {
+          return res.status(401).json({
+            error: 'Access denied. Invalid authentication token.'
+          });
+        }
+
+        // Add user info to request object for Thirdweb JWT
+        req.user = {
+          address: authResult.parsedJWT.sub!,
+          chainId: (authResult.parsedJWT.ctx as any)?.chainId,
+        };
+
+        return next();
+      } catch (thirdwebError) {
+        console.error('Authentication middleware error:', thirdwebError);
+        return res.status(401).json({
+          error: 'Access denied. Token verification failed.'
+        });
+      }
     }
-
-    // Add user info to request object
-    req.user = {
-      address: authResult.parsedJWT.sub!,
-      chainId: (authResult.parsedJWT.ctx as any)?.chainId,
-    };
-
-    next();
   } catch (error) {
     console.error('Authentication middleware error:', error);
     return res.status(401).json({

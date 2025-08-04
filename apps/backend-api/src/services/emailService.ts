@@ -126,6 +126,99 @@ export async function sendEmail(data: SendEmailData): Promise<void> {
 }
 
 /**
+ * Send OTP email for authentication
+ */
+export async function sendOTPEmail(
+  email: string,
+  otpCode: string
+): Promise<void> {
+  console.log('📧 Sending OTP to:', email);
+  console.log('📧 OTP code:', otpCode);
+
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Your OTP Code - STACK</title>
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background-color: white; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; text-align: center; }
+        .header h1 { color: white; margin: 0; font-size: 28px; font-weight: 600; }
+        .content { padding: 40px 20px; }
+        .content p { color: #666; line-height: 1.6; margin-bottom: 20px; }
+        .otp-code { 
+          background: #f8f9fa; 
+          border: 2px solid #667eea; 
+          border-radius: 12px; 
+          padding: 30px; 
+          text-align: center; 
+          margin: 30px 0; 
+        }
+        .code { 
+          font-size: 48px; 
+          font-weight: bold; 
+          color: #667eea; 
+          letter-spacing: 12px; 
+          font-family: 'Courier New', monospace; 
+        }
+        .footer { background-color: #f8f9fa; padding: 20px; text-align: center; color: #666; font-size: 14px; }
+        .security-note { background-color: #f8f9fa; border-left: 4px solid #667eea; padding: 15px; margin: 20px 0; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>STACK</h1>
+        </div>
+        <div class="content">
+          <p>We received a request to sign in to your STACK account. Use the code below to continue:</p>
+          
+          <div class="otp-code">
+            <div class="code">${otpCode}</div>
+          </div>
+          
+          <p>Enter this 6-digit code in the STACK app to continue with your sign up.</p>
+          
+          <div class="security-note">
+            <p><strong>Security Note:</strong> This code will expire in 10 minutes. Never share this code with anyone. STACK will never ask for this code outside of the sign-in process.</p>
+          </div>
+        </div>
+        <div class="footer">
+          <p>© 2024 STACK. All rights reserved.</p>
+          <p>If you didn't request this code, please ignore this email.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const text = `
+    STACK - Your OTP Code
+    
+    We received a request to sign in to your STACK account.
+    
+    Your OTP code is: ${otpCode}
+    
+    This code will expire in 10 minutes.
+    
+    If you didn't request this code, please ignore this email.
+    
+    Best regards,
+    The STACK Team
+  `;
+
+  await sendEmail({
+    to: email,
+    subject: `${otpCode} is your STACK verification code`,
+    html,
+    text,
+  });
+}
+
+/**
  * Send email verification email with 6-digit code
  */
 export async function sendEmailVerification(

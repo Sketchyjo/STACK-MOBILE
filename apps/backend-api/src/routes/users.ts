@@ -217,38 +217,6 @@ router.get('/:walletAddress/stats', optionalAuth, async (req, res) => {
   }
 });
 
-/**
- * @route POST /api/users/auth/register
- * @desc Register or login user with wallet authentication
- * @access Private (requires authentication)
- */
-router.post('/auth/register', authenticateToken, async (req, res) => {
-  try {
-    if (!req.user) {
-      return res.status(401).json({ error: 'Authentication required' });
-    }
 
-    const { email, displayName, bio, avatarUrl } = req.body;
-    
-    const user = await getOrCreateUser(req.user.address, {
-      email,
-      displayName,
-      bio,
-      avatarUrl,
-    });
-    
-    res.status(200).json({
-      success: true,
-      message: user.createdAt.getTime() === user.updatedAt.getTime() 
-        ? 'User registered successfully' 
-        : 'User logged in successfully',
-      user,
-      isNewUser: user.createdAt.getTime() === user.updatedAt.getTime(),
-    });
-  } catch (error) {
-    console.error('Error in auth register:', error);
-    res.status(500).json({ error: 'Failed to register/login user' });
-  }
-});
 
 export { router as userRouter };

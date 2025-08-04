@@ -49,6 +49,17 @@ CREATE TABLE "users" (
     "avatarUrl" TEXT,
     "bio" TEXT,
     "isCurator" BOOLEAN NOT NULL DEFAULT false,
+    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
+    "emailVerificationToken" TEXT,
+    "emailVerificationExpires" TIMESTAMP(3),
+    "passwordHash" TEXT,
+    "phoneNumber" TEXT,
+    "phoneVerified" BOOLEAN NOT NULL DEFAULT false,
+    "nationality" TEXT,
+    "referralCode" TEXT,
+    "referredBy" TEXT,
+    "hasStarterInvestment" BOOLEAN NOT NULL DEFAULT false,
+    "starterInvestmentClaimedAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -89,6 +100,14 @@ CREATE TABLE "baskets" (
     "riskLevel" "RiskLevel" NOT NULL DEFAULT 'MEDIUM',
     "assets" JSONB NOT NULL,
     "isCommunity" BOOLEAN NOT NULL DEFAULT false,
+    "category" TEXT,
+    "performanceOneDay" DECIMAL(10,4),
+    "performanceOneWeek" DECIMAL(10,4),
+    "performanceOneMonth" DECIMAL(10,4),
+    "performanceThreeMonths" DECIMAL(10,4),
+    "performanceOneYear" DECIMAL(10,4),
+    "totalValue" DECIMAL(18,8),
+    "assetCount" INTEGER DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "curatorId" TEXT,
@@ -334,11 +353,31 @@ CREATE TABLE "notifications" (
     CONSTRAINT "notifications_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "otps" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "verified" BOOLEAN NOT NULL DEFAULT false,
+    "attempts" INTEGER NOT NULL DEFAULT 0,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "otps_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_walletAddress_key" ON "users"("walletAddress");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_emailVerificationToken_key" ON "users"("emailVerificationToken");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_referralCode_key" ON "users"("referralCode");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "portfolios_userId_key" ON "portfolios"("userId");
@@ -427,6 +466,12 @@ CREATE INDEX "notifications_userId_isRead_idx" ON "notifications"("userId", "isR
 -- CreateIndex
 CREATE INDEX "notifications_type_createdAt_idx" ON "notifications"("type", "createdAt");
 
+-- CreateIndex
+CREATE INDEX "otps_email_code_idx" ON "otps"("email", "code");
+
+-- CreateIndex
+CREATE INDEX "otps_expiresAt_idx" ON "otps"("expiresAt");
+
 -- AddForeignKey
 ALTER TABLE "portfolios" ADD CONSTRAINT "portfolios_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -492,3 +537,4 @@ ALTER TABLE "auto_investments" ADD CONSTRAINT "auto_investments_scheduleId_fkey"
 
 -- AddForeignKey
 ALTER TABLE "notifications" ADD CONSTRAINT "notifications_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
