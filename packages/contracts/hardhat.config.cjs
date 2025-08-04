@@ -9,7 +9,7 @@ module.exports = {
       chainId: 1337,
     },
     EtherlinkTestnet: {
-      url: 'https://node.ghostnet.etherlink.com',
+      url: 'Etherlink Testnet',
       chainId: 128123,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
