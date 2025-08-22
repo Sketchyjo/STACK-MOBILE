@@ -18,11 +18,10 @@
     "db:seed": "tsx src/scripts/seedBaskets.ts"
   },
   "dependencies": {
+    "@civic/auth": "^0.9.5",
     "@google/generative-ai": "^0.24.1",
     "@polygon.io/client-js": "^8.0.0",
     "@prisma/client": "^5.10.0",
-    "@thirdweb-dev/auth": "^4.1.97",
-    "@thirdweb-dev/sdk": "^4.0.0",
     "axios": "^1.10.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
@@ -32,7 +31,6 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.10.1",
-    "thirdweb": "^5.105.17",
     "zksync-ethers": "^6.15.0",
     "zod": "^3.22.0"
   },

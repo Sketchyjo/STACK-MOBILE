@@ -14,6 +14,7 @@ import { feedRouter } from './routes/feed';
 import { aiRouter } from './routes/ai';
 import { errorHandler } from './middleware/errorHandler';
 import { testEmailConfiguration } from './services/emailService';
+import { setupCivicAuth } from './middleware/auth';
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Civic Auth middleware
+app.use(setupCivicAuth);
 
 // Routes
 app.use('/api/health', healthRouter);

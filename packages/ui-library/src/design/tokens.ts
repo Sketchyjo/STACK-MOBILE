@@ -65,6 +65,14 @@ export const typography = {
   fonts: {
     primary: 'Gilroy', // For headings
     secondary: 'MD Nichrome', // For body text and UI
+    // New Tailwind-style font mappings
+    display: 'MDNichrome-Bold', // For large, impactful text
+    heading: 'MDNichrome-Regular', // For section headers
+    subheading: 'MDNichrome-Light', // For subsection headers
+    body: 'Gilroy-Regular', // Main body text
+    'body-bold': 'Gilroy-Bold',
+    'body-medium': 'Gilroy-Medium',
+    'body-light': 'Gilroy-Light',
   },
 
   styles: {

@@ -30,11 +30,14 @@ export { CollateralValueCard } from './components/molecules/CollateralValueCard'
 export { RoundUpToggle } from './components/molecules/RoundUpToggle';
 export { Drawer } from './components/molecules/Drawer';
 export { QuestProgress } from './components/molecules/QuestProgress';
+export { QuestFeedCard } from './components/molecules/QuestFeedCard';
+export { DailyQuestCard } from './components/molecules/DailyQuestCard';
+export { BattlePassCard } from './components/molecules/BattlePassCard';
+export { SectionHeader } from './components/molecules/SectionHeader';
 export { FeatureCard } from './components/molecules/FeatureCard';
 export { PerformanceIndicator } from './components/molecules/PerformanceIndicator';
 export { BasketCard } from './components/molecules/BasketCard';
 export { BasketFeedCard } from './components/molecules/BasketFeedCard';
-export { QuestFeedCard } from './components/molecules/QuestFeedCard';
 export { AITipCard } from './components/molecules/AITipCard';
 export { FilterChips } from './components/molecules/FilterChips';
 // Organisms

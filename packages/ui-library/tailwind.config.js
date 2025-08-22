@@ -4,8 +4,34 @@ module.exports = {
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['MDNichrome-Bold'], // For large, impactful text
+        heading: ['MDNichrome-Regular'], // For section headers
+        subheading: ['MDNichrome-Light'], // For subsection headers
+
+        // Secondary Font: Gilroy (for body text)
+        body: ['Gilroy-Regular', 'sans-serif'], // Main body text
+        'body-bold': ['Gilroy-Bold', 'sans-serif'],
+        'body-medium': ['Gilroy-Medium', 'sans-serif'],
+        'body-light': ['Gilroy-Light', 'sans-serif'],
+      },
       fontSize: {
-        // Design System Typography Sizes from design.json
+        // Type Scale with Modern Ratios
+        'display-lg': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-md': ['40px', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
+        'display-sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+
+        'heading-xl': ['34px', { lineHeight: '1.3' }],
+        'heading-lg': ['28px', { lineHeight: '1.3' }],
+        'heading-md': ['24px', { lineHeight: '1.3' }],
+        'heading-sm': ['20px', { lineHeight: '1.4' }],
+
+        'body-lg': ['18px', { lineHeight: '1.5' }],
+        'body-base': ['16px', { lineHeight: '1.5' }],
+        'body-sm': ['14px', { lineHeight: '1.5' }],
+        'body-xs': ['12px', { lineHeight: '1.5' }],
+
+        // Legacy sizes for backward compatibility
         h1: ['36px', { lineHeight: '1.2' }], // design.json: 36px
         h2: ['24px', { lineHeight: '1.3' }], // design.json: 24px
         h3: ['20px', { lineHeight: '1.4' }], // Common h3 size

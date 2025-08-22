@@ -10,6 +10,10 @@ export { CollateralValueCard } from './CollateralValueCard';
 export { RoundUpToggle } from './RoundUpToggle';
 export { BasketFeedCard } from './BasketFeedCard';
 export { QuestFeedCard } from './QuestFeedCard';
+export { QuestProgress } from './QuestProgress';
+export { DailyQuestCard } from './DailyQuestCard';
+export { BattlePassCard } from './BattlePassCard';
+export { SectionHeader } from './SectionHeader';
 export { AITipCard } from './AITipCard';
 export { VirtualCreditCardFeed } from './VirtualCreditCardFeed';
 export type {
@@ -19,3 +23,6 @@ export type {
   Transaction,
 } from './TransactionItem';
 export type { TransactionListProps } from './TransactionList';
+export type { DailyQuestCardProps } from './DailyQuestCard';
+export type { BattlePassCardProps } from './BattlePassCard';
+export type { SectionHeaderProps } from './SectionHeader';

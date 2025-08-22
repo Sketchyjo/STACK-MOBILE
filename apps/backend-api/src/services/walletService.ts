@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { z } from 'zod';
+import crypto from 'crypto';
 
 // Validation schemas
 const CreateWalletSchema = z.object({
@@ -29,123 +29,110 @@ export interface WalletCreationResult {
 }
 
 /**
- * Create a new wallet using Thirdweb Engine
+ * Create a mock wallet for backward compatibility
+ * Note: In production with Civic Auth, wallet creation is handled by Civic
+ * This function provides a fallback for existing code that expects wallet creation
  */
 export async function createWallet(userId?: string): Promise<WalletCreationResult> {
-  if (!process.env.THIRDWEB_SECRET_KEY) {
-    throw new Error('THIRDWEB_SECRET_KEY environment variable is required');
-  }
-
-  if (!process.env.THIRDWEB_ENGINE_URL) {
-    throw new Error('THIRDWEB_ENGINE_URL environment variable is required');
-  }
-
-  if (!process.env.THIRDWEB_CLIENT_ID) {
-    throw new Error('THIRDWEB_CLIENT_ID environment variable is required');
-  }
-
   try {
-    const response = await axios.post(
-      `${process.env.THIRDWEB_ENGINE_URL}/v1/accounts`,
-      {
-        type: 'local',  // Using local wallet type
-        label: `${userId}`
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-client-id': process.env.THIRDWEB_CLIENT_ID,
-          'x-secret-key': process.env.THIRDWEB_SECRET_KEY
-        }
-      }
-    );
-
-    return CreateWalletResponseSchema.parse(response.data).result;
+    // Generate a mock wallet address for backward compatibility
+    // In a real implementation, you might want to:
+    // 1. Store user wallet associations in your database
+    // 2. Use Civic Auth's wallet management features
+    // 3. Integrate with a different wallet provider
+    
+    const mockAddress = '0x' + crypto.randomBytes(20).toString('hex');
+    const timestamp = new Date().toISOString();
+    
+    console.warn('createWallet: Using mock implementation. In production, integrate with Civic Auth wallet management.');
+    
+    return {
+      address: mockAddress,
+      label: userId ? `Wallet for ${userId}` : 'Generated Wallet',
+      createdAt: timestamp,
+      smartAccountAddress: mockAddress // Same as address for mock
+    };
   } catch (error) {
     console.error('Error creating wallet:', error instanceof Error ? error.message : error);
-    if (axios.isAxiosError(error)) {
-      throw new Error(`Failed to create wallet: ${error.response?.data?.message || error.message}`);
-    }
     throw new Error('Failed to create wallet');
   }
 }
 
 /**
  * Get wallet information by address
- *
- * Note: This function lists all wallets and filters for the requested address
- * since ThirdWeb Engine doesn't provide a direct endpoint to get a single wallet by address
+ * Note: This is a mock implementation for backward compatibility
+ * In production, integrate with your user database and Civic Auth
  */
 export async function getWalletInfo(address: string): Promise<any> {
   try {
-    const engineUrl = process.env.THIRDWEB_ENGINE_URL;
-    const secretKey = process.env.THIRDWEB_SECRET_KEY;
-
-    if (!engineUrl || !secretKey) {
-      throw new Error('Thirdweb Engine configuration missing');
-    }
-
-    // List all wallets and filter for the requested address
-    const response = await axios.get(
-      `${engineUrl}/v1/accounts`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-client-id': process.env.THIRDWEB_CLIENT_ID,
-          'x-secret-key': secretKey,
-        },
-      }
-    );
-
-    // Find the wallet with the matching address
-    const wallets = response.data?.result?.accounts || [];
-    const wallet = wallets.find((w: any) => w.address.toLowerCase() === address.toLowerCase());
-
-    if (!wallet) {
-      throw new Error(`Wallet with address ${address} not found`);
-    }
-
-    return { result: wallet };
+    console.warn('getWalletInfo: Using mock implementation. In production, query your user database.');
+    
+    // Mock wallet info - in production, query your database
+    const mockWallet = {
+      address: address,
+      label: `Wallet ${address.substring(0, 8)}...`,
+      createdAt: new Date().toISOString(),
+      type: 'civic-auth',
+      isActive: true
+    };
+    
+    return { result: mockWallet };
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const message = error.response?.data?.message || error.message;
-      throw new Error(`Failed to get wallet info: ${message}`);
-    }
-
-    throw error;
+    throw new Error(`Failed to get wallet info: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
 /**
  * List all wallets
+ * Note: This is a mock implementation for backward compatibility
+ * In production, query your user database for wallet associations
  */
 export async function listWallets(page: number = 1, limit: number = 100): Promise<any> {
   try {
-    const engineUrl = process.env.THIRDWEB_ENGINE_URL;
-    const secretKey = process.env.THIRDWEB_SECRET_KEY;
-
-    if (!engineUrl || !secretKey) {
-      throw new Error('Thirdweb Engine configuration missing');
-    }
-
-    const response = await axios.get(
-      `${engineUrl}/v1/accounts?page=${page}&limit=${limit}`,
+    console.warn('listWallets: Using mock implementation. In production, query your user database.');
+    
+    // Mock wallet list - in production, query your database
+    const mockWallets = [
       {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-client-id': process.env.THIRDWEB_CLIENT_ID,
-          'x-secret-key': secretKey,
-        },
+        address: '0x' + crypto.randomBytes(20).toString('hex'),
+        label: 'Sample Wallet 1',
+        createdAt: new Date().toISOString(),
+        type: 'civic-auth'
+      },
+      {
+        address: '0x' + crypto.randomBytes(20).toString('hex'),
+        label: 'Sample Wallet 2', 
+        createdAt: new Date().toISOString(),
+        type: 'civic-auth'
       }
-    );
-
-    return response.data;
+    ];
+    
+    return {
+      result: {
+        accounts: mockWallets,
+        totalCount: mockWallets.length,
+        page,
+        limit
+      }
+    };
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const message = error.response?.data?.message || error.message;
-      throw new Error(`Failed to list wallets: ${message}`);
-    }
-
-    throw error;
+    throw new Error(`Failed to list wallets: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
+}
+
+/**
+ * Get wallet address from Civic Auth user data
+ * This is the recommended way to get wallet information when using Civic Auth
+ */
+export function getWalletFromCivicUser(user: any): string | null {
+  // Civic Auth users may have wallet addresses in different fields
+  return user.walletAddress || user.address || user.wallet_address || null;
+}
+
+/**
+ * Validate if a wallet address is properly formatted
+ */
+export function isValidWalletAddress(address: string): boolean {
+  // Basic Ethereum address validation
+  return /^0x[a-fA-F0-9]{40}$/.test(address);
 }

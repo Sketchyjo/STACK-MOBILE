@@ -9,6 +9,7 @@ import { createUser, findUserByEmail } from '../services/userService';
 import { createWallet } from '../services/walletService';
 import { sendOTPEmail } from '../services/emailService';
 import { createOTP, verifyOTP } from '../services/otpService';
+import { requireCivicAuth } from '../middleware/auth';
 
 const router = express.Router();
 
@@ -45,6 +46,148 @@ const LoginSchema = z.object({
   email: z.string().email('Valid email is required'),
   password: z.string().min(1, 'Password is required'),
 });
+
+// ============================================================================
+// CIVIC AUTH ENDPOINTS
+// ============================================================================
+
+/**
+ * @route GET /api/auth/login-url
+ * @desc Generate Civic Auth login URL and redirect user to it
+ * @access Public
+ */
+router.get('/login-url', async (req, res) => {
+  try {
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized'
+      });
+    }
+
+    const frontendState = req.query.state as string | undefined;
+
+    const url = await req.civicAuth.buildLoginUrl({
+      state: frontendState,
+    });
+
+    res.redirect(url.toString());
+  } catch (error) {
+    console.error('Login URL generation error:', error);
+    res.status(500).json({
+      error: 'Failed to generate login URL'
+    });
+  }
+});
+
+/**
+ * @route GET /api/auth/callback
+ * @desc Handle Civic Auth callback after successful authentication
+ * @access Public
+ */
+router.get('/callback', async (req, res) => {
+  try {
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized'
+      });
+    }
+
+    const { code, state } = req.query as { code: string; state: string };
+
+    const result = await req.civicAuth.handleCallback({
+      code,
+      state,
+      req,
+    });
+
+    if (result.redirectTo) {
+      return res.redirect(result.redirectTo);
+    }
+
+    if (result.content) {
+      return res.send(result.content);
+    }
+
+    res.status(500).json({ error: 'Internal server error' });
+  } catch (error) {
+    console.error('Callback error:', error);
+    res.redirect('/?error=auth_failed');
+  }
+});
+
+/**
+ * @route GET /api/auth/logout
+ * @desc Handle Civic Auth logout
+ * @access Public
+ */
+router.get('/logout-civic', async (req, res) => {
+  try {
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized'
+      });
+    }
+
+    const urlString = await req.civicAuth.buildLogoutRedirectUrl();
+    await req.civicAuth.clearTokens();
+
+    // Convert to URL object to modify parameters
+    const url = new URL(urlString);
+    // Remove the state parameter to avoid it showing up in the frontend URL
+    url.searchParams.delete('state');
+
+    res.redirect(url.toString());
+  } catch (error) {
+    console.error('Logout error:', error);
+    // If logout URL generation fails, clear tokens and redirect to home
+    if (req.civicAuth) {
+      await req.civicAuth.clearTokens();
+    }
+    res.redirect('/');
+  }
+});
+
+/**
+ * @route GET /api/auth/user
+ * @desc Get current authenticated user information from Civic Auth
+ * @access Private (Civic Auth)
+ */
+router.get('/user', requireCivicAuth, async (req, res) => {
+  try {
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized'
+      });
+    }
+
+    const user = await req.civicAuth.getUser();
+    
+    if (!user) {
+      return res.status(404).json({
+        error: 'User not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      user: {
+        id: user.id || user.sub,
+        email: user.email,
+        address: user.walletAddress || user.address,
+        ...user
+      }
+    });
+  } catch (error) {
+    console.error('Get user error:', error);
+    res.status(500).json({
+      error: 'Failed to retrieve user information'
+    });
+  }
+});
+
+// ============================================================================
+// LEGACY EMAIL/PASSWORD AUTH ENDPOINTS (for backward compatibility)
+// ============================================================================
 
 /**
  * @route POST /api/auth/request-otp

@@ -1,124 +1,137 @@
 import { Request, Response, NextFunction } from 'express';
-import { createAuth } from 'thirdweb/auth';
-import { privateKeyToAccount } from 'thirdweb/wallets';
-import { thirdwebClient } from '../thirdwebClient';
+import { createCivicAuthInstance } from '../civicAuthConfig';
 import jsonwebtoken from 'jsonwebtoken';
 
-// Extend Express Request type to include user
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        address: string;
-        chainId?: number;
-      };
-    }
-  }
+/**
+ * Middleware to set up Civic Auth instance for each request
+ * This should be applied globally to make civicAuth available on all requests
+ */
+export function setupCivicAuth(req: Request, res: Response, next: NextFunction) {
+  req.civicAuth = createCivicAuthInstance(req, res);
+  next();
 }
 
-// Initialize Thirdweb Auth (same instance as routes)
-const thirdwebAuth = createAuth({
-  domain: process.env.CLIENT_DOMAIN || 'localhost:3001',
-  client: thirdwebClient,
-  adminAccount: privateKeyToAccount({
-    client: thirdwebClient,
-    privateKey: process.env.ADMIN_PRIVATE_KEY!,
-  }),
-});
-
 /**
- * Middleware to authenticate requests using JWT tokens
- * Checks for JWT in cookies or Authorization header
- * Supports both Thirdweb JWT tokens and regular JWT tokens
+ * Middleware to authenticate requests using Civic Auth
+ * Checks if user is logged in via Civic Auth session
  */
 export async function authenticateToken(req: Request, res: Response, next: NextFunction) {
   try {
-    // Try to get JWT from cookie first, then from Authorization header
-    let jwt = req.cookies?.jwt;
-
-    if (!jwt) {
-      const authHeader = req.headers.authorization;
-      if (authHeader && authHeader.startsWith('Bearer ')) {
-        jwt = authHeader.substring(7);
-      }
-    }
-
-    if (!jwt) {
-      return res.status(401).json({
-        error: 'Access denied. No authentication token provided.'
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized. Make sure setupCivicAuth middleware is applied.'
       });
     }
 
-    // First try to verify as a regular JWT token (for email/password auth)
-    try {
-      const decoded = jsonwebtoken.verify(jwt, process.env.JWT_SECRET!) as any;
-      
-      // Add user info to request object for regular JWT
-      req.user = {
-        address: decoded.walletAddress,
-        chainId: decoded.chainId,
-      };
-      
-      return next();
-    } catch (jwtError) {
-      // If regular JWT verification fails, try Thirdweb JWT
-      try {
-        const authResult = await thirdwebAuth.verifyJWT({ jwt });
+    // Check if user is logged in via Civic Auth
+    const isLoggedIn = await req.civicAuth.isLoggedIn();
+    
+    if (!isLoggedIn) {
+      // Fallback: Try to authenticate with JWT token for backward compatibility
+      let jwt = req.cookies?.jwt;
 
-        if (!authResult.valid) {
-          return res.status(401).json({
-            error: 'Access denied. Invalid authentication token.'
-          });
+      if (!jwt) {
+        const authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+          jwt = authHeader.substring(7);
         }
-
-        // Add user info to request object for Thirdweb JWT
-        req.user = {
-          address: authResult.parsedJWT.sub!,
-          chainId: (authResult.parsedJWT.ctx as any)?.chainId,
-        };
-
-        return next();
-      } catch (thirdwebError) {
-        console.error('Authentication middleware error:', thirdwebError);
-        return res.status(401).json({
-          error: 'Access denied. Token verification failed.'
-        });
       }
+
+      if (jwt && process.env.JWT_SECRET) {
+        try {
+          const decoded = jsonwebtoken.verify(jwt, process.env.JWT_SECRET) as any;
+          
+          // Add user info to request object for legacy JWT
+          req.user = {
+            address: decoded.walletAddress,
+            email: decoded.email,
+            id: decoded.userId,
+          };
+          
+          return next();
+        } catch (jwtError) {
+          // JWT verification failed, continue with Civic Auth error
+        }
+      }
+
+      return res.status(401).json({
+        error: 'Access denied. No valid authentication found.'
+      });
     }
+
+    // Get user info from Civic Auth
+    const user = await req.civicAuth.getUser();
+    
+    if (!user) {
+      return res.status(401).json({
+        error: 'Access denied. Unable to retrieve user information.'
+      });
+    }
+
+    // Add user info to request object
+    req.user = {
+      address: user.walletAddress || user.address,
+      email: user.email,
+      id: user.id || user.sub,
+      ...user // Include all user properties
+    };
+
+    next();
   } catch (error) {
     console.error('Authentication middleware error:', error);
     return res.status(401).json({
-      error: 'Access denied. Token verification failed.'
+      error: 'Access denied. Authentication failed.'
     });
   }
 }
 
 /**
  * Optional authentication middleware
- * Adds user info to request if token is valid, but doesn't block if invalid
+ * Adds user info to request if authenticated, but doesn't block if not
  */
 export async function optionalAuth(req: Request, res: Response, next: NextFunction) {
   try {
-    // Try to get JWT from cookie first, then from Authorization header
-    let jwt = req.cookies?.jwt;
-
-    if (!jwt) {
-      const authHeader = req.headers.authorization;
-      if (authHeader && authHeader.startsWith('Bearer ')) {
-        jwt = authHeader.substring(7);
-      }
+    if (!req.civicAuth) {
+      return next(); // Continue without auth if Civic Auth not initialized
     }
 
-    if (jwt) {
-      // Verify JWT with Thirdweb Auth
-      const authResult = await thirdwebAuth.verifyJWT({ jwt });
-
-      if (authResult.valid) {
-        // Add user info to request object
+    // Check if user is logged in via Civic Auth
+    const isLoggedIn = await req.civicAuth.isLoggedIn();
+    
+    if (isLoggedIn) {
+      const user = await req.civicAuth.getUser();
+      
+      if (user) {
         req.user = {
-          address: authResult.parsedJWT.sub!,
-          chainId: (authResult.parsedJWT.ctx as any)?.chainId,
+          address: user.walletAddress || user.address,
+          email: user.email,
+          id: user.id || user.sub,
+          ...user
         };
+      }
+    } else {
+      // Fallback: Try JWT token for backward compatibility
+      let jwt = req.cookies?.jwt;
+
+      if (!jwt) {
+        const authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+          jwt = authHeader.substring(7);
+        }
+      }
+
+      if (jwt && process.env.JWT_SECRET) {
+        try {
+          const decoded = jsonwebtoken.verify(jwt, process.env.JWT_SECRET) as any;
+          
+          req.user = {
+            address: decoded.walletAddress,
+            email: decoded.email,
+            id: decoded.userId,
+          };
+        } catch (jwtError) {
+          // JWT verification failed, continue without auth
+        }
       }
     }
 
@@ -149,7 +162,7 @@ export function requireWalletOwnership(req: Request, res: Response, next: NextFu
     });
   }
 
-  if (req.user.address.toLowerCase() !== walletAddress.toLowerCase()) {
+  if (!req.user.address || req.user.address.toLowerCase() !== walletAddress.toLowerCase()) {
     return res.status(403).json({
       error: 'Access denied. You can only access your own wallet data.'
     });
@@ -159,37 +172,45 @@ export function requireWalletOwnership(req: Request, res: Response, next: NextFu
 }
 
 /**
- * Rate limiting middleware for authentication endpoints
+ * Middleware specifically for Civic Auth authentication
+ * Only uses Civic Auth, no JWT fallback
  */
-export function authRateLimit(maxAttempts: number = 5, windowMs: number = 15 * 60 * 1000) {
-  const attempts = new Map<string, { count: number; resetTime: number }>();
-
-  return (req: Request, res: Response, next: NextFunction) => {
-    const clientId = req.ip || req.connection.remoteAddress || 'unknown';
-    const now = Date.now();
-
-    // Clean up expired entries
-    for (const [key, value] of attempts.entries()) {
-      if (now > value.resetTime) {
-        attempts.delete(key);
-      }
-    }
-
-    const clientAttempts = attempts.get(clientId);
-
-    if (!clientAttempts) {
-      attempts.set(clientId, { count: 1, resetTime: now + windowMs });
-      return next();
-    }
-
-    if (clientAttempts.count >= maxAttempts) {
-      return res.status(429).json({
-        error: 'Too many authentication attempts. Please try again later.',
-        retryAfter: Math.ceil((clientAttempts.resetTime - now) / 1000),
+export async function requireCivicAuth(req: Request, res: Response, next: NextFunction) {
+  try {
+    if (!req.civicAuth) {
+      return res.status(500).json({
+        error: 'Civic Auth not initialized'
       });
     }
 
-    clientAttempts.count++;
+    const isLoggedIn = await req.civicAuth.isLoggedIn();
+    
+    if (!isLoggedIn) {
+      return res.status(401).json({
+        error: 'Civic Auth authentication required'
+      });
+    }
+
+    const user = await req.civicAuth.getUser();
+    
+    if (!user) {
+      return res.status(401).json({
+        error: 'Unable to retrieve user information'
+      });
+    }
+
+    req.user = {
+      address: user.walletAddress || user.address,
+      email: user.email,
+      id: user.id || user.sub,
+      ...user
+    };
+
     next();
-  };
+  } catch (error) {
+    console.error('Civic Auth middleware error:', error);
+    return res.status(401).json({
+      error: 'Civic Auth authentication failed'
+    });
+  }
 }

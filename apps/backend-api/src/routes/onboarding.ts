@@ -1,9 +1,7 @@
 import express from 'express';
-import { createAuth } from 'thirdweb/auth';
-import { privateKeyToAccount } from 'thirdweb/wallets';
-import { thirdwebClient } from '../thirdwebClient';
 import { createWallet } from '../services/walletService';
 import { getOrCreateUser, updateUser } from '../services/userService';
+import { authenticateToken } from '../middleware/auth';
 import { z } from 'zod';
 
 const router = express.Router();
@@ -15,43 +13,27 @@ const StarterInvestmentSchema = z.object({
   }),
 });
 
-// Initialize Thirdweb Auth
-const thirdwebAuth = createAuth({
-  domain: process.env.CLIENT_DOMAIN || 'localhost:3001',
-  client: thirdwebClient,
-  adminAccount: privateKeyToAccount({
-    client: thirdwebClient,
-    privateKey: process.env.ADMIN_PRIVATE_KEY!,
-  }),
-});
-
 /**
  * @route POST /api/onboarding/starter-investment
  * @desc Create wallet and provide starter investment slice
  * @access Private (requires authentication)
  */
-router.post('/starter-investment', async (req, res) => {
+router.post('/starter-investment', authenticateToken, async (req, res) => {
   try {
-    // Check for JWT token
-    const jwt = req.cookies?.jwt || req.headers.authorization?.replace('Bearer ', '');
-
-    if (!jwt) {
-      return res.status(401).json({ error: 'Authentication required' });
-    }
-
-    // Verify JWT
-    const authResult = await thirdwebAuth.verifyJWT({ jwt });
-
-    if (!authResult.valid) {
-      return res.status(401).json({ error: 'Invalid authentication token' });
-    }
-
     // Validate request body
     const validatedData = StarterInvestmentSchema.parse(req.body);
-    const walletAddress = authResult.parsedJWT.sub!;
+
+    // Get user ID from authenticated request
+    // The authenticateToken middleware should set req.user
+    const userId = (req as any).user?.id || (req as any).user?.sub;
+    const walletAddress = (req as any).user?.address || (req as any).user?.walletAddress;
+
+    if (!userId && !walletAddress) {
+      return res.status(401).json({ error: 'User information not found in token' });
+    }
 
     // Get user from database
-    const user = await getOrCreateUser(walletAddress);
+    const user = await getOrCreateUser(walletAddress || userId);
 
     // Check if user already has a starter investment
     if (user.hasStarterInvestment) {
@@ -142,26 +124,18 @@ router.post('/starter-investment', async (req, res) => {
  * @desc Get user's onboarding status
  * @access Private (requires authentication)
  */
-router.get('/status', async (req, res) => {
+router.get('/status', authenticateToken, async (req, res) => {
   try {
-    // Check for JWT token
-    const jwt = req.cookies?.jwt || req.headers.authorization?.replace('Bearer ', '');
+    // Get user ID from authenticated request
+    const userId = (req as any).user?.id || (req as any).user?.sub;
+    const walletAddress = (req as any).user?.address || (req as any).user?.walletAddress;
 
-    if (!jwt) {
-      return res.status(401).json({ error: 'Authentication required' });
+    if (!userId && !walletAddress) {
+      return res.status(401).json({ error: 'User information not found in token' });
     }
-
-    // Verify JWT
-    const authResult = await thirdwebAuth.verifyJWT({ jwt });
-
-    if (!authResult.valid) {
-      return res.status(401).json({ error: 'Invalid authentication token' });
-    }
-
-    const walletAddress = authResult.parsedJWT.sub!;
 
     // Get user from database
-    const user = await getOrCreateUser(walletAddress);
+    const user = await getOrCreateUser(walletAddress || userId);
 
     res.status(200).json({
       success: true,

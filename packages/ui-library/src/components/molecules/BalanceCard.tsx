@@ -47,27 +47,13 @@ export const BalanceCard: React.FC<BalanceCardProps> = ({
       {/* Top Content with Padding */}
       <View style={{ paddingHorizontal: spacing.lg, paddingTop: spacing.lg }}>
         <View className="mb-2">
-          <Text
-            style={{
-              fontFamily: typography.fonts.secondary,
-              fontSize: typography.styles.label.size,
-              color: colors.text.onPrimary,
-              textTransform: 'uppercase',
-            }}
-          >
+          <Text className="font-heading text-body-sm text-text-on-primary uppercase">
             Portfolio Value
           </Text>
         </View>
 
         <View className="mb-3">
-          <Text
-            style={{
-              fontSize: 28,
-              color: colors.text.onPrimary,
-              fontFamily: typography.fonts.primary,
-              fontWeight: 'bold',
-            }}
-          >
+          <Text className="font-body-bold text-heading-lg text-text-on-primary">
             {balance}
           </Text>
           <View className="flex-row items-center gap-x-2 mt-1">
@@ -77,13 +63,7 @@ export const BalanceCard: React.FC<BalanceCardProps> = ({
               size={16}
               color={colors.text.onPrimary}
             />
-            <Text
-              className="text-sm"
-              style={{
-                fontFamily: typography.fonts.secondary,
-                color: colors.text.onPrimary,
-              }}
-            >
+            <Text className="font-heading text-body-sm text-text-on-primary">
               {currency} Balance
             </Text>
           </View>
@@ -117,13 +97,7 @@ export const BalanceCard: React.FC<BalanceCardProps> = ({
               size={14}
               color={colors.accent.limeGreen}
             />
-            <Text
-              className="text-[14px]"
-              style={{
-                color: colors.accent.limeGreen,
-                fontFamily: typography.fonts.secondary,
-              }}
-            >
+            <Text className="font-heading text-body-sm text-accent">
               {performanceText}
             </Text>
           </View>
@@ -132,13 +106,7 @@ export const BalanceCard: React.FC<BalanceCardProps> = ({
             onPress={onPress}
             className="flex-row items-center gap-x-1"
           >
-            <Text
-              style={{
-                color: colors.text.onPrimary,
-                fontFamily: typography.fonts.secondary,
-              }}
-              className="text-[14px]"
-            >
+            <Text className="font-heading text-body-sm text-text-on-primary">
               View Portfolio
             </Text>
             <Icon
