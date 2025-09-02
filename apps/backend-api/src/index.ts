@@ -5,16 +5,17 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
-import { healthRouter } from './routes/health';
-import { authRouter } from './routes/auth';
-import { userRouter } from './routes/users';
-import onboardingRouter from './routes/onboarding';
-import { basketsRouter } from './routes/baskets';
-import { feedRouter } from './routes/feed';
-import { aiRouter } from './routes/ai';
-import { errorHandler } from './middleware/errorHandler';
-import { testEmailConfiguration } from './services/emailService';
-import { setupCivicAuth } from './middleware/auth';
+import { healthRouter } from './routes/health.js';
+import { authRouter } from './routes/auth.js';
+import { userRouter } from './routes/users.js';
+import onboardingRouter from './routes/onboarding.js';
+import { basketsRouter } from './routes/baskets.js';
+import { feedRouter } from './routes/feed.js';
+import { aiRouter } from './routes/ai.js';
+import zeroGRouter from './routes/zeroGRoutes.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { testEmailConfiguration } from './services/emailService.js';
+import { setupCivicAuth } from './middleware/auth.js';
 
 const app = express();
 
@@ -56,7 +57,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   app.listen(PORT, async () => {
     console.log(`🚀 STACK Backend API running on port ${PORT}`);
     console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-    
+
     // Test email configuration on startup
     console.log('📧 Testing email configuration...');
     await testEmailConfiguration();
